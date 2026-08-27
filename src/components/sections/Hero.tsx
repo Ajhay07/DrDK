@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { consultationHref, proceduresHref } from "@/config/navigation";
 
 /**
@@ -54,14 +54,30 @@ export function Hero(): React.ReactElement {
           </div>
 
           <div className="order-2 flex justify-center lg:order-2 lg:col-span-5 lg:justify-end lg:pt-20">
-            <MediaPlaceholder
-              aspect="square"
-              imageSrc="/images/doctor/dr-dinesh-portrait.png"
-              alt="Portrait of Dr. Dinesh Kumar, plastic surgeon"
-              priority
-              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 14rem"
-              className="w-56 sm:w-64 lg:w-72"
-            />
+            {/*
+             * The source photograph is only 150×150 — too low-resolution to
+             * fill a large editorial frame without visible upscaling. Instead
+             * of stretching it, the photo is shown near its native size
+             * inside a larger, deliberately quiet frame: the whitespace (not
+             * the image) carries the editorial scale.
+             */}
+            <div className="relative flex h-72 w-72 items-center justify-center border border-(--color-border) bg-(--color-bg-secondary) sm:h-80 sm:w-80 lg:h-96 lg:w-96">
+              <span className="absolute left-4 top-4 h-5 w-5 border-l border-t border-(--color-border-strong)" aria-hidden="true" />
+              <span className="absolute right-4 top-4 h-5 w-5 border-r border-t border-(--color-border-strong)" aria-hidden="true" />
+              <span className="absolute bottom-4 left-4 h-5 w-5 border-b border-l border-(--color-border-strong)" aria-hidden="true" />
+              <span className="absolute bottom-4 right-4 h-5 w-5 border-r border-b border-(--color-border-strong)" aria-hidden="true" />
+
+              <div className="relative h-36 w-36 overflow-hidden sm:h-40 sm:w-40 lg:h-44 lg:w-44">
+                <Image
+                  src="/images/doctor/dr-dinesh-portrait.png"
+                  alt="Portrait of Dr. Dinesh Kumar, plastic surgeon"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 11rem, (min-width: 640px) 10rem, 9rem"
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </Container>
