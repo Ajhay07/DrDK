@@ -8,6 +8,7 @@ interface MediaPlaceholderProps {
   imageSrc?: string;
   alt?: string;
   priority?: boolean;
+  sizes?: string;
 }
 
 const aspectClass: Record<NonNullable<MediaPlaceholderProps["aspect"]>, string> = {
@@ -29,6 +30,7 @@ export function MediaPlaceholder({
   imageSrc,
   alt = "",
   priority = false,
+  sizes = "(min-width: 1024px) 40vw, 100vw",
 }: MediaPlaceholderProps): React.ReactElement {
   if (imageSrc) {
     return (
@@ -38,7 +40,7 @@ export function MediaPlaceholder({
           alt={alt}
           fill
           priority={priority}
-          sizes="(min-width: 1024px) 40vw, 100vw"
+          sizes={sizes}
           className="object-cover object-top"
         />
       </div>

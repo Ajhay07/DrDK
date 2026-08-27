@@ -36,9 +36,8 @@ export default function AboutPage(): React.ReactElement {
             </p>
 
             <p className="text-body mt-12 text-(--color-ink-faint)">
-              A complete biography is being prepared and will appear here soon.{" "}
-              <TextLink href={consultationHref}>Book a consultation</TextLink> in the
-              meantime to discuss your goals directly.
+              To discuss your own goals and concerns directly,{" "}
+              <TextLink href={consultationHref}>book a consultation</TextLink>.
             </p>
           </div>
         </Container>

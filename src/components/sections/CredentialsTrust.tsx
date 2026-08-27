@@ -19,8 +19,8 @@ export function CredentialsTrust(): React.ReactElement {
               Experience shaped by surgery. Guided by aesthetics.
             </h2>
             <p className="text-body-lg mt-6 max-w-xl text-(--color-ink-muted)">
-              A practice built on the combination of reconstructive and aesthetic
-              surgical experience — applied with the same precision and
+              Ten years in the surgical field, brought together with specialised
+              aesthetic surgery training — applied with the same precision and
               individual attention to every consultation.
             </p>
           </div>

@@ -8,17 +8,21 @@ export interface DoctorIntroContent {
 }
 
 /**
- * Homepage "Meet Dr. Dinesh" introduction. Deliberately generic and free of
- * unverified specifics (years of practice, qualifications, affiliations) —
- * see the Phase handoff notes for what still needs Dr. Dinesh's own copy
- * before this can be replaced with a verified biography.
+ * Homepage/About "Meet Dr. Dinesh" content. Facts here (location, years of
+ * experience, fellowship, hospital association) are verified against the
+ * publicly listed LinkedIn profile approved for this project — see the
+ * Phase handoff notes for what remains unverified (MBBS/MS/MCh institution,
+ * registration number, additional fellowships, memberships) and must not
+ * be added until confirmed.
  */
 export const doctorIntro: DoctorIntroContent = {
   eyebrow: "Meet Dr. Dinesh",
-  headline: "A considered approach to aesthetic surgery.",
+  headline: "A considered approach to aesthetic and reconstructive surgery.",
   paragraphs: [
-    "Every consultation begins with listening — understanding what a patient hopes to achieve before any surgical approach is considered.",
-    "That same approach, grounded in proportion and individual context rather than a fixed template, carries through planning, the procedure itself, and the care that follows.",
+    "Dr. Dinesh Kumar is a plastic surgeon based in Chennai, with a background spanning aesthetic and reconstructive surgery.",
+    "His approach centres on understanding the individual — considering proportion, anatomy and personal goals before discussing a surgical path.",
+    "With ten years of experience in the surgical field and a Fellowship in Aesthetic Surgery accredited by IAAPS, completed in 2023, his work brings together technical precision with a considered approach to aesthetic decision-making.",
+    "He believes an informed conversation is the foundation of every surgical journey.",
   ],
   signature: "Dr. Dinesh Kumar",
   ctaLabel: "Read the full story",

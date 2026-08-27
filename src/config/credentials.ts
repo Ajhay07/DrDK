@@ -5,30 +5,25 @@ export interface Credential {
 
 /**
  * Trust markers shown in the "Credentials & Trust" homepage section.
- * Deliberately limited to information that doesn't require an unverified
- * specific (years of experience, institution names, registration/affiliation
- * bodies, case counts) — see PROJECT_RULES.md and the Phase 3 handoff notes
- * for what still needs confirmation from Dr. Dinesh before it can be added.
+ * Facts verified against the publicly listed LinkedIn profile approved for
+ * this project. Do not add years/institutions/memberships beyond what is
+ * listed here without further verification — see src/config/about.ts.
  */
 export const credentials: Credential[] = [
   {
-    label: "Surgical Foundation",
-    description:
-      "A practice grounded in both reconstructive and aesthetic surgery, not aesthetics alone.",
+    label: "Plastic Surgery",
+    description: "Professional focus, spanning aesthetic and reconstructive surgery.",
   },
   {
-    label: "Aesthetic Focus",
-    description:
-      "Ongoing focus on facial and body aesthetic procedures, approached with a surgical foundation.",
+    label: "10 Years",
+    description: "Experience in the surgical field.",
   },
   {
-    label: "Consultation-Led Care",
-    description:
-      "Treatment plans are developed through individual consultation, not standardised protocols.",
+    label: "IAAPS",
+    description: "Fellowship in Aesthetic Surgery, completed 2023.",
   },
   {
-    label: "Chennai-Based Practice",
-    description:
-      "Based in Chennai, India, seeing patients for consultation and surgical care.",
+    label: "Chennai",
+    description: "Based in Chennai, associated with Vijaya Hospitals.",
   },
 ];

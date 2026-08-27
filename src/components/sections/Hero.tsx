@@ -53,11 +53,14 @@ export function Hero(): React.ReactElement {
             </p>
           </div>
 
-          <div className="order-2 lg:order-2 lg:col-span-5 lg:pt-20 lg:[margin-right:calc(var(--gutter)*-1)]">
+          <div className="order-2 flex justify-center lg:order-2 lg:col-span-5 lg:justify-end lg:pt-20">
             <MediaPlaceholder
-              aspect="portrait"
-              label="Dr. Dinesh Kumar — portrait forthcoming"
-              className="w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto lg:max-w-none"
+              aspect="square"
+              imageSrc="/images/doctor/dr-dinesh-portrait.png"
+              alt="Portrait of Dr. Dinesh Kumar, plastic surgeon"
+              priority
+              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 14rem"
+              className="w-56 sm:w-64 lg:w-72"
             />
           </div>
         </div>
