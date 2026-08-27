@@ -11,7 +11,7 @@ import { concerns } from "@/config/concerns";
 export function ExploreConcerns(): React.ReactElement {
   return (
     <section className="bg-(--color-bg)">
-      <Container className="py-20 md:py-32">
+      <Container width="wide" className="py-20 md:py-32">
         <div className="max-w-2xl">
           <Eyebrow>Explore</Eyebrow>
           <h2 className="text-h2 mt-4 text-(--color-ink)">Where would you like to begin?</h2>

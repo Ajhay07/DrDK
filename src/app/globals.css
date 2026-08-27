@@ -7,18 +7,18 @@
    ========================================================================== */
 
 :root {
-  /* Color — warm, restrained "quiet luxury" palette. No medical blue. */
-  --color-bg: #f7f5f1; /* Bone — primary page background */
-  --color-bg-secondary: #eeeae2; /* Stone — alternate section background */
-  --color-surface: #ffffff; /* Paper — raised/inset surfaces, form fields */
-  --color-ink: #1b1a17; /* Primary text — warm near-black, not pure #000 */
-  --color-ink-muted: #6b6459; /* Secondary text, captions, metadata */
-  --color-ink-faint: #a39c8e; /* Placeholder / disabled text */
-  --color-accent: #2f3b32; /* Deep pine — CTAs, links, focus, emphasis */
-  --color-accent-strong: #232c26; /* Accent hover/active */
-  --color-accent-ink: #f7f5f1; /* Text/icons placed on top of accent */
-  --color-border: #e2ddd2; /* Default hairline border */
-  --color-border-strong: #c9c1b1; /* Emphasized border / input border on focus */
+  /* Color — warm ivory/bone editorial palette. No medical blue. */
+  --color-bg: #f7f5f0; /* Ivory/Bone — primary page background */
+  --color-bg-secondary: #eee8dc; /* Stone — alternate section background */
+  --color-surface: #f2ece0; /* Soft stone — raised/inset surfaces, form fields */
+  --color-ink: #1f241d; /* Primary text — deep green-charcoal, not pure #000 */
+  --color-ink-muted: #6c7166; /* Secondary text — muted sage/grey */
+  --color-ink-faint: #a3a896; /* Placeholder / disabled text — faint sage */
+  --color-accent: #6b4f35; /* Restrained warm bronze — CTAs, links, focus, emphasis */
+  --color-accent-strong: #543d29; /* Accent hover/active */
+  --color-accent-ink: #f7f5f0; /* Text/icons placed on top of accent */
+  --color-border: #e3dccd; /* Default hairline border */
+  --color-border-strong: #c7b79c; /* Emphasized border / input border on focus */
   --color-danger: #8a3b2f; /* Reserved for form validation only */
 
   /* Typography */
@@ -44,17 +44,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #16150f;
-    --color-bg-secondary: #1f1e17;
-    --color-surface: #201f19;
-    --color-ink: #f2efe8;
-    --color-ink-muted: #a49c8c;
-    --color-ink-faint: #6f6858;
-    --color-accent: #a9c3ac;
-    --color-accent-strong: #c4dac6;
-    --color-accent-ink: #16150f;
-    --color-border: #322f26;
-    --color-border-strong: #47432e;
+    --color-bg: #171a15;
+    --color-bg-secondary: #1e2119;
+    --color-surface: #232620;
+    --color-ink: #f2efe6;
+    --color-ink-muted: #a8ac9c;
+    --color-ink-faint: #6e7266;
+    --color-accent: #c6a47c;
+    --color-accent-strong: #d8bc98;
+    --color-accent-ink: #171a15;
+    --color-border: #2e3126;
+    --color-border-strong: #463f30;
     --color-danger: #d98f7f;
   }
 }

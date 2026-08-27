@@ -78,11 +78,11 @@ export function SiteHeader(): React.ReactElement {
       )}
     >
       <div className="mx-auto flex h-20 w-full max-w-(--container-wide) items-center justify-between px-(--gutter)">
-        <Link
-          href="/"
-          className="font-(--font-display) text-[1.15rem] tracking-tight text-(--color-ink)"
-        >
-          {siteName}
+        <Link href="/" className="flex flex-col leading-none">
+          <span className="font-(--font-display) text-[1.15rem] tracking-tight text-(--color-ink)">
+            {siteName}
+          </span>
+          <span className="text-eyebrow mt-1.5 text-[0.6875rem]">Aesthetic &amp; Plastic Surgery</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
@@ -100,11 +100,13 @@ export function SiteHeader(): React.ReactElement {
           </ul>
         </nav>
 
-        <div className="hidden md:block">
-          <Button href={consultationHref} variant="secondary">
-            Book a Consultation
-          </Button>
-        </div>
+        <Link
+          href={consultationHref}
+          className="text-nav hidden items-center gap-2 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent) md:inline-flex"
+        >
+          Book a Consultation
+          <span aria-hidden="true">&#8594;</span>
+        </Link>
 
         <button
           ref={menuTriggerRef}

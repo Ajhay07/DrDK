@@ -20,17 +20,17 @@ export function MeetDrDinesh(): React.ReactElement {
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-10 lg:mt-20 lg:grid-cols-12 lg:items-start lg:gap-8">
-          <div className="order-1 flex justify-center lg:col-span-5 lg:justify-start">
+          <div className="order-1 flex justify-start lg:col-span-4">
             <MediaPlaceholder
               aspect="square"
               imageSrc="/images/doctor/dr-dinesh-consultation.png"
               alt="Dr. Dinesh Kumar during a patient consultation"
-              sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 16rem"
-              className="w-64 sm:w-80 lg:w-96"
+              sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 14rem"
+              className="w-56 sm:w-64 lg:w-72"
             />
           </div>
 
-          <div className="order-2 lg:col-span-6 lg:col-start-7 lg:pt-6">
+          <div className="order-2 lg:col-span-7 lg:col-start-6 lg:pt-2">
             {doctorIntro.paragraphs.map((paragraph, index) => (
               <p
                 key={paragraph}

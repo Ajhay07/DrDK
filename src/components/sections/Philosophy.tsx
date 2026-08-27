@@ -32,23 +32,23 @@ const pillars: Pillar[] = [
 export function Philosophy(): React.ReactElement {
   return (
     <Section background="bg-secondary" spacing="lg">
-      <Container>
+      <Container width="wide">
         <Eyebrow>Philosophy</Eyebrow>
         <h2 className="text-h1 mt-6 max-w-3xl text-(--color-ink)">
           Three considerations guide{" "}
           <span className="italic">every</span> surgical decision.
         </h2>
 
-        <div className="mt-16 grid grid-cols-1 gap-10 border-t border-(--color-border) pt-10 md:mt-20 md:grid-cols-3 md:gap-12">
+        <div className="mt-16 grid grid-cols-1 gap-12 border-t border-(--color-border) pt-10 md:mt-20 md:grid-cols-3 md:gap-8">
           {pillars.map((pillar, index) => (
-            <div
-              key={pillar.title}
-              className="md:border-l md:border-(--color-border) md:pl-8 md:first:border-l-0 md:first:pl-0"
-            >
-              <span aria-hidden="true" className="text-small text-(--color-ink-faint)">
+            <div key={pillar.title}>
+              <span
+                aria-hidden="true"
+                className="font-(--font-display) block text-3xl italic text-(--color-ink-faint)"
+              >
                 0{index + 1}
               </span>
-              <h3 className="text-h3 mt-3 text-(--color-ink)">{pillar.title}</h3>
+              <h3 className="text-h3 mt-4 text-(--color-ink)">{pillar.title}</h3>
               <p className="text-body mt-3 text-(--color-ink-muted)">
                 {pillar.description}
               </p>
