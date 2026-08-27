@@ -18,7 +18,7 @@ export default function EducationPage(): React.ReactElement {
   return (
     <main id="main-content" className="flex-1">
       <Section spacing="xl">
-        <Container>
+        <Container width="wide">
           <PageHeader
             eyebrow="Patient Education"
             title="Understand before you decide."
@@ -30,6 +30,7 @@ export default function EducationPage(): React.ReactElement {
               <li key={entry.slug}>
                 <Link
                   href={entry.href}
+                  data-cursor="Read"
                   className="group block border-l-2 border-transparent pl-6 transition-colors duration-(--duration-base) ease-(--ease-editorial) hover:border-(--color-accent) focus-visible:border-(--color-accent)"
                 >
                   <span aria-hidden="true" className="text-small text-(--color-ink-faint)">

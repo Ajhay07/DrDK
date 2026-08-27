@@ -22,12 +22,19 @@ export function ExploreConcerns(): React.ReactElement {
         </div>
 
         <ul className="mt-14 border-t border-(--color-border) md:mt-20">
-          {concerns.map((concern) => (
+          {concerns.map((concern, index) => (
             <li key={concern.slug} className="border-b border-(--color-border)">
               <Link
                 href={`/procedures/${concern.slug}`}
-                className="group flex items-center justify-between gap-6 py-6 md:py-8 transition-colors duration-(--duration-fast) ease-(--ease-editorial)"
+                data-cursor="Explore"
+                className="group flex items-center gap-6 py-6 md:py-8 transition-colors duration-(--duration-fast) ease-(--ease-editorial)"
               >
+                <span
+                  aria-hidden="true"
+                  className="text-small hidden w-8 shrink-0 tabular-nums text-(--color-ink-faint) sm:block"
+                >
+                  0{index + 1}
+                </span>
                 <span className="flex flex-1 flex-col gap-1 md:flex-row md:items-baseline md:gap-8">
                   <span className="text-h2 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) group-hover:text-(--color-accent) group-focus-visible:text-(--color-accent)">
                     {concern.label}

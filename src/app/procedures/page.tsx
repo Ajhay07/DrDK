@@ -18,7 +18,7 @@ export default function ProceduresPage(): React.ReactElement {
   return (
     <main id="main-content" className="flex-1">
       <Section spacing="xl">
-        <Container>
+        <Container width="wide">
           <PageHeader
             eyebrow="Procedures"
             title="Explore procedures by area."
@@ -30,6 +30,7 @@ export default function ProceduresPage(): React.ReactElement {
               <li key={concern.slug} className="border-b border-(--color-border)">
                 <Link
                   href={`/procedures/${concern.slug}`}
+                  data-cursor="Explore"
                   className="group flex items-center justify-between gap-6 py-6 transition-colors duration-(--duration-fast) ease-(--ease-editorial) md:py-8"
                 >
                   <span className="flex flex-1 flex-col gap-1 md:flex-row md:items-baseline md:gap-8">

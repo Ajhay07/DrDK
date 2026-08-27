@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { Magnetic } from "@/components/interactive/Magnetic";
 import { concerns } from "@/config/concerns";
 import { educationEntries } from "@/config/education";
 import { consultationHref, proceduresHref } from "@/config/navigation";
@@ -46,9 +47,11 @@ export function SiteFooter(): React.ReactElement {
               Aesthetic &amp; Plastic Surgery
             </p>
             <div className="mt-8">
-              <Button href={consultationHref} variant="secondary">
-                Book a Consultation
-              </Button>
+              <Magnetic data-cursor="Open">
+                <Button href={consultationHref} variant="secondary">
+                  Book a Consultation
+                </Button>
+              </Magnetic>
             </div>
           </div>
 

@@ -8,7 +8,7 @@
 
 :root {
   /* Color — warm ivory/bone editorial palette. No medical blue. */
-  --color-bg: #f7f5f0; /* Ivory/Bone — primary page background */
+  --color-bg: #f4f1eb; /* Ivory/Bone — primary page background */
   --color-bg-secondary: #eee8dc; /* Stone — alternate section background */
   --color-surface: #f2ece0; /* Soft stone — raised/inset surfaces, form fields */
   --color-ink: #1f241d; /* Primary text — deep green-charcoal, not pure #000 */
@@ -16,7 +16,7 @@
   --color-ink-faint: #a3a896; /* Placeholder / disabled text — faint sage */
   --color-accent: #6b4f35; /* Restrained warm bronze — CTAs, links, focus, emphasis */
   --color-accent-strong: #543d29; /* Accent hover/active */
-  --color-accent-ink: #f7f5f0; /* Text/icons placed on top of accent */
+  --color-accent-ink: #f4f1eb; /* Text/icons placed on top of accent */
   --color-border: #e3dccd; /* Default hairline border */
   --color-border-strong: #c7b79c; /* Emphasized border / input border on focus */
   --color-danger: #8a3b2f; /* Reserved for form validation only */
@@ -142,6 +142,23 @@ body {
  * for why unlayered rules are unsafe to combine with Tailwind utilities.
  */
 @layer components {
+  .text-mega {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3.25rem, 2rem + 6vw, 8rem);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+  }
+
+  .text-index {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+    line-height: 1;
+    color: var(--color-ink-faint);
+  }
+
   .text-display {
     font-family: var(--font-display);
     font-weight: 400;
@@ -239,6 +256,27 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/*
+ * Native cursor is only hidden once CustomCursor.tsx confirms (client-side)
+ * a fine pointer AND no reduced-motion preference, then adds this class to
+ * <html>. Keyboard, touch, and reduced-motion users always keep the native
+ * cursor — see src/components/interactive/CustomCursor.tsx.
+ */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none;
+}
+
+.cursor-dot {
+  display: none;
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cursor-dot {
+    display: block;
   }
 }
 

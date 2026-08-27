@@ -2,17 +2,20 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
+import { Magnetic } from "@/components/interactive/Magnetic";
 import { cn } from "@/lib/utils/cn";
 import { consultationHref, primaryNavigation, siteName } from "@/config/navigation";
 
 /**
- * Global site navigation. A Client Component because it owns two pieces of
- * interaction state — scroll-driven background treatment and the mobile
- * menu — that can't be expressed in a Server Component. Kept as the single
- * client boundary for navigation per PROJECT_RULES.md §3.
+ * Global site navigation. A Client Component because it owns scroll state,
+ * the mobile menu, and route-aware active-link styling — none expressible
+ * in a Server Component. Kept as the single client boundary for navigation
+ * per PROJECT_RULES.md §3.
  */
 export function SiteHeader(): React.ReactElement {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
@@ -87,26 +90,43 @@ export function SiteHeader(): React.ReactElement {
 
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-10">
-            {primaryNavigation.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-nav text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {primaryNavigation.map((item) => {
+              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={cn(
+                      "text-nav relative pb-1 transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)",
+                      isActive ? "text-(--color-ink)" : "text-(--color-ink-muted)",
+                    )}
+                  >
+                    {item.label}
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-(--color-accent) transition-transform duration-(--duration-base) ease-(--ease-editorial)",
+                        isActive && "scale-x-100",
+                      )}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
-        <Link
-          href={consultationHref}
-          className="text-nav hidden items-center gap-2 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent) md:inline-flex"
-        >
-          Book a Consultation
-          <span aria-hidden="true">&#8594;</span>
-        </Link>
+        <Magnetic className="hidden md:inline-block">
+          <Link
+            href={consultationHref}
+            data-cursor="Open"
+            className="text-nav inline-flex items-center gap-2 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)"
+          >
+            Book a Consultation
+            <span aria-hidden="true">&#8594;</span>
+          </Link>
+        </Magnetic>
 
         <button
           ref={menuTriggerRef}
@@ -153,8 +173,12 @@ export function SiteHeader(): React.ReactElement {
 
           <nav aria-label="Primary" className="flex flex-1 flex-col justify-center px-(--gutter)">
             <ul className="flex flex-col gap-2">
-              {primaryNavigation.map((item) => (
-                <li key={item.href} className="border-b border-(--color-border)">
+              {primaryNavigation.map((item, index) => (
+                <li
+                  key={item.href}
+                  className="motion-fade-in overflow-hidden border-b border-(--color-border)"
+                  style={{ animationDelay: `${index * 60}ms` }}
+                >
                   <Link
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
@@ -166,7 +190,7 @@ export function SiteHeader(): React.ReactElement {
               ))}
             </ul>
 
-            <div className="mt-10">
+            <div className="motion-fade-in mt-10" style={{ animationDelay: "180ms" }}>
               <Button
                 href={consultationHref}
                 variant="primary"
@@ -175,6 +199,7 @@ export function SiteHeader(): React.ReactElement {
               >
                 Book a Consultation
               </Button>
+              <p className="text-small mt-6 text-(--color-ink-faint)">Chennai, India</p>
             </div>
           </nav>
         </div>

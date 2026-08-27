@@ -1,59 +1,40 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Magnetic } from "@/components/interactive/Magnetic";
+import { HeroPortrait } from "@/components/interactive/HeroPortrait";
 import { consultationHref, proceduresHref } from "@/config/navigation";
 
 /**
- * Homepage hero. Server-rendered; the only motion is CSS entrance reveals
- * (see .motion-fade-in in globals.css), which need no client JavaScript.
- *
- * Composition is grid-first, not image-first: a hairline masthead row
- * anchors the top and bottom of the hero (echoing the section eyebrow rows
- * used throughout the homepage), the headline carries the visual weight,
- * and the portrait — a 150×150 source — sits as a small, deliberately
- * placed element beside it rather than stretched into a large frame.
+ * Homepage hero. Server-rendered aside from the portrait's pointer-tilt
+ * (HeroPortrait, an isolated client island). Typography carries the
+ * composition: the portrait is embedded inline within the headline itself
+ * rather than occupying its own image column, at a size close to its
+ * native 150×150 resolution so it never looks stretched.
  */
 export function Hero(): React.ReactElement {
   return (
     <section className="bg-(--color-bg)">
       <Container width="wide">
         <div className="flex items-baseline justify-between border-t border-b border-(--color-border) py-5">
-          <Eyebrow>Aesthetic &amp; Plastic Surgery</Eyebrow>
+          <Eyebrow>Plastic &amp; Aesthetic Surgery</Eyebrow>
           <span className="text-eyebrow">Chennai, India</span>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 pt-14 pb-10 lg:grid-cols-12 lg:gap-8 lg:pt-20">
-          <div className="lg:col-span-8">
-            <h1 className="text-display text-(--color-ink) motion-fade-in">
-              Precision in surgery.
-              <br />
-              <span className="italic">Individuality</span> in aesthetics.
-            </h1>
-          </div>
+        <h1 className="text-mega pt-14 text-(--color-ink) motion-fade-in lg:pt-20">
+          <span className="block">Precision in surgery.</span>
+          <span className="mt-2 flex flex-wrap items-center gap-4 sm:gap-6">
+            <span className="italic">Individuality</span>
+            <HeroPortrait />
+            <span>in aesthetics.</span>
+          </span>
+        </h1>
 
-          <div
-            className="flex justify-start motion-fade-in lg:col-span-4 lg:justify-end lg:pt-2"
-            style={{ animationDelay: "80ms" }}
-          >
-            <div className="relative h-44 w-36 overflow-hidden bg-(--color-bg-secondary) sm:h-48 sm:w-40">
-              <Image
-                src="/images/doctor/dr-dinesh-portrait.png"
-                alt="Portrait of Dr. Dinesh Kumar, plastic surgeon"
-                fill
-                priority
-                sizes="(min-width: 640px) 10rem, 9rem"
-                className="object-cover object-top"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-10 pb-16 lg:grid-cols-12 lg:gap-8 lg:pb-24">
+        <div className="grid grid-cols-1 gap-10 pt-10 pb-16 lg:grid-cols-12 lg:gap-8 lg:pb-24">
           <div className="lg:col-span-6">
             <p
               className="text-body-lg text-(--color-ink-muted) motion-fade-in"
-              style={{ animationDelay: "160ms" }}
+              style={{ animationDelay: "120ms" }}
             >
               A refined approach to aesthetic and reconstructive surgery, centred
               around proportion, individuality and informed decisions.
@@ -61,14 +42,25 @@ export function Hero(): React.ReactElement {
 
             <div
               className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center motion-fade-in"
-              style={{ animationDelay: "240ms" }}
+              style={{ animationDelay: "200ms" }}
             >
-              <Button href={consultationHref} variant="primary" className="w-full sm:w-auto">
-                Book a Consultation
-              </Button>
-              <Button href={proceduresHref} variant="secondary" className="w-full sm:w-auto">
-                Explore Procedures
-              </Button>
+              <Magnetic data-cursor="Open">
+                <Button href={consultationHref} variant="primary" className="w-full sm:w-auto">
+                  Book a Consultation
+                </Button>
+              </Magnetic>
+              <Magnetic data-cursor="Explore">
+                <Button href={proceduresHref} variant="secondary" className="w-full sm:w-auto">
+                  Explore Procedures
+                </Button>
+              </Magnetic>
+            </div>
+          </div>
+
+          <div className="flex items-end lg:col-span-6 lg:justify-end">
+            <div className="flex items-center gap-3 text-(--color-ink-faint)">
+              <span className="text-eyebrow">Scroll</span>
+              <span aria-hidden="true" className="h-px w-10 bg-(--color-border-strong)" />
             </div>
           </div>
         </div>

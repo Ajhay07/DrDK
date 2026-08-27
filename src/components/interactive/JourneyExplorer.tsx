@@ -48,8 +48,22 @@ export function JourneyExplorer({ stages }: JourneyExplorerProps): React.ReactEl
   }
 
   return (
-    <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
-      <div className="md:col-span-6">
+    <div>
+      <div className="flex gap-2" role="presentation">
+        {stages.map((stage, index) => (
+          <span
+            key={stage.number}
+            aria-hidden="true"
+            className={cn(
+              "h-px flex-1 bg-(--color-border) transition-colors duration-(--duration-base) ease-(--ease-editorial)",
+              index <= activeIndex && "bg-(--color-accent)",
+            )}
+          />
+        ))}
+      </div>
+
+      <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
+        <div className="md:col-span-6">
         <ol className="border-t border-(--color-border)">
           {stages.map((stage, index) => {
             const isActive = index === activeIndex;
@@ -60,6 +74,7 @@ export function JourneyExplorer({ stages }: JourneyExplorerProps): React.ReactEl
                     triggerRefs.current[index] = el;
                   }}
                   type="button"
+                  data-cursor="Select"
                   aria-expanded={isActive}
                   aria-controls={`journey-panel-${stage.number}`}
                   onClick={() => setActiveIndex(index)}
@@ -118,6 +133,7 @@ export function JourneyExplorer({ stages }: JourneyExplorerProps): React.ReactEl
         >
           {activeStage.description}
         </p>
+      </div>
       </div>
     </div>
   );
