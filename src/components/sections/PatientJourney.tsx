@@ -12,9 +12,13 @@ export function PatientJourney(): React.ReactElement {
   return (
     <Section background="bg-secondary" spacing="lg">
       <Container width="wide">
-        <div className="max-w-2xl">
+        <div className="flex items-baseline justify-between">
           <Eyebrow>The Journey</Eyebrow>
-          <h2 className="text-h1 mt-6 text-(--color-ink)">
+          <span className="text-eyebrow">01 &ndash; 06</span>
+        </div>
+
+        <div className="mt-6 max-w-2xl">
+          <h2 className="text-display text-(--color-ink)">
             From the first conversation to recovery.
           </h2>
           <p className="text-body-lg mt-6 text-(--color-ink-muted)">

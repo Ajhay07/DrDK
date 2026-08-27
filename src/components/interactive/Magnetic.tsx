@@ -25,7 +25,7 @@ export function Magnetic({
   className,
   "data-cursor": dataCursor,
 }: MagneticProps): React.ReactElement {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const frame = useRef<number | null>(null);
 
   useEffect(() => {
@@ -64,13 +64,13 @@ export function Magnetic({
   }, [strength]);
 
   return (
-    <div
+    <span
       ref={ref}
       data-cursor={dataCursor}
       className={className ?? "inline-block"}
       style={{ transition: "transform 300ms var(--ease-editorial)", willChange: "transform" }}
     >
       {children}
-    </div>
+    </span>
   );
 }

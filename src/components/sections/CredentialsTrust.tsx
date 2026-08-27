@@ -1,47 +1,41 @@
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Section } from "@/components/ui/Section";
 import { credentials } from "@/config/credentials";
 
 /**
- * Editorial credentials/trust section, presented as a structured
- * professional record — indexed rows with a label/value alignment — rather
- * than a badge wall or feature-card grid. Deliberately avoids any claim
- * (years, institutions, case counts) not yet verified.
+ * A compact professional record — small, precise, dense type deliberately
+ * contrasting with the oversized display type in the sections around it.
+ * A ledger, not a badge wall or an equal-column feature grid.
  */
 export function CredentialsTrust(): React.ReactElement {
   return (
-    <Section background="bg" spacing="lg">
-      <Container width="wide">
-        <div className="max-w-2xl">
-          <Eyebrow>Professional Foundation</Eyebrow>
-          <h2 className="text-h1 mt-6 text-(--color-ink)">
-            Experience shaped by surgery. Guided by aesthetics.
-          </h2>
-          <p className="text-body-lg mt-6 text-(--color-ink-muted)">
-            Ten years in the surgical field, brought together with specialised
-            aesthetic surgery training — applied with the same precision and
-            individual attention to every consultation.
-          </p>
+    <section className="bg-(--color-bg)">
+      <Container width="wide" className="py-20 md:py-32">
+        <div className="flex flex-col gap-2 border-b border-(--color-border) pb-6 sm:flex-row sm:items-baseline sm:justify-between">
+          <span className="text-eyebrow">Professional Record</span>
+          <span className="text-eyebrow">Chennai · Vijaya Hospitals</span>
         </div>
 
-        <dl className="mt-14 border-t border-(--color-border) md:mt-20">
+        <h2 className="text-display mt-10 max-w-2xl text-(--color-ink) md:mt-14">
+          Experience shaped by surgery.
+        </h2>
+
+        <dl className="mt-14 md:mt-20">
           {credentials.map((credential, index) => (
             <div
               key={credential.label}
-              className="grid grid-cols-1 gap-2 border-b border-(--color-border) py-6 md:grid-cols-12 md:items-baseline md:gap-8 md:py-8"
+              className="grid grid-cols-12 items-baseline gap-4 border-b border-(--color-border) py-5"
             >
-              <span aria-hidden="true" className="text-small hidden tabular-nums text-(--color-ink-faint) md:col-span-1 md:block">
+              <span aria-hidden="true" className="text-small col-span-2 tabular-nums text-(--color-ink-faint) sm:col-span-1">
                 0{index + 1}
               </span>
-              <dt className="text-h3 text-(--color-ink) md:col-span-4">{credential.label}</dt>
-              <dd className="text-body text-(--color-ink-muted) md:col-span-7">
+              <dt className="text-h3 col-span-10 text-(--color-ink) sm:col-span-3">{credential.label}</dt>
+              <dd className="text-body col-span-12 mt-2 text-(--color-ink-muted) sm:col-span-8 sm:mt-0">
                 {credential.description}
               </dd>
             </div>
           ))}
         </dl>
       </Container>
-    </Section>
+    </section>
   );
 }

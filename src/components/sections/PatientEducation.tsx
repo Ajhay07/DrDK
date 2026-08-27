@@ -1,59 +1,50 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Section } from "@/components/ui/Section";
 import { educationEntries } from "@/config/education";
 
 /**
- * Editorial reading index for future patient-education content — large,
- * stacked titles rather than a card grid, so it reads as a table of
- * contents. Descriptions stay visible by default; hover/focus only adds a
- * directional cue and accent color, via pure CSS.
+ * An editorial publication index — generous whitespace between entries
+ * rather than divider rows, title shifts right and an arrow reveals on
+ * hover/focus. No cards, no equal-height grid.
  */
 export function PatientEducation(): React.ReactElement {
   return (
-    <Section background="bg-secondary" spacing="lg">
-      <Container width="wide">
-        <div className="max-w-2xl">
-          <Eyebrow>Patient Education</Eyebrow>
-          <h2 className="text-h1 mt-6 text-(--color-ink)">Understand before you decide.</h2>
-          <p className="text-body-lg mt-6 text-(--color-ink-muted)">
-            Choosing to undergo aesthetic surgery involves more than selecting a
-            procedure. Explore clear, considered information about procedures,
-            preparation, recovery and the questions worth asking.
-          </p>
-        </div>
+    <section className="bg-(--color-bg)">
+      <Container width="wide" className="py-20 md:py-32">
+        <span className="text-eyebrow">Reading &amp; Guides</span>
+        <h2 className="text-display mt-6 max-w-2xl text-(--color-ink)">
+          Understand before you decide.
+        </h2>
+        <p className="text-body-lg mt-6 max-w-xl text-(--color-ink-muted)">
+          Choosing to undergo aesthetic surgery involves more than selecting a
+          procedure. Explore clear, considered information about procedures,
+          preparation, recovery and the questions worth asking.
+        </p>
 
-        <ol className="mt-16 border-t border-(--color-border) md:mt-20">
+        <ol className="mt-16 flex flex-col gap-14 md:mt-24 md:gap-20">
           {educationEntries.map((entry) => (
-            <li key={entry.slug} className="border-b border-(--color-border)">
-              <Link
-                href={entry.href}
-                data-cursor="Read"
-                className="group flex flex-col gap-4 py-8 transition-colors duration-(--duration-base) ease-(--ease-editorial) md:flex-row md:items-baseline md:gap-10"
-              >
-                <span aria-hidden="true" className="text-small w-8 shrink-0 tabular-nums text-(--color-ink-faint)">
+            <li key={entry.slug}>
+              <Link href={entry.href} data-cursor="Read" className="group block">
+                <span aria-hidden="true" className="text-eyebrow text-(--color-ink-faint)">
                   {entry.number}
                 </span>
-                <span className="flex-1">
-                  <span className="text-h2 block text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent) group-focus-visible:text-(--color-accent)">
-                    {entry.title}
+                <h3 className="text-display mt-3 flex flex-wrap items-center gap-4 text-(--color-ink) transition-transform duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-4">
+                  {entry.title}
+                  <span
+                    aria-hidden="true"
+                    className="text-h2 -translate-x-2 opacity-0 transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-0 group-hover:opacity-100"
+                  >
+                    &#8594;
                   </span>
-                  <span className="text-body mt-2 block max-w-lg text-(--color-ink-muted)">
-                    {entry.description}
-                  </span>
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="text-h3 shrink-0 text-(--color-ink-faint) transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-1 group-hover:text-(--color-accent) group-focus-visible:translate-x-1 group-focus-visible:text-(--color-accent)"
-                >
-                  &#8594;
+                </h3>
+                <span className="text-body mt-3 block max-w-md text-(--color-ink-muted)">
+                  {entry.description}
                 </span>
               </Link>
             </li>
           ))}
         </ol>
       </Container>
-    </Section>
+    </section>
   );
 }

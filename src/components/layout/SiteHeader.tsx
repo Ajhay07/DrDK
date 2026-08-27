@@ -9,25 +9,18 @@ import { cn } from "@/lib/utils/cn";
 import { consultationHref, primaryNavigation, siteName } from "@/config/navigation";
 
 /**
- * Global site navigation. A Client Component because it owns scroll state,
- * the mobile menu, and route-aware active-link styling — none expressible
- * in a Server Component. Kept as the single client boundary for navigation
- * per PROJECT_RULES.md §3.
+ * Global masthead. A static, opaque editorial strip (no scroll-driven glass
+ * pill) so it reads as a fixed page furniture line rather than a floating
+ * SaaS navbar, and stays legible against every section environment behind
+ * it. A Client Component only for the mobile menu and route-aware
+ * active-link styling — see PROJECT_RULES.md §3.
  */
 export function SiteHeader(): React.ReactElement {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = (): void => setIsScrolled(window.scrollY > 8);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -72,24 +65,15 @@ export function SiteHeader(): React.ReactElement {
   }, [isMenuOpen]);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 border-b transition-colors duration-(--duration-base) ease-(--ease-editorial)",
-        isScrolled
-          ? "bg-(--color-bg)/95 backdrop-blur-sm border-(--color-border)"
-          : "bg-transparent border-transparent",
-      )}
-    >
-      <div className="mx-auto flex h-20 w-full max-w-(--container-wide) items-center justify-between px-(--gutter)">
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="font-(--font-display) text-[1.15rem] tracking-tight text-(--color-ink)">
-            {siteName}
-          </span>
-          <span className="text-eyebrow mt-1.5 text-[0.6875rem]">Aesthetic &amp; Plastic Surgery</span>
+    <header className="sticky top-0 z-50 border-b border-(--color-border) bg-(--color-bg)">
+      <div className="mx-auto grid w-full max-w-(--container-wide) grid-cols-2 items-center gap-4 px-(--gutter) py-4 md:grid-cols-12">
+        <Link href="/" className="md:col-span-5">
+          <span className="text-nav block text-(--color-ink)">{siteName.toUpperCase()}</span>
+          <span className="text-eyebrow mt-1 block">Plastic &amp; Aesthetic Surgery</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-10">
+        <nav aria-label="Primary" className="hidden md:col-span-4 md:block">
+          <ul className="flex items-center gap-8">
             {primaryNavigation.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
@@ -98,18 +82,11 @@ export function SiteHeader(): React.ReactElement {
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "text-nav relative pb-1 transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)",
-                      isActive ? "text-(--color-ink)" : "text-(--color-ink-muted)",
+                      "text-eyebrow transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-ink)",
+                      isActive && "text-(--color-ink)",
                     )}
                   >
                     {item.label}
-                    <span
-                      aria-hidden="true"
-                      className={cn(
-                        "absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-(--color-accent) transition-transform duration-(--duration-base) ease-(--ease-editorial)",
-                        isActive && "scale-x-100",
-                      )}
-                    />
                   </Link>
                 </li>
               );
@@ -117,31 +94,32 @@ export function SiteHeader(): React.ReactElement {
           </ul>
         </nav>
 
-        <Magnetic className="hidden md:inline-block">
-          <Link
-            href={consultationHref}
-            data-cursor="Open"
-            className="text-nav inline-flex items-center gap-2 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)"
-          >
-            Book a Consultation
-            <span aria-hidden="true">&#8594;</span>
-          </Link>
-        </Magnetic>
+        <div className="flex justify-end md:col-span-3">
+          <Magnetic className="hidden md:inline-block" data-cursor="Open">
+            <Link
+              href={consultationHref}
+              className="text-eyebrow inline-flex items-center gap-2 border-b border-(--color-ink) pb-0.5 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent) hover:border-(--color-accent)"
+            >
+              Consultation
+              <span aria-hidden="true">&#8599;</span>
+            </Link>
+          </Magnetic>
 
-        <button
-          ref={menuTriggerRef}
-          type="button"
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-nav"
-          aria-label="Open menu"
-          onClick={() => setIsMenuOpen(true)}
-          className="flex h-11 w-11 items-center justify-center md:hidden"
-        >
-          <span className="relative block h-3.5 w-5" aria-hidden="true">
-            <span className="absolute inset-x-0 top-0 h-px bg-(--color-ink)" />
-            <span className="absolute inset-x-0 bottom-0 h-px bg-(--color-ink)" />
-          </span>
-        </button>
+          <button
+            ref={menuTriggerRef}
+            type="button"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
+            aria-label="Open menu"
+            onClick={() => setIsMenuOpen(true)}
+            className="flex h-11 w-11 items-center justify-center md:hidden"
+          >
+            <span className="relative block h-3.5 w-5" aria-hidden="true">
+              <span className="absolute inset-x-0 top-0 h-px bg-(--color-ink)" />
+              <span className="absolute inset-x-0 bottom-0 h-px bg-(--color-ink)" />
+            </span>
+          </button>
+        </div>
       </div>
 
       {isMenuOpen ? (
@@ -153,10 +131,8 @@ export function SiteHeader(): React.ReactElement {
           ref={menuPanelRef}
           className="fixed inset-0 z-50 flex flex-col bg-(--color-bg) md:hidden"
         >
-          <div className="flex h-20 w-full items-center justify-between px-(--gutter)">
-            <span className="font-(--font-display) text-[1.15rem] tracking-tight text-(--color-ink)">
-              {siteName}
-            </span>
+          <div className="flex items-center justify-between border-b border-(--color-border) px-(--gutter) py-4">
+            <span className="text-nav text-(--color-ink)">{siteName.toUpperCase()}</span>
             <button
               ref={closeButtonRef}
               type="button"
@@ -172,7 +148,7 @@ export function SiteHeader(): React.ReactElement {
           </div>
 
           <nav aria-label="Primary" className="flex flex-1 flex-col justify-center px-(--gutter)">
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col">
               {primaryNavigation.map((item, index) => (
                 <li
                   key={item.href}
@@ -182,7 +158,7 @@ export function SiteHeader(): React.ReactElement {
                   <Link
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-h3 block py-5 text-(--color-ink)"
+                    className="text-giant block py-3 text-(--color-ink)"
                   >
                     {item.label}
                   </Link>

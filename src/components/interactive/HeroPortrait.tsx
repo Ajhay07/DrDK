@@ -46,7 +46,7 @@ export function HeroPortrait(): React.ReactElement {
     <span
       ref={wrapRef}
       data-cursor="View"
-      className="relative inline-block h-16 w-14 shrink-0 overflow-hidden bg-(--color-bg-secondary) align-middle sm:h-20 sm:w-16 lg:h-24 lg:w-20"
+      className="relative block h-32 w-28 shrink-0 overflow-hidden bg-(--color-bg-secondary) sm:h-36 sm:w-32 lg:h-40 lg:w-36"
       style={{ willChange: "transform" }}
     >
       <Image
@@ -54,7 +54,7 @@ export function HeroPortrait(): React.ReactElement {
         alt="Portrait of Dr. Dinesh Kumar, plastic surgeon"
         fill
         priority
-        sizes="6rem"
+        sizes="9rem"
         className="object-cover object-top"
       />
     </span>

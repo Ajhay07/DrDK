@@ -39,20 +39,17 @@ function FooterGroup({ title, links }: { title: string; links: FooterLink[] }): 
 export function SiteFooter(): React.ReactElement {
   return (
     <footer className="border-t border-(--color-border) bg-(--color-bg)">
-      <Container width="wide" className="py-16 md:py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
+      <Container width="wide" className="py-16 md:py-24">
+        <p className="text-giant text-(--color-ink)">Dinesh Kumar</p>
+        <p className="text-eyebrow mt-3">Plastic &amp; Aesthetic Surgery</p>
+
+        <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-4">
-            <p className="font-(--font-display) text-lg text-(--color-ink)">Dr. Dinesh Kumar</p>
-            <p className="text-small mt-2 text-(--color-ink-muted)">
-              Aesthetic &amp; Plastic Surgery
-            </p>
-            <div className="mt-8">
-              <Magnetic data-cursor="Open">
-                <Button href={consultationHref} variant="secondary">
-                  Book a Consultation
-                </Button>
-              </Magnetic>
-            </div>
+            <Magnetic data-cursor="Open">
+              <Button href={consultationHref} variant="secondary">
+                Book a Consultation
+              </Button>
+            </Magnetic>
           </div>
 
           <nav aria-label="Footer" className="md:col-span-7 md:col-start-6">
@@ -82,10 +79,11 @@ export function SiteFooter(): React.ReactElement {
           </nav>
         </div>
 
-        <div className="mt-16 border-t border-(--color-border) pt-8">
+        <div className="mt-16 flex flex-col gap-2 border-t border-(--color-border) pt-8 sm:flex-row sm:items-baseline sm:justify-between">
           <p className="text-small text-(--color-ink-faint)">
             &copy; {new Date().getFullYear()} Dr. Dinesh Kumar. All rights reserved.
           </p>
+          <p className="text-small text-(--color-ink-faint)">Chennai, India</p>
         </div>
       </Container>
     </footer>

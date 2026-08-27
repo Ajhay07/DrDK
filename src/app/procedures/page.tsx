@@ -25,27 +25,25 @@ export default function ProceduresPage(): React.ReactElement {
             description="Every procedure begins with understanding your goals and concerns. Select an area to learn more."
           />
 
-          <ul className="mt-14 border-t border-(--color-border) md:mt-20">
-            {concerns.map((concern) => (
+          <ul className="mt-16 md:mt-24">
+            {concerns.map((concern, index) => (
               <li key={concern.slug} className="border-b border-(--color-border)">
                 <Link
                   href={`/procedures/${concern.slug}`}
                   data-cursor="Explore"
-                  className="group flex items-center justify-between gap-6 py-6 transition-colors duration-(--duration-fast) ease-(--ease-editorial) md:py-8"
+                  className="group flex flex-col gap-2 py-4 md:flex-row md:items-baseline md:gap-6 md:py-6"
                 >
-                  <span className="flex flex-1 flex-col gap-1 md:flex-row md:items-baseline md:gap-8">
-                    <span className="text-h2 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) group-hover:text-(--color-accent) group-focus-visible:text-(--color-accent)">
-                      {concern.label}
-                    </span>
-                    <span className="text-body text-(--color-ink-muted)">
-                      {concern.descriptor}
-                    </span>
+                  <span aria-hidden="true" className="text-index w-16 shrink-0 md:w-24">
+                    0{index + 1}
                   </span>
-                  <span
-                    aria-hidden="true"
-                    className="text-h3 shrink-0 text-(--color-ink-faint) transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-1 group-hover:text-(--color-accent) group-focus-visible:translate-x-1 group-focus-visible:text-(--color-accent)"
-                  >
-                    &#8594;
+                  <span className="text-giant flex-1 text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
+                    {concern.label}
+                  </span>
+                  <span className="text-body pl-16 text-(--color-ink-muted) md:hidden">
+                    {concern.descriptor}
+                  </span>
+                  <span className="text-body hidden max-w-xs -translate-x-4 text-(--color-ink-muted) opacity-0 transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-0 group-hover:opacity-100 md:block">
+                    {concern.descriptor}
                   </span>
                 </Link>
               </li>

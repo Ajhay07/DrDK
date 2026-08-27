@@ -1,56 +1,43 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { concerns } from "@/config/concerns";
 
 /**
- * Editorial procedure-entry list. Server-rendered; the hover/focus reveal
- * is pure CSS (group-hover/group-focus-visible), and on touch/mobile the
- * descriptor is shown by default since there is no hover state to depend on.
+ * A huge numbered typographic index rather than rows/cards. Desktop hover
+ * reveals the descriptor as a side caption; mobile shows it inline below
+ * the label by default since there is no hover to depend on.
  */
 export function ExploreConcerns(): React.ReactElement {
   return (
     <section className="bg-(--color-bg)">
       <Container width="wide" className="py-20 md:py-32">
-        <div className="max-w-2xl">
-          <Eyebrow>Explore</Eyebrow>
-          <h2 className="text-h2 mt-4 text-(--color-ink)">Where would you like to begin?</h2>
-          <p className="text-body-lg mt-4 text-(--color-ink-muted)">
-            Explore aesthetic and reconstructive procedures by the area or concern
-            you would like to understand.
-          </p>
+        <div className="flex items-baseline justify-between border-b border-(--color-border) pb-6">
+          <span className="text-eyebrow">Explore</span>
+          <span className="text-eyebrow hidden sm:inline">Where would you like to begin?</span>
         </div>
 
-        <ul className="mt-14 border-t border-(--color-border) md:mt-20">
+        <ul>
           {concerns.map((concern, index) => (
-            <li key={concern.slug} className="border-b border-(--color-border)">
+            <li key={concern.slug} className="group border-b border-(--color-border)">
               <Link
                 href={`/procedures/${concern.slug}`}
                 data-cursor="Explore"
-                className="group flex items-center gap-6 py-6 md:py-8 transition-colors duration-(--duration-fast) ease-(--ease-editorial)"
+                className="flex flex-col gap-2 py-4 md:flex-row md:items-baseline md:gap-6 md:py-6"
               >
                 <span
                   aria-hidden="true"
-                  className="text-small hidden w-8 shrink-0 tabular-nums text-(--color-ink-faint) sm:block"
+                  className="text-index w-16 shrink-0 md:w-24"
                 >
                   0{index + 1}
                 </span>
-                <span className="flex flex-1 flex-col gap-1 md:flex-row md:items-baseline md:gap-8">
-                  <span className="text-h2 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) group-hover:text-(--color-accent) group-focus-visible:text-(--color-accent)">
-                    {concern.label}
-                  </span>
-                  <span
-                    className="text-body text-(--color-ink-muted) opacity-100 transition-all duration-(--duration-base) ease-(--ease-editorial) md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-focus-visible:translate-x-0 md:group-focus-visible:opacity-100"
-                  >
-                    {concern.descriptor}
-                  </span>
+                <span className="text-giant flex-1 text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
+                  {concern.label}
                 </span>
-
-                <span
-                  aria-hidden="true"
-                  className="text-h3 shrink-0 text-(--color-ink-faint) transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-1 group-hover:text-(--color-accent) group-focus-visible:translate-x-1 group-focus-visible:text-(--color-accent)"
-                >
-                  &#8594;
+                <span className="text-body pl-16 text-(--color-ink-muted) md:hidden">
+                  {concern.descriptor}
+                </span>
+                <span className="text-body hidden max-w-xs -translate-x-4 text-(--color-ink-muted) opacity-0 transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-0 group-hover:opacity-100 md:block">
+                  {concern.descriptor}
                 </span>
               </Link>
             </li>

@@ -8,15 +8,16 @@
 
 :root {
   /* Color — warm ivory/bone editorial palette. No medical blue. */
-  --color-bg: #f4f1eb; /* Ivory/Bone — primary page background */
-  --color-bg-secondary: #eee8dc; /* Stone — alternate section background */
+  --color-bg: #f4f1eb; /* Ivory/Bone — base environment */
+  --color-bg-secondary: #dbe2d2; /* Soft sage — the Journey's structured-neutral environment */
   --color-surface: #f2ece0; /* Soft stone — raised/inset surfaces, form fields */
-  --color-ink: #1f241d; /* Primary text — deep green-charcoal, not pure #000 */
+  --color-ink: #171b13; /* Deep forest-charcoal — primary text AND the Philosophy dark environment */
   --color-ink-muted: #6c7166; /* Secondary text — muted sage/grey */
   --color-ink-faint: #a3a896; /* Placeholder / disabled text — faint sage */
-  --color-accent: #6b4f35; /* Restrained warm bronze — CTAs, links, focus, emphasis */
+  --color-accent: #6b4f35; /* Restrained warm bronze — links, focus, small emphasis */
   --color-accent-strong: #543d29; /* Accent hover/active */
-  --color-accent-ink: #f4f1eb; /* Text/icons placed on top of accent */
+  --color-accent-ink: #f4f1eb; /* Text/icons placed on top of accent or ink environments */
+  --color-clay: #a97c56; /* Warm clay — the Final CTA's immersive environment */
   --color-border: #e3dccd; /* Default hairline border */
   --color-border-strong: #c7b79c; /* Emphasized border / input border on focus */
   --color-danger: #8a3b2f; /* Reserved for form validation only */
@@ -53,6 +54,7 @@
     --color-accent: #c6a47c;
     --color-accent-strong: #d8bc98;
     --color-accent-ink: #171a15;
+    --color-clay: #8a6749;
     --color-border: #2e3126;
     --color-border-strong: #463f30;
     --color-danger: #d98f7f;
@@ -69,6 +71,7 @@
   --color-accent: var(--color-accent);
   --color-accent-strong: var(--color-accent-strong);
   --color-accent-ink: var(--color-accent-ink);
+  --color-clay: var(--color-clay);
   --color-border: var(--color-border);
   --color-border-strong: var(--color-border-strong);
   --color-danger: var(--color-danger);
@@ -142,6 +145,22 @@ body {
  * for why unlayered rules are unsafe to combine with Tailwind utilities.
  */
 @layer components {
+  .text-hero {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3.5rem, 1.5rem + 11vw, 11rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+
+  .text-giant {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3rem, 1.5rem + 8vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+  }
+
   .text-mega {
     font-family: var(--font-display);
     font-weight: 400;

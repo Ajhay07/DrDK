@@ -1,67 +1,73 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Magnetic } from "@/components/interactive/Magnetic";
 import { HeroPortrait } from "@/components/interactive/HeroPortrait";
 import { consultationHref, proceduresHref } from "@/config/navigation";
 
 /**
- * Homepage hero. Server-rendered aside from the portrait's pointer-tilt
- * (HeroPortrait, an isolated client island). Typography carries the
- * composition: the portrait is embedded inline within the headline itself
- * rather than occupying its own image column, at a size close to its
- * native 150×150 resolution so it never looks stretched.
+ * Homepage hero — a single editorial poster composition rather than a
+ * left-text/right-image template. Extreme scale contrast within one
+ * statement (large word / small connecting phrase, repeated) carries the
+ * identity; the portrait is a small element overlapping the whitespace
+ * around the type, not a dedicated image column.
  */
 export function Hero(): React.ReactElement {
   return (
     <section className="bg-(--color-bg)">
-      <Container width="wide">
-        <div className="flex items-baseline justify-between border-t border-b border-(--color-border) py-5">
-          <Eyebrow>Plastic &amp; Aesthetic Surgery</Eyebrow>
+      <Container width="wide" className="pt-10 pb-16 md:pt-14 md:pb-24">
+        <div className="flex items-baseline justify-between">
+          <span className="text-eyebrow">Plastic Surgeon</span>
           <span className="text-eyebrow">Chennai, India</span>
         </div>
 
-        <h1 className="text-mega pt-14 text-(--color-ink) motion-fade-in lg:pt-20">
-          <span className="block">Precision in surgery.</span>
-          <span className="mt-2 flex flex-wrap items-center gap-4 sm:gap-6">
-            <span className="italic">Individuality</span>
+        <div className="relative mt-10 md:mt-16">
+          <h1
+            aria-label="Precision in form. Individuality in aesthetics."
+            className="text-(--color-ink) motion-fade-in"
+          >
+            <span className="text-hero block">Precision</span>
+            <span className="text-giant block pl-8 italic text-(--color-ink-muted) sm:pl-16 md:pl-28">
+              in form.
+            </span>
+            <span className="text-hero mt-2 block md:mt-4">Individuality</span>
+            <span className="text-giant block pl-8 italic sm:pl-16 md:pl-28">
+              in aesthetics.
+            </span>
+          </h1>
+
+          <div
+            className="mt-10 flex items-end gap-6 motion-fade-in md:absolute md:right-0 md:top-[8%] md:mt-0"
+            style={{ animationDelay: "120ms" }}
+          >
             <HeroPortrait />
-            <span>in aesthetics.</span>
-          </span>
-        </h1>
-
-        <div className="grid grid-cols-1 gap-10 pt-10 pb-16 lg:grid-cols-12 lg:gap-8 lg:pb-24">
-          <div className="lg:col-span-6">
-            <p
-              className="text-body-lg text-(--color-ink-muted) motion-fade-in"
-              style={{ animationDelay: "120ms" }}
-            >
-              A refined approach to aesthetic and reconstructive surgery, centred
-              around proportion, individuality and informed decisions.
+            <p className="font-(--font-display) text-lg italic text-(--color-ink)">
+              Dr. Dinesh
+              <br />
+              Kumar
             </p>
-
-            <div
-              className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center motion-fade-in"
-              style={{ animationDelay: "200ms" }}
-            >
-              <Magnetic data-cursor="Open">
-                <Button href={consultationHref} variant="primary" className="w-full sm:w-auto">
-                  Book a Consultation
-                </Button>
-              </Magnetic>
-              <Magnetic data-cursor="Explore">
-                <Button href={proceduresHref} variant="secondary" className="w-full sm:w-auto">
-                  Explore Procedures
-                </Button>
-              </Magnetic>
-            </div>
           </div>
+        </div>
 
-          <div className="flex items-end lg:col-span-6 lg:justify-end">
-            <div className="flex items-center gap-3 text-(--color-ink-faint)">
-              <span className="text-eyebrow">Scroll</span>
-              <span aria-hidden="true" className="h-px w-10 bg-(--color-border-strong)" />
-            </div>
+        <div
+          className="mt-14 flex flex-col gap-6 border-t border-(--color-border) pt-8 motion-fade-in sm:flex-row sm:items-center sm:justify-between md:mt-20"
+          style={{ animationDelay: "220ms" }}
+        >
+          <p className="text-body-lg max-w-md text-(--color-ink-muted)">
+            A refined approach to aesthetic and reconstructive surgery, centred
+            around proportion, individuality and informed decisions.
+          </p>
+
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Magnetic data-cursor="Open">
+              <Button href={consultationHref} variant="primary" className="w-full sm:w-auto">
+                Book a Consultation
+              </Button>
+            </Magnetic>
+            <Magnetic data-cursor="Explore">
+              <Button href={proceduresHref} variant="secondary" className="w-full sm:w-auto">
+                Explore Procedures
+              </Button>
+            </Magnetic>
           </div>
         </div>
       </Container>
