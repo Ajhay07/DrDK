@@ -14,7 +14,7 @@ export function Philosophy(): React.ReactElement {
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:mt-20 md:grid-cols-12 md:items-end">
           <h2 className="text-hero md:col-span-7">Proportion.</h2>
-          <p className="text-body-lg opacity-70 md:col-span-4 md:col-start-9">
+          <p className="text-body-lg opacity-70 md:col-start-9 md:col-end-13">
             Every decision begins with balance — facial or bodily proportion —
             rather than a fixed idea of beauty.
           </p>
@@ -25,7 +25,7 @@ export function Philosophy(): React.ReactElement {
             Outcomes are designed around your own features and goals, not a
             template result repeated across patients.
           </p>
-          <h2 className="text-hero italic md:order-2 md:col-span-7 md:col-start-6 md:text-right">
+          <h2 className="text-hero italic md:order-2 md:col-start-6 md:col-end-13 md:text-right">
             Individuality.
           </h2>
         </div>

@@ -51,7 +51,7 @@ export function MeetDrDinesh(): React.ReactElement {
             </div>
           </div>
 
-          <div className="md:col-span-4 md:col-start-9">
+          <div className="md:col-start-9 md:col-end-13">
             <dl className="flex flex-col gap-6 border-t border-(--color-border) pt-6">
               <div>
                 <dt className="text-eyebrow">Experience</dt>

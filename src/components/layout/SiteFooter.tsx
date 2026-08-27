@@ -52,7 +52,7 @@ export function SiteFooter(): React.ReactElement {
             </Magnetic>
           </div>
 
-          <nav aria-label="Footer" className="md:col-span-7 md:col-start-6">
+          <nav aria-label="Footer" className="md:col-start-6 md:col-end-13">
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
               <FooterGroup title="About" links={[{ label: "About Dr. Dinesh", href: "/about" }]} />
               <FooterGroup

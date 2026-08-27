@@ -26,10 +26,15 @@
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
 
-  /* Layout */
+  /* Layout — one shared grid system referenced by the header and every section */
   --container-content: 72rem; /* Standard editorial reading/content container */
   --container-wide: 92rem; /* Wide container for large imagery / asymmetric layouts */
   --gutter: clamp(1.25rem, 4vw, 3rem); /* Responsive side gutter */
+  --page-gutter: var(--gutter); /* Alias — the single horizontal margin every section shares */
+  --content-max-width: var(--container-wide); /* Alias — the single container width the header and hero share */
+  --grid-gap: clamp(1rem, 2vw, 1.75rem); /* Column gap for 12-col grid compositions */
+  --section-spacing: clamp(4rem, 8vw, 8rem); /* Vertical rhythm between major sections */
+  --nav-height: 5.5rem; /* Fixed header height, referenced by the header and hero's top offset */
 
   /* Radius — restrained, never pill-shaped by default */
   --radius-sm: 0.125rem;
@@ -274,6 +279,22 @@ body {
   }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Editorial mask reveal for headline lines — clip-path, not just opacity. */
+.motion-reveal {
+  animation: reveal-mask var(--duration-slow) var(--ease-editorial) both;
+}
+
+@keyframes reveal-mask {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(0.5em);
+  }
+  to {
+    clip-path: inset(0 0 0% 0);
     transform: translateY(0);
   }
 }
