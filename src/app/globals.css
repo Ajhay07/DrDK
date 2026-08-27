@@ -1,26 +1,258 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================================================
+   DESIGN TOKENS
+   Single source of truth for color, type, spacing, radius and motion.
+   See DESIGN_SYSTEM.md for the full rationale behind every token below.
+   ========================================================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  /* Color — warm, restrained "quiet luxury" palette. No medical blue. */
+  --color-bg: #f7f5f1; /* Bone — primary page background */
+  --color-bg-secondary: #eeeae2; /* Stone — alternate section background */
+  --color-surface: #ffffff; /* Paper — raised/inset surfaces, form fields */
+  --color-ink: #1b1a17; /* Primary text — warm near-black, not pure #000 */
+  --color-ink-muted: #6b6459; /* Secondary text, captions, metadata */
+  --color-ink-faint: #a39c8e; /* Placeholder / disabled text */
+  --color-accent: #2f3b32; /* Deep pine — CTAs, links, focus, emphasis */
+  --color-accent-strong: #232c26; /* Accent hover/active */
+  --color-accent-ink: #f7f5f1; /* Text/icons placed on top of accent */
+  --color-border: #e2ddd2; /* Default hairline border */
+  --color-border-strong: #c9c1b1; /* Emphasized border / input border on focus */
+  --color-danger: #8a3b2f; /* Reserved for form validation only */
+
+  /* Typography */
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  /* Layout */
+  --container-content: 72rem; /* Standard editorial reading/content container */
+  --container-wide: 92rem; /* Wide container for large imagery / asymmetric layouts */
+  --gutter: clamp(1.25rem, 4vw, 3rem); /* Responsive side gutter */
+
+  /* Radius — restrained, never pill-shaped by default */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+
+  /* Motion — subtle, deliberate, cinematic. Transform/opacity only. */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-bg: #16150f;
+    --color-bg-secondary: #1f1e17;
+    --color-surface: #201f19;
+    --color-ink: #f2efe8;
+    --color-ink-muted: #a49c8c;
+    --color-ink-faint: #6f6858;
+    --color-accent: #a9c3ac;
+    --color-accent-strong: #c4dac6;
+    --color-accent-ink: #16150f;
+    --color-border: #322f26;
+    --color-border-strong: #47432e;
+    --color-danger: #d98f7f;
   }
 }
 
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-surface: var(--color-surface);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-ink: var(--color-accent-ink);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-danger: var(--color-danger);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
+  --container-content: var(--container-content);
+  --container-wide: var(--container-wide);
+
+  --ease-editorial: var(--ease-editorial);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+/*
+ * Wrapped in @layer base so Tailwind's (layered) border-color utilities can
+ * still override this default — an unlayered rule here would otherwise beat
+ * every utility regardless of specificity or source order.
+ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Visible, deliberate focus ring — never suppressed without replacement. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY SCALE
+   Fluid, editorial scale. Display/H1 carry personality via the serif;
+   everything functional (nav, body, UI) stays in the sans for legibility.
+   ========================================================================== */
+
+/*
+ * Wrapped in @layer components so a Tailwind text-color utility passed
+ * alongside these classes (e.g. an Eyebrow on a dark section) can still
+ * override .text-eyebrow's default color — see the border-color fix above
+ * for why unlayered rules are unsafe to combine with Tailwind utilities.
+ */
+@layer components {
+  .text-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.75rem, 2rem + 3.5vw, 5.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+  }
+
+  .text-h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 1.7rem + 2.5vw, 3.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  .text-h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+  }
+
+  .text-h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  .text-body-lg {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+    line-height: 1.65;
+  }
+
+  .text-body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .text-small {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+
+  .text-eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+
+  .text-nav {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+
+  .text-button {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* ==========================================================================
+   MOTION
+   Respect reduced-motion above all else. Utilities below are opt-in.
+   ========================================================================== */
+
+.motion-fade-in {
+  animation: fade-in var(--duration-slow) var(--ease-editorial) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
