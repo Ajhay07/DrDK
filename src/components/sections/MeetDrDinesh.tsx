@@ -92,13 +92,13 @@ const stats: { icon: (p: PillarIconProps) => React.ReactElement; label: string; 
  */
 export function MeetDrDinesh(): React.ReactElement {
   return (
-    <section className="bg-(--color-surface)">
-      <Container width="wide" className="py-16 md:py-24">
+    <section className="bg-(--color-surface) lg:flex lg:min-h-[calc(100vh-var(--nav-height))] lg:flex-col lg:justify-center">
+      <Container width="wide" className="py-16 md:py-24 lg:py-4">
         <span className="text-eyebrow">02 &mdash; {doctorIntro.eyebrow}</span>
 
-        <div className="mt-14 grid grid-cols-1 gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-10">
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:mt-3 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
-            <div className="relative aspect-[4/5] w-full max-w-md">
+            <div className="relative aspect-[4/5] w-full max-w-sm lg:aspect-auto lg:h-full lg:max-w-none">
               <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-(--color-bg-secondary)">
                 <span
                   aria-hidden="true"
@@ -112,7 +112,7 @@ export function MeetDrDinesh(): React.ReactElement {
                   src="/images/doctor/dr-dinesh-profile-cutout.png"
                   alt="Dr. Dinesh Kumar in consultation attire"
                   fill
-                  sizes="(min-width: 1024px) 28rem, 85vw"
+                  sizes="(min-width: 1024px) 24rem, 85vw"
                   className="object-contain object-bottom drop-shadow-[0_20px_28px_rgba(23,27,19,0.16)]"
                 />
               </div>
@@ -120,36 +120,39 @@ export function MeetDrDinesh(): React.ReactElement {
           </div>
 
           <div className="lg:col-span-5">
-            <h2 className="text-hero text-(--color-ink)">
+            <h2
+              className="font-(--font-display) text-(--color-ink)"
+              style={{ fontSize: "clamp(2.25rem, 1.5rem + 2.8vw, 4rem)", lineHeight: 0.98, letterSpacing: "-0.01em" }}
+            >
               Dinesh
               <br />
               Kumar
             </h2>
-            <div className="mt-4 h-px w-14 bg-(--color-accent)" />
-            <span className="text-eyebrow mt-4 block text-(--color-ink-muted)">
+            <div className="mt-3 h-px w-14 bg-(--color-accent)" />
+            <span className="text-eyebrow mt-3 block text-(--color-ink-muted)">
               Plastic, Cosmetic &amp; Reconstructive Surgeon
             </span>
 
-            <p className="text-body-lg mt-6 text-(--color-ink-muted)">{doctorIntro.paragraphs[0]}</p>
+            <p className="text-sm mt-3 text-(--color-ink-muted)">{doctorIntro.paragraphs[0]}</p>
 
-            <ul className="mt-8 flex flex-col">
+            <ul className="mt-2 flex flex-col">
               {pillars.map(({ icon: Icon, title, body }) => (
                 <li
                   key={title}
-                  className="flex gap-4 border-t border-(--color-border) py-5 first:border-t-0 first:pt-0"
+                  className="flex gap-3 border-t border-(--color-border) py-2.5 first:border-t-0 first:pt-0"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-ink)">
-                    <Icon className="h-5 w-5" />
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-ink)">
+                    <Icon className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="text-body font-medium text-(--color-ink)">{title}</p>
-                    <p className="text-body mt-1 text-(--color-ink-muted)">{body}</p>
+                    <p className="text-sm font-medium text-(--color-ink)">{title}</p>
+                    <p className="text-sm mt-0.5 text-(--color-ink-muted)">{body}</p>
                   </div>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8">
+            <div className="mt-5">
               <a
                 href={doctorIntro.ctaHref}
                 className="inline-flex items-center gap-2 rounded-xl bg-(--color-bg-secondary) px-6 py-3 text-button text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:bg-(--color-border-strong)"
@@ -161,7 +164,7 @@ export function MeetDrDinesh(): React.ReactElement {
           </div>
 
           <div className="lg:col-span-3">
-            <div className="relative flex flex-col gap-5 border-l border-(--color-border) pl-6">
+            <div className="relative flex flex-col gap-3 border-l border-(--color-border) pl-6">
               <span
                 aria-hidden="true"
                 className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-(--color-ink)"
@@ -169,28 +172,28 @@ export function MeetDrDinesh(): React.ReactElement {
               {stats.map(({ icon: Icon, label, value, sub }) => (
                 <div
                   key={label}
-                  className="flex items-start gap-4 rounded-2xl border border-(--color-border) bg-(--color-bg) p-5"
+                  className="flex items-start gap-3 rounded-2xl border border-(--color-border) bg-(--color-bg) p-4"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-ink)">
-                    <Icon className="h-5 w-5" />
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-ink)">
+                    <Icon className="h-4 w-4" />
                   </span>
                   <div>
                     <p className="text-eyebrow text-(--color-ink-muted)">{label}</p>
-                    <p className="font-(--font-display) text-xl text-(--color-ink)">{value}</p>
-                    <p className="text-sm text-(--color-ink-faint)">{sub}</p>
+                    <p className="font-(--font-display) text-lg text-(--color-ink)">{value}</p>
+                    <p className="text-xs text-(--color-ink-faint)">{sub}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 border-t border-(--color-border) pt-6">
-              <span aria-hidden="true" className="font-(--font-display) text-4xl italic text-(--color-ink-faint)">
+            <div className="mt-5 border-t border-(--color-border) pt-4">
+              <span aria-hidden="true" className="font-(--font-display) text-3xl italic text-(--color-ink-faint)">
                 &ldquo;
               </span>
-              <p className="font-(--font-display) text-xl italic leading-snug text-(--color-ink)">
+              <p className="font-(--font-display) text-base italic leading-snug text-(--color-ink)">
                 Precision is not just in the procedure &mdash; it&rsquo;s in the understanding.
               </p>
-              <p className="font-(--font-display) mt-3 text-sm italic text-(--color-ink-muted)">
+              <p className="font-(--font-display) mt-2 text-sm italic text-(--color-ink-muted)">
                 {doctorIntro.signature}
               </p>
             </div>
