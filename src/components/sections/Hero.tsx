@@ -1,87 +1,179 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Magnetic } from "@/components/interactive/Magnetic";
-import { consultationHref, proceduresHref } from "@/config/navigation";
+import { consultationHref } from "@/config/navigation";
+
+interface HighlightIconProps {
+  className?: string;
+}
+
+function TechniqueIcon({ className }: HighlightIconProps): React.ReactElement {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
+      <path d="M24 8v18" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+      <path
+        d="M24 8c-6 0-10 4-10 9 0 4 3 6 6 6"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      <path
+        d="M24 14c5 0 8 3 8 7 0 3-2 5-5 5"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      <path d="M17 40c2-4 4-6 7-6s5 2 7 6" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CareIcon({ className }: HighlightIconProps): React.ReactElement {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
+      <circle cx="19" cy="16" r="6" stroke="currentColor" strokeWidth="1" />
+      <path
+        d="M8 39c0-7 5-12 11-12s11 5 11 12"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      <path
+        d="M33 16c1.6-2 4-3 6-1.6 2 1.4 2 4-.2 6.2L33 26l-5.5-5.4c-2.2-2.2-2.2-4.8-.2-6.2 2-1.4 4.4-.4 6 1.6Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function SafetyIcon({ className }: HighlightIconProps): React.ReactElement {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M24 7l14 5v10c0 9-6 15-14 19-8-4-14-10-14-19V12l14-5Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path d="M18 24l4.5 4.5L31 19" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ResultsIcon({ className }: HighlightIconProps): React.ReactElement {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
+      <circle cx="24" cy="15" r="6" stroke="currentColor" strokeWidth="1" />
+      <path
+        d="M12 39c0-7.5 5.4-13 12-13s12 5.5 12 13"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+const highlights: { icon: (p: HighlightIconProps) => React.ReactElement; label: string }[] = [
+  { icon: TechniqueIcon, label: "Advanced Techniques" },
+  { icon: CareIcon, label: "Personalised Care" },
+  { icon: SafetyIcon, label: "Safety & Precision" },
+  { icon: ResultsIcon, label: "Natural & Aesthetic Results" },
+];
 
 /**
- * Homepage hero — two-column composition. Now uses a real, properly
- * resolved portrait (~445px source, not the earlier 150px placeholder),
- * sized close to its native resolution so it finally reads as a
- * deliberate photograph rather than a stretched thumbnail.
+ * Homepage hero — split composition with an arched, full-bleed portrait
+ * panel and a floating credentials card overlapping its lower edge, plus
+ * a four-point trust strip beneath. Deliberately warmer/rounder than the
+ * base design system on client request; see PROJECT_RULES.md §12 for the
+ * restrained default this departs from.
  */
 export function Hero(): React.ReactElement {
   return (
-    <section className="bg-(--color-bg)">
-      <Container width="wide">
-        <div className="flex items-baseline justify-between border-t border-b border-(--color-border) py-5">
-          <span className="text-eyebrow">Plastic Surgeon</span>
-          <span className="text-eyebrow">Chennai, India</span>
-        </div>
-
-        <div className="grid grid-cols-1 gap-12 py-16 lg:grid-cols-12 lg:gap-8 lg:py-24">
-          <div className="flex flex-col justify-center lg:col-span-7">
-            <h1 className="text-display text-(--color-ink) motion-fade-in">
-              Precision in surgery.
-              <br />
-              <span className="italic">Individuality</span> in aesthetics.
-            </h1>
-
-            <p
-              className="text-body-lg mt-8 max-w-lg text-(--color-ink-muted) motion-fade-in"
-              style={{ animationDelay: "100ms" }}
-            >
-              A refined approach to aesthetic and reconstructive surgery, centred
-              around proportion, individuality and informed decisions.
-            </p>
-
-            <div
-              className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center motion-fade-in"
-              style={{ animationDelay: "180ms" }}
-            >
-              <Magnetic data-cursor="Open">
-                <Button href={consultationHref} variant="primary" className="w-full sm:w-auto">
-                  Book a Consultation
-                </Button>
-              </Magnetic>
-              <Magnetic data-cursor="Explore">
-                <Button href={proceduresHref} variant="secondary" className="w-full sm:w-auto">
-                  Explore Procedures
-                </Button>
-              </Magnetic>
-            </div>
-
-            <p
-              className="text-eyebrow mt-14 motion-fade-in"
-              style={{ animationDelay: "240ms" }}
-            >
-              MBBS &middot; MS &middot; MCh (Plastic Surgery) &middot; Vijaya Hospitals, Chennai
-            </p>
-          </div>
+    <section className="relative overflow-hidden bg-(--color-bg)">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="flex flex-col justify-center px-(--gutter) py-20 lg:py-28">
+          <h1 className="text-display text-(--color-ink) motion-fade-in">
+            Precision in surgery.
+            <br />
+            <span className="italic">Individuality</span> in aesthetics.
+          </h1>
 
           <div
-            className="flex justify-center motion-fade-in lg:col-span-5 lg:justify-end"
-            style={{ animationDelay: "220ms" }}
+            className="mt-8 h-px w-16 bg-(--color-accent) motion-fade-in"
+            style={{ animationDelay: "80ms" }}
+          />
+
+          <p
+            className="text-body-lg mt-6 max-w-lg text-(--color-ink-muted) motion-fade-in"
+            style={{ animationDelay: "120ms" }}
           >
-            <figure className="w-full max-w-sm">
-              <div className="relative aspect-square">
-                <Image
-                  src="/images/doctor/dr4-cutout.png"
-                  alt="Dr. Dinesh Kumar, plastic and aesthetic surgeon"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 24rem, 20rem"
-                  className="object-contain object-bottom drop-shadow-[0_24px_32px_rgba(0,0,0,0.18)]"
-                />
-              </div>
-              <figcaption className="mt-4 flex items-baseline justify-between border-t border-(--color-border) pt-4">
-                <span className="font-(--font-display) text-lg italic text-(--color-ink)">
-                  Dr. Dinesh Kumar
-                </span>
-                <span className="text-eyebrow">Plastic Surgeon</span>
-              </figcaption>
-            </figure>
+            A refined approach to aesthetic and reconstructive surgery, centred
+            around proportion, individuality and informed decisions.
+          </p>
+
+          <div className="mt-10 motion-fade-in" style={{ animationDelay: "200ms" }}>
+            <Magnetic data-cursor="Open">
+              <a
+                href={consultationHref}
+                className="inline-flex items-center gap-3 rounded-full bg-(--color-ink) px-7 py-4 text-button text-(--color-bg) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:bg-(--color-accent-strong)"
+              >
+                Book a Consultation
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </Magnetic>
           </div>
+        </div>
+
+        <div
+          className="relative min-h-[26rem] motion-fade-in sm:min-h-[32rem] lg:min-h-[44rem]"
+          style={{ animationDelay: "160ms" }}
+        >
+          <div
+            className="absolute inset-0 overflow-hidden bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25"
+            style={{ borderRadius: "0 0 0 0", borderTopLeftRadius: "50% 12%" }}
+          >
+            <div
+              className="absolute inset-0 opacity-40"
+              style={{
+                background:
+                  "repeating-linear-gradient(115deg, transparent 0 60px, rgba(255,255,255,0.35) 60px 62px, transparent 62px 140px)",
+              }}
+            />
+            <Image
+              src="/images/doctor/dr4-cutout.png"
+              alt="Dr. Dinesh Kumar, plastic and aesthetic surgeon"
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-contain object-bottom"
+            />
+          </div>
+
+          <div className="absolute bottom-6 right-6 max-w-[15rem] rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) px-6 py-5 shadow-[0_20px_40px_rgba(23,27,19,0.15)] sm:bottom-10 sm:right-10">
+            <p className="font-(--font-display) text-lg italic text-(--color-ink)">
+              Dr. Dinesh Kumar
+            </p>
+            <p className="text-eyebrow mt-1 text-(--color-ink-muted)">Plastic Surgeon</p>
+            <div className="mt-3 border-t border-(--color-border) pt-3">
+              <p className="text-sm text-(--color-ink-muted)">MBBS, MS, MCh (Plastic Surgery)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Container width="wide">
+        <div className="grid grid-cols-2 gap-8 border-t border-(--color-border) py-10 sm:grid-cols-4">
+          {highlights.map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-accent)">
+                <Icon className="h-5 w-5" />
+              </span>
+              <span className="text-sm leading-snug text-(--color-ink)">{label}</span>
+            </div>
+          ))}
         </div>
       </Container>
     </section>
