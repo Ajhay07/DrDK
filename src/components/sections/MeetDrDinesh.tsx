@@ -121,7 +121,7 @@ export function MeetDrDinesh(): React.ReactElement {
 
           <div className="lg:col-span-5">
             <h2
-              className="font-(--font-display) text-(--color-ink)"
+              className="font-(--font-display) font-normal text-(--color-ink)"
               style={{ fontSize: "clamp(2.25rem, 1.5rem + 2.8vw, 4rem)", lineHeight: 0.98, letterSpacing: "-0.01em" }}
             >
               Dinesh
