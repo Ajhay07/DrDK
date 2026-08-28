@@ -12,7 +12,7 @@ export function FinalConsultationCTA(): React.ReactElement {
     <section className="bg-(--color-bg-secondary)">
       <Container width="wide" className="py-16 md:py-24">
         <div className="flex items-baseline justify-between">
-          <span className="text-eyebrow">09 &mdash; Begin with a Conversation</span>
+          <span className="text-eyebrow">06 &mdash; Begin with a Conversation</span>
           <span className="text-eyebrow">Chennai, India</span>
         </div>
 
