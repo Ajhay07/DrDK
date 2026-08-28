@@ -23,12 +23,12 @@ export function MeetDrDinesh(): React.ReactElement {
 
         <div className="mt-14 grid grid-cols-1 gap-12 md:mt-20 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-4">
-            <div className="relative aspect-[3/5] w-full max-w-64">
+            <div className="relative aspect-[3/5] w-full max-w-96">
               <Image
                 src="/images/doctor/dr-dinesh-profile-cutout.png"
                 alt="Dr. Dinesh Kumar in consultation attire"
                 fill
-                sizes="(min-width: 768px) 16rem, 60vw"
+                sizes="(min-width: 768px) 24rem, 85vw"
                 className="object-contain object-bottom drop-shadow-[0_20px_28px_rgba(23,27,19,0.16)]"
               />
             </div>
