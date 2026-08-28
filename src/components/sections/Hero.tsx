@@ -133,7 +133,7 @@ export function Hero(): React.ReactElement {
         >
           <div
             className="absolute inset-0 overflow-hidden bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25"
-            style={{ borderRadius: "0 0 0 0", borderTopLeftRadius: "50% 12%" }}
+            style={{ borderRadius: "50% 50% 0 0 / 20% 20% 0 0" }}
           >
             <div
               className="absolute inset-0 opacity-40"
@@ -142,14 +142,16 @@ export function Hero(): React.ReactElement {
                   "repeating-linear-gradient(115deg, transparent 0 60px, rgba(255,255,255,0.35) 60px 62px, transparent 62px 140px)",
               }}
             />
-            <Image
-              src="/images/doctor/dr4-cutout.png"
-              alt="Dr. Dinesh Kumar, plastic and aesthetic surgeon"
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-contain object-bottom"
-            />
+            <div className="absolute inset-x-[8%] top-[12%] bottom-0">
+              <Image
+                src="/images/doctor/dr4-cutout.png"
+                alt="Dr. Dinesh Kumar, plastic and aesthetic surgeon"
+                fill
+                priority
+                sizes="(min-width: 1024px) 46vw, 84vw"
+                className="object-contain object-bottom"
+              />
+            </div>
           </div>
 
           <div className="absolute bottom-6 right-6 max-w-[15rem] rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) px-6 py-5 shadow-[0_20px_40px_rgba(23,27,19,0.15)] sm:bottom-10 sm:right-10">
