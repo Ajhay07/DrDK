@@ -13,7 +13,7 @@ export function PatientJourney(): React.ReactElement {
     <Section background="bg-secondary" spacing="lg">
       <Container width="wide">
         <div className="flex items-baseline justify-between">
-          <Eyebrow>06 &mdash; The Journey</Eyebrow>
+          <Eyebrow>07 &mdash; The Journey</Eyebrow>
           <span className="text-eyebrow">01 &ndash; 06</span>
         </div>
 

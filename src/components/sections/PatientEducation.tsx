@@ -11,7 +11,7 @@ export function PatientEducation(): React.ReactElement {
   return (
     <section className="bg-(--color-bg)">
       <Container width="wide" className="py-20 md:py-32">
-        <span className="text-eyebrow">07 &mdash; Reading &amp; Guides</span>
+        <span className="text-eyebrow">08 &mdash; Reading &amp; Guides</span>
         <h2 className="text-display mt-6 max-w-2xl text-(--color-ink)">
           Understand before you decide.
         </h2>

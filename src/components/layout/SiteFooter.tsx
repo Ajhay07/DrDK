@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Magnetic } from "@/components/interactive/Magnetic";
 import { concerns } from "@/config/concerns";
+import { contactInfo } from "@/config/contact";
 import { educationEntries } from "@/config/education";
 import { consultationHref, proceduresHref } from "@/config/navigation";
 
@@ -50,6 +51,24 @@ export function SiteFooter(): React.ReactElement {
                 Book a Consultation
               </Button>
             </Magnetic>
+            <dl className="mt-8 flex flex-col gap-2">
+              <dd>
+                <a
+                  href={contactInfo.phoneHref}
+                  className="text-small text-(--color-ink-muted) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)"
+                >
+                  {contactInfo.phoneDisplay}
+                </a>
+              </dd>
+              <dd>
+                <a
+                  href={contactInfo.emailHref}
+                  className="text-small text-(--color-ink-muted) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)"
+                >
+                  {contactInfo.email}
+                </a>
+              </dd>
+            </dl>
           </div>
 
           <nav aria-label="Footer" className="md:col-start-6 md:col-end-13">
