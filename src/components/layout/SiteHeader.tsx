@@ -73,7 +73,7 @@ export function SiteHeader(): React.ReactElement {
         </Link>
 
         <nav aria-label="Primary" className="hidden md:col-span-6 md:block">
-          <ul className="flex items-center gap-6 whitespace-nowrap">
+          <ul className="flex items-center justify-end gap-8 whitespace-nowrap">
             {primaryNavigation.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
