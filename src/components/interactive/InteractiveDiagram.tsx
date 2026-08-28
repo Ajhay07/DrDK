@@ -2,55 +2,78 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { ProcedureDiagram } from "@/components/ui/ProcedureDiagrams";
-import type { Hotspot } from "@/config/concerns";
 
 interface InteractiveDiagramProps {
-  slug: string;
   considerations: string[];
-  hotspots: Hotspot[];
 }
 
+const SIZE = 200;
+const CENTER = SIZE / 2;
+const POINT_RADIUS = 76;
+
 /**
- * A continuous-line illustration inside a quiet "blueprint" frame (grid +
- * corner brackets, matching the precision-framing motif used elsewhere on
- * the site) with numbered annotation points. Hovering (desktop) or tapping
- * (touch) a point reveals the matching fact below the diagram; clicking
- * pins it open so touch devices don't depend on a hover state.
+ * An abstract precision diagram — a core mark with thin lines radiating to
+ * evenly spaced, numbered points — rather than a literal anatomical
+ * illustration. Deliberately geometric (computed, not hand-drawn) so it
+ * reads as a precise instrument diagram, not clip art, and needs no
+ * per-procedure custom artwork. Hovering (desktop) or tapping (touch) a
+ * point reveals the matching fact below; clicking pins it open.
  */
 export function InteractiveDiagram({
-  slug,
   considerations,
-  hotspots,
 }: InteractiveDiagramProps): React.ReactElement {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const [pinnedIndex, setPinnedIndex] = useState<number | null>(null);
   const activeIndex = pinnedIndex ?? hoverIndex;
 
+  const points = considerations.map((_, index) => {
+    const angle = (-90 + index * (360 / considerations.length)) * (Math.PI / 180);
+    return {
+      x: CENTER + POINT_RADIUS * Math.cos(angle),
+      y: CENTER + POINT_RADIUS * Math.sin(angle),
+    };
+  });
+
   return (
     <div>
-      <div
-        className="relative mx-auto aspect-[5/6] w-full max-w-sm border border-(--color-border) bg-(--color-bg-secondary)"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, var(--color-border) 0 1px, transparent 1px 12.5%), repeating-linear-gradient(90deg, var(--color-border) 0 1px, transparent 1px 12.5%)",
-          backgroundSize: "100% 100%",
-        }}
-      >
+      <div className="relative mx-auto aspect-square w-full max-w-sm border border-(--color-border) bg-(--color-bg-secondary)">
         <span className="absolute left-3 top-3 h-4 w-4 border-l border-t border-(--color-border-strong)" aria-hidden="true" />
         <span className="absolute right-3 top-3 h-4 w-4 border-r border-t border-(--color-border-strong)" aria-hidden="true" />
         <span className="absolute bottom-3 left-3 h-4 w-4 border-b border-l border-(--color-border-strong)" aria-hidden="true" />
         <span className="absolute bottom-3 right-3 h-4 w-4 border-r border-b border-(--color-border-strong)" aria-hidden="true" />
 
-        <ProcedureDiagram slug={slug} className="absolute inset-0 h-full w-full text-(--color-ink)" />
+        <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="absolute inset-0 h-full w-full" aria-hidden="true">
+          <circle
+            cx={CENTER}
+            cy={CENTER}
+            r={POINT_RADIUS}
+            fill="none"
+            stroke="var(--color-border-strong)"
+            strokeWidth="0.5"
+          />
+          {points.map((point, index) => (
+            <line
+              key={`line-${point.x}-${point.y}`}
+              x1={CENTER}
+              y1={CENTER}
+              x2={point.x}
+              y2={point.y}
+              stroke="var(--color-border-strong)"
+              strokeWidth={activeIndex === index ? 1 : 0.5}
+              className="transition-all duration-(--duration-fast) ease-(--ease-editorial)"
+            />
+          ))}
+          <circle cx={CENTER} cy={CENTER} r="3" fill="var(--color-accent)" />
+        </svg>
 
-        {hotspots.map((point, index) => {
+        {considerations.map((_, index) => {
+          const point = points[index];
           const isActive = activeIndex === index;
           return (
             <button
-              key={`${point.x}-${point.y}`}
+              key={`point-${point.x}-${point.y}`}
               type="button"
-              aria-label={`Point 0${index + 1} of ${hotspots.length}`}
+              aria-label={`Point 0${index + 1} of ${considerations.length}`}
               aria-expanded={isActive}
               data-cursor="View"
               onMouseEnter={() => setHoverIndex(index)}
@@ -58,16 +81,16 @@ export function InteractiveDiagram({
               onFocus={() => setHoverIndex(index)}
               onBlur={() => setHoverIndex(null)}
               onClick={() => setPinnedIndex((current) => (current === index ? null : index))}
-              style={{ left: `${point.x}%`, top: `${point.y}%` }}
-              className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5"
+              style={{ left: `${(point.x / SIZE) * 100}%`, top: `${(point.y / SIZE) * 100}%` }}
+              className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5"
             >
               <span
                 aria-hidden="true"
                 className={cn(
-                  "block h-2 w-2 rounded-full border transition-all duration-(--duration-fast) ease-(--ease-editorial)",
+                  "block h-2.5 w-2.5 rounded-full border transition-all duration-(--duration-fast) ease-(--ease-editorial)",
                   isActive
                     ? "scale-150 border-(--color-accent) bg-(--color-accent)"
-                    : "border-(--color-accent) bg-(--color-bg)",
+                    : "border-(--color-accent) bg-(--color-bg-secondary)",
                 )}
               />
               <span

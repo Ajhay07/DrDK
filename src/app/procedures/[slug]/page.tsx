@@ -40,9 +40,10 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
         <Container width="wide">
           <PageHeader eyebrow="Procedures" title={concern.label} description={concern.descriptor} />
 
-          <div className="mt-14 grid grid-cols-1 gap-14 md:mt-20 md:grid-cols-12 md:gap-8">
+          <div className="mt-14 grid grid-cols-1 gap-14 md:mt-20 md:grid-cols-12 md:items-start md:gap-8">
             <div className="md:col-span-6">
-              <p className="text-body-lg text-(--color-ink-muted)">{concern.overview}</p>
+              <span className="text-eyebrow">Overview</span>
+              <p className="text-body-lg mt-4 text-(--color-ink-muted)">{concern.overview}</p>
 
               <p className="text-body mt-10 text-(--color-ink-faint)">
                 This is general information, not medical advice specific to any
@@ -54,12 +55,8 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
 
             <div className="md:col-span-5 md:col-start-8">
               <span className="text-eyebrow">What a consultation considers</span>
-              <div className="mt-6">
-                <InteractiveDiagram
-                  slug={concern.slug}
-                  considerations={concern.considerations}
-                  hotspots={concern.hotspots}
-                />
+              <div className="mt-4">
+                <InteractiveDiagram considerations={concern.considerations} />
               </div>
             </div>
           </div>
