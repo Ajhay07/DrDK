@@ -92,9 +92,9 @@ const highlights: { icon: (p: HighlightIconProps) => React.ReactElement; label: 
  */
 export function Hero(): React.ReactElement {
   return (
-    <section className="relative overflow-hidden bg-(--color-bg)">
+    <section className="relative overflow-hidden bg-(--color-bg) lg:flex lg:min-h-[calc(100vh-var(--nav-height))] lg:flex-col lg:justify-center">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex flex-col justify-center px-(--gutter) py-20 lg:py-28">
+        <div className="flex flex-col justify-center px-(--gutter) py-14 lg:py-8">
           <h1 className="text-display text-(--color-ink) motion-fade-in">
             Precision in surgery.
             <br />
@@ -102,19 +102,19 @@ export function Hero(): React.ReactElement {
           </h1>
 
           <div
-            className="mt-8 h-px w-16 bg-(--color-accent) motion-fade-in"
+            className="mt-6 h-px w-16 bg-(--color-accent) motion-fade-in"
             style={{ animationDelay: "80ms" }}
           />
 
           <p
-            className="text-body-lg mt-6 max-w-lg text-(--color-ink-muted) motion-fade-in"
+            className="text-body-lg mt-5 max-w-lg text-(--color-ink-muted) motion-fade-in"
             style={{ animationDelay: "120ms" }}
           >
             A refined approach to aesthetic and reconstructive surgery, centred
             around proportion, individuality and informed decisions.
           </p>
 
-          <div className="mt-10 motion-fade-in" style={{ animationDelay: "200ms" }}>
+          <div className="mt-8 motion-fade-in" style={{ animationDelay: "200ms" }}>
             <Magnetic data-cursor="Open">
               <a
                 href={consultationHref}
@@ -128,7 +128,7 @@ export function Hero(): React.ReactElement {
         </div>
 
         <div
-          className="relative min-h-[26rem] motion-fade-in sm:min-h-[32rem] lg:min-h-[44rem]"
+          className="relative min-h-[22rem] motion-fade-in sm:min-h-[26rem] lg:min-h-0"
           style={{ animationDelay: "160ms" }}
         >
           <div
@@ -154,24 +154,24 @@ export function Hero(): React.ReactElement {
             </div>
           </div>
 
-          <div className="absolute bottom-6 right-6 max-w-[15rem] rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) px-6 py-5 shadow-[0_20px_40px_rgba(23,27,19,0.15)] sm:bottom-10 sm:right-10">
-            <p className="font-(--font-display) text-lg italic text-(--color-ink)">
+          <div className="absolute bottom-4 right-4 max-w-[13rem] rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) px-5 py-4 shadow-[0_20px_40px_rgba(23,27,19,0.15)] sm:bottom-6 sm:right-6">
+            <p className="font-(--font-display) text-base italic text-(--color-ink)">
               Dr. Dinesh Kumar
             </p>
             <p className="text-eyebrow mt-1 text-(--color-ink-muted)">Plastic Surgeon</p>
-            <div className="mt-3 border-t border-(--color-border) pt-3">
-              <p className="text-sm text-(--color-ink-muted)">MBBS, MS, MCh (Plastic Surgery)</p>
+            <div className="mt-2 border-t border-(--color-border) pt-2">
+              <p className="text-xs text-(--color-ink-muted)">MBBS, MS, MCh (Plastic Surgery)</p>
             </div>
           </div>
         </div>
       </div>
 
       <Container width="wide">
-        <div className="grid grid-cols-2 gap-8 border-t border-(--color-border) py-10 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-6 border-t border-(--color-border) py-5 sm:grid-cols-4 lg:py-4">
           {highlights.map(({ icon: Icon, label }) => (
             <div key={label} className="flex items-center gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-accent)">
-                <Icon className="h-5 w-5" />
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-accent)">
+                <Icon className="h-4 w-4" />
               </span>
               <span className="text-sm leading-snug text-(--color-ink)">{label}</span>
             </div>
