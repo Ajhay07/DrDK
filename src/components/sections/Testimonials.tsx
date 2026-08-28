@@ -20,16 +20,19 @@ export function Testimonials(): React.ReactElement {
         </h2>
       </Container>
 
-      <div className="mt-12 md:mt-16">
-        <div className="motion-marquee flex w-max gap-6 px-(--gutter)">
+      <div className="mt-12 py-4 md:mt-16">
+        <div className="motion-marquee flex w-max items-center gap-6 px-(--gutter)">
           {track.map((testimonial, index) => (
             <blockquote
               key={`${testimonial.name}-${index}`}
-              className="flex w-[20rem] shrink-0 flex-col justify-between border border-(--color-border) bg-(--color-bg) p-8 sm:w-[24rem]"
+              className={`flex w-[20rem] shrink-0 flex-col justify-between rounded-2xl bg-(--color-bg) p-8 shadow-[0_24px_48px_rgba(23,27,19,0.14)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1 sm:w-[24rem] ${
+                index % 2 === 0 ? "" : "sm:translate-y-5"
+              }`}
             >
-              <p className="text-body-lg italic text-(--color-ink)">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
+              <span aria-hidden="true" className="font-(family-name:--font-display) text-4xl italic text-(--color-accent)">
+                &ldquo;
+              </span>
+              <p className="text-body-lg mt-2 italic text-(--color-ink)">{testimonial.quote}</p>
               <footer className="text-eyebrow mt-8 text-(--color-ink-muted)">
                 {testimonial.name} &middot; {testimonial.context}
               </footer>

@@ -8,22 +8,25 @@ import { credentials } from "@/config/credentials";
  */
 export function CredentialsTrust(): React.ReactElement {
   return (
-    <section className="bg-(--color-bg)">
-      <Container width="wide" className="py-16 md:py-24">
+    <section className="bg-(--color-bg) lg:flex lg:min-h-[calc(100vh-var(--nav-height))] lg:flex-col lg:justify-center">
+      <Container width="wide" className="py-16 md:py-24 lg:py-8">
         <div className="flex flex-col gap-2 border-b border-(--color-border) pb-6 sm:flex-row sm:items-baseline sm:justify-between">
           <span className="text-eyebrow">05 &mdash; Professional Record</span>
           <span className="text-eyebrow">Chennai · Vijaya Hospitals</span>
         </div>
 
-        <h2 className="text-display mt-10 max-w-2xl text-(--color-ink) md:mt-14">
+        <h2
+          className="font-(family-name:--font-display) mt-8 max-w-2xl text-(--color-ink) lg:mt-6"
+          style={{ fontSize: "clamp(2rem, 1.5rem + 2.2vw, 3.25rem)", lineHeight: 1.02, letterSpacing: "-0.01em" }}
+        >
           Experience shaped by surgery.
         </h2>
 
-        <dl className="mt-14 md:mt-20">
+        <dl className="mt-8 lg:mt-6">
           {credentials.map((credential, index) => (
             <div
               key={credential.label}
-              className="grid grid-cols-12 items-baseline gap-4 border-b border-(--color-border) py-5"
+              className="grid grid-cols-12 items-baseline gap-4 border-b border-(--color-border) py-4"
             >
               <span aria-hidden="true" className="text-small col-span-2 tabular-nums text-(--color-ink-faint) sm:col-span-1">
                 0{index + 1}
