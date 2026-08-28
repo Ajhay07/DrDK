@@ -64,14 +64,14 @@ export function Hero(): React.ReactElement {
             style={{ animationDelay: "220ms" }}
           >
             <figure className="w-full max-w-sm">
-              <div className="relative aspect-square overflow-hidden bg-(--color-bg-secondary)">
+              <div className="relative aspect-square">
                 <Image
-                  src="/images/doctor/dr4.jpg"
+                  src="/images/doctor/dr4-cutout.png"
                   alt="Dr. Dinesh Kumar, plastic and aesthetic surgeon"
                   fill
                   priority
                   sizes="(min-width: 1024px) 24rem, 20rem"
-                  className="object-cover object-top"
+                  className="object-contain object-bottom drop-shadow-[0_24px_32px_rgba(0,0,0,0.18)]"
                 />
               </div>
               <figcaption className="mt-4 flex items-baseline justify-between border-t border-(--color-border) pt-4">
