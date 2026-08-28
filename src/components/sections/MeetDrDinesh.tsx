@@ -4,9 +4,10 @@ import { TextLink } from "@/components/ui/TextLink";
 import { doctorIntro } from "@/config/about";
 
 /**
- * A personal profile anchored by the oversized name itself — the portrait
- * sits beside it as a small inset, not a dedicated image column.
- * Biography fragments and metadata are distributed across the grid below.
+ * A personal profile anchored by the oversized name, with a real portrait
+ * given its own column — the earlier tiny inline chip was a compromise
+ * forced by a 150px source image; with a ~335×597 source there's enough
+ * resolution to give the photo real presence.
  */
 export function MeetDrDinesh(): React.ReactElement {
   return (
@@ -14,29 +15,26 @@ export function MeetDrDinesh(): React.ReactElement {
       <Container width="wide" className="py-20 md:py-32">
         <span className="text-eyebrow">02 &mdash; {doctorIntro.eyebrow}</span>
 
-        <h2 aria-label="Dinesh Kumar" className="mt-6 text-(--color-ink)">
-          <span aria-hidden="true" className="text-hero block">
-            Dinesh
-          </span>
-          <span aria-hidden="true" className="mt-1 flex flex-wrap items-center gap-5 md:gap-8">
-            <span className="text-hero">Kumar</span>
-            <span
-              data-cursor="View"
-              className="relative block h-16 w-14 shrink-0 overflow-hidden bg-(--color-bg-secondary) md:h-24 md:w-20"
-            >
-              <Image
-                src="/images/doctor/dr-dinesh-consultation.png"
-                alt=""
-                fill
-                sizes="6rem"
-                className="object-cover object-top"
-              />
-            </span>
-          </span>
+        <h2 className="text-hero mt-6 text-(--color-ink)">
+          Dinesh
+          <br />
+          Kumar
         </h2>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 md:mt-20 md:grid-cols-12 md:gap-8">
-          <div className="md:col-span-7">
+        <div className="mt-14 grid grid-cols-1 gap-12 md:mt-20 md:grid-cols-12 md:gap-8">
+          <div className="md:col-span-4">
+            <div className="relative aspect-[3/5] w-full max-w-64 overflow-hidden bg-(--color-bg-secondary)">
+              <Image
+                src="/images/doctor/dr1.jpg"
+                alt="Dr. Dinesh Kumar in consultation attire"
+                fill
+                sizes="(min-width: 768px) 16rem, 60vw"
+                className="object-cover object-top"
+              />
+            </div>
+          </div>
+
+          <div className="md:col-span-5">
             {doctorIntro.paragraphs.map((paragraph, index) => (
               <p
                 key={paragraph}
@@ -51,7 +49,7 @@ export function MeetDrDinesh(): React.ReactElement {
             </div>
           </div>
 
-          <div className="md:col-start-9 md:col-end-13">
+          <div className="md:col-start-10 md:col-end-13">
             <dl className="flex flex-col gap-6 border-t border-(--color-border) pt-6">
               <div>
                 <dt className="text-eyebrow">Experience</dt>
