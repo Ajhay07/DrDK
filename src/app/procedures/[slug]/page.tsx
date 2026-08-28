@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
+import { InteractiveDiagram } from "@/components/interactive/InteractiveDiagram";
 import { concerns } from "@/config/concerns";
 import { consultationHref } from "@/config/navigation";
 
@@ -36,28 +37,32 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
   return (
     <main id="main-content" className="flex-1">
       <Section spacing="xl">
-        <Container>
+        <Container width="wide">
           <PageHeader eyebrow="Procedures" title={concern.label} description={concern.descriptor} />
 
-          <p className="text-body-lg mt-10 max-w-2xl text-(--color-ink-muted)">{concern.overview}</p>
+          <div className="mt-14 grid grid-cols-1 gap-14 md:mt-20 md:grid-cols-12 md:gap-8">
+            <div className="md:col-span-6">
+              <p className="text-body-lg text-(--color-ink-muted)">{concern.overview}</p>
 
-          <div className="mt-14 max-w-2xl">
-            <span className="text-eyebrow">What a consultation considers</span>
-            <ul className="mt-6 flex flex-col gap-4 border-t border-(--color-border) pt-6">
-              {concern.considerations.map((point) => (
-                <li key={point} className="text-body border-b border-(--color-border) pb-4 text-(--color-ink)">
-                  {point}
-                </li>
-              ))}
-            </ul>
+              <p className="text-body mt-10 text-(--color-ink-faint)">
+                This is general information, not medical advice specific to any
+                individual.{" "}
+                <TextLink href={consultationHref}>Book a consultation</TextLink> to
+                discuss suitability and options directly with Dr. Dinesh Kumar.
+              </p>
+            </div>
+
+            <div className="md:col-span-5 md:col-start-8">
+              <span className="text-eyebrow">What a consultation considers</span>
+              <div className="mt-6">
+                <InteractiveDiagram
+                  slug={concern.slug}
+                  considerations={concern.considerations}
+                  hotspots={concern.hotspots}
+                />
+              </div>
+            </div>
           </div>
-
-          <p className="text-body mt-14 max-w-2xl text-(--color-ink-faint)">
-            This is general information, not medical advice specific to any
-            individual.{" "}
-            <TextLink href={consultationHref}>Book a consultation</TextLink> to
-            discuss suitability and options directly with Dr. Dinesh Kumar.
-          </p>
         </Container>
       </Section>
     </main>

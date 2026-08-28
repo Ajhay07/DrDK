@@ -1,9 +1,16 @@
+export interface Hotspot {
+  x: number;
+  y: number;
+}
+
 export interface Concern {
   slug: string;
   label: string;
   descriptor: string;
   overview: string;
   considerations: string[];
+  /** Percentage-based positions (0-100) for the interactive diagram, one per consideration, in order. */
+  hotspots: Hotspot[];
 }
 
 /**
@@ -25,6 +32,12 @@ export const concerns: Concern[] = [
       "Whether a surgical or non-surgical approach is more appropriate for the goal",
       "Realistic expectations for how subtle or noticeable a change should be",
     ],
+    hotspots: [
+      { x: 50, y: 22 },
+      { x: 68, y: 45 },
+      { x: 50, y: 58 },
+      { x: 50, y: 75 },
+    ],
   },
   {
     slug: "nose",
@@ -37,6 +50,12 @@ export const concerns: Concern[] = [
       "The nose's relationship to other facial features, not just its shape in isolation",
       "Cartilage and skin thickness, which affect what changes are realistic",
       "Healing timelines, which are typically longer than other facial procedures",
+    ],
+    hotspots: [
+      { x: 44, y: 20 },
+      { x: 34, y: 45 },
+      { x: 34, y: 70 },
+      { x: 50, y: 88 },
     ],
   },
   {
@@ -51,6 +70,12 @@ export const concerns: Concern[] = [
       "Under-eye volume loss versus excess skin, which require different approaches",
       "A conservative, natural-looking outcome rather than an overly altered one",
     ],
+    hotspots: [
+      { x: 50, y: 30 },
+      { x: 50, y: 42 },
+      { x: 50, y: 62 },
+      { x: 85, y: 50 },
+    ],
   },
   {
     slug: "breast",
@@ -63,6 +88,12 @@ export const concerns: Concern[] = [
       "Existing breast tissue, skin elasticity and any asymmetry",
       "Whether the goal is augmentation, lift, reduction or a combination",
       "Long-term factors such as future changes from ageing, weight change or pregnancy",
+    ],
+    hotspots: [
+      { x: 33, y: 37 },
+      { x: 50, y: 50 },
+      { x: 33, y: 72 },
+      { x: 75, y: 55 },
     ],
   },
   {
@@ -77,6 +108,12 @@ export const concerns: Concern[] = [
       "Overall health and stability of weight before considering a procedure",
       "Recovery time, which varies significantly by the extent of the procedure",
     ],
+    hotspots: [
+      { x: 50, y: 45 },
+      { x: 35, y: 60 },
+      { x: 65, y: 60 },
+      { x: 50, y: 80 },
+    ],
   },
   {
     slug: "men",
@@ -89,6 +126,12 @@ export const concerns: Concern[] = [
       "Whether a concern (such as gynecomastia) has an underlying hormonal or medical cause worth investigating first",
       "A natural, proportionate result consistent with male facial and body structure",
       "Discretion, which is often a priority for male patients considering surgery",
+    ],
+    hotspots: [
+      { x: 50, y: 40 },
+      { x: 70, y: 48 },
+      { x: 50, y: 60 },
+      { x: 50, y: 78 },
     ],
   },
 ];
