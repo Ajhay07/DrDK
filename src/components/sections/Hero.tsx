@@ -1,19 +1,15 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Magnetic } from "@/components/interactive/Magnetic";
-import { HeroPortrait } from "@/components/interactive/HeroPortrait";
 import { consultationHref, proceduresHref } from "@/config/navigation";
 
 /**
- * Homepage hero — one 12-column grid composition. Every element (eyebrow,
- * headline lines, portrait, caption, supporting copy, CTAs) is placed by
- * explicit grid-column/row assignment against the same column tracks —
- * no absolute positioning, no one-off translate/margin offsets.
- *
- * Note: an item combining col-span-N with col-start-M does NOT work in
- * Tailwind — col-span sets the `grid-column` shorthand (start AND end),
- * so it silently overwrites col-start. Every offset item here uses
- * col-start-N + col-end-M instead, which are independent longhands.
+ * Homepage hero — a clear, safe two-column composition: headline and
+ * supporting content on the left, the portrait given proper size and a
+ * clean frame on the right (not squeezed into the typography). Simpler
+ * and more conventional on purpose after the previous typography-woven
+ * treatment repeatedly read as unpolished/broken rather than premium.
  */
 export function Hero(): React.ReactElement {
   return (
@@ -24,58 +20,58 @@ export function Hero(): React.ReactElement {
           <span className="text-eyebrow">Chennai, India</span>
         </div>
 
-        <h1
-          aria-label="Precision in form. Individuality in aesthetics."
-          className="grid grid-cols-12 gap-x-(--grid-gap) gap-y-3 pt-10 text-(--color-ink) md:gap-y-4 md:pt-16"
-        >
-          <span className="text-hero motion-reveal col-span-12 block md:col-span-8">Precision</span>
+        <div className="grid grid-cols-1 gap-12 py-16 lg:grid-cols-12 lg:gap-8 lg:py-24">
+          <div className="flex flex-col justify-center lg:col-span-7">
+            <h1 className="text-display text-(--color-ink) motion-fade-in">
+              Precision in surgery.
+              <br />
+              <span className="italic">Individuality</span> in aesthetics.
+            </h1>
 
-          <span className="col-start-1 col-end-13 mt-4 flex items-center gap-4 motion-fade-in lg:col-start-9 lg:col-end-13 lg:row-span-3 lg:mt-0 lg:flex-col lg:items-start lg:justify-end">
-            <HeroPortrait />
-            <span className="font-(--font-display) text-lg italic text-(--color-ink) lg:mt-4">
-              Dr. Dinesh Kumar
-            </span>
-          </span>
+            <p
+              className="text-body-lg mt-8 max-w-lg text-(--color-ink-muted) motion-fade-in"
+              style={{ animationDelay: "100ms" }}
+            >
+              A refined approach to aesthetic and reconstructive surgery, centred
+              around proportion, individuality and informed decisions.
+            </p>
 
-          <span
-            className="text-giant motion-reveal col-start-2 col-end-13 block italic text-(--color-ink-muted) md:col-end-8"
-            style={{ animationDelay: "80ms" }}
-          >
-            in form.
-          </span>
+            <div
+              className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center motion-fade-in"
+              style={{ animationDelay: "180ms" }}
+            >
+              <Magnetic data-cursor="Open">
+                <Button href={consultationHref} variant="primary" className="w-full sm:w-auto">
+                  Book a Consultation
+                </Button>
+              </Magnetic>
+              <Magnetic data-cursor="Explore">
+                <Button href={proceduresHref} variant="secondary" className="w-full sm:w-auto">
+                  Explore Procedures
+                </Button>
+              </Magnetic>
+            </div>
+          </div>
 
-          <span
-            className="text-hero motion-reveal col-span-12 block md:col-span-8"
-            style={{ animationDelay: "140ms" }}
-          >
-            Individuality
-          </span>
-
-          <span
-            className="text-giant motion-reveal col-start-2 col-end-13 block italic text-(--color-ink-muted) md:col-end-8"
-            style={{ animationDelay: "200ms" }}
-          >
-            in aesthetics.
-          </span>
-        </h1>
-
-        <div className="mt-14 grid grid-cols-12 gap-x-(--grid-gap) gap-y-8 border-t border-(--color-border) pt-8 motion-fade-in md:mt-20">
-          <p className="text-body-lg col-span-12 text-(--color-ink-muted) md:col-span-5">
-            A refined approach to aesthetic and reconstructive surgery, centred
-            around proportion, individuality and informed decisions.
-          </p>
-
-          <div className="col-start-1 col-end-13 flex flex-col gap-4 sm:flex-row md:col-start-8 md:col-end-13 md:items-center">
-            <Magnetic data-cursor="Open">
-              <Button href={consultationHref} variant="primary" className="w-full sm:w-auto">
-                Book a Consultation
-              </Button>
-            </Magnetic>
-            <Magnetic data-cursor="Explore">
-              <Button href={proceduresHref} variant="secondary" className="w-full sm:w-auto">
-                Explore Procedures
-              </Button>
-            </Magnetic>
+          <div className="flex justify-center motion-fade-in lg:col-span-5 lg:justify-end" style={{ animationDelay: "220ms" }}>
+            <figure className="w-full max-w-60">
+              <div className="relative aspect-square overflow-hidden border border-(--color-border) bg-(--color-bg-secondary)">
+                <Image
+                  src="/images/doctor/dr-dinesh-portrait.png"
+                  alt="Portrait of Dr. Dinesh Kumar, plastic surgeon"
+                  fill
+                  priority
+                  sizes="15rem"
+                  className="object-cover object-center"
+                />
+              </div>
+              <figcaption className="mt-4 flex items-baseline justify-between border-t border-(--color-border) pt-4">
+                <span className="font-(--font-display) text-lg italic text-(--color-ink)">
+                  Dr. Dinesh Kumar
+                </span>
+                <span className="text-eyebrow">MBBS, MS, MCh</span>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </Container>
