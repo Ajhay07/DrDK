@@ -62,7 +62,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Skin thickness and muscle activity vary by individual",
           "Often assessed together with brow position, not on its own",
         ],
-        hotspots: [{ cx: 1200, cy: 360, rx: 280, ry: 140 }],
+        hotspots: [{ cx: 1290, cy: 350, rx: 340, ry: 150 }],
       },
       {
         id: "eyes",
@@ -74,7 +74,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Vision impact from upper eyelid skin is assessed where relevant",
           "A conservative, natural-looking result is generally preferred",
         ],
-        hotspots: [{ cx: 1200, cy: 555, rx: 300, ry: 95 }],
+        hotspots: [{ cx: 1290, cy: 580, rx: 320, ry: 90 }],
       },
       {
         id: "nose",
@@ -86,7 +86,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Cartilage and skin thickness affect what changes are realistic",
           "Functional (breathing) concerns are evaluated alongside appearance",
         ],
-        hotspots: [{ cx: 1200, cy: 650, rx: 115, ry: 175 }],
+        hotspots: [{ cx: 1290, cy: 680, rx: 110, ry: 170 }],
       },
       {
         id: "cheeks",
@@ -99,8 +99,8 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Assessed in relation to the rest of the face, not in isolation",
         ],
         hotspots: [
-          { cx: 800, cy: 730, rx: 175, ry: 175 },
-          { cx: 1600, cy: 730, rx: 175, ry: 175 },
+          { cx: 910, cy: 720, rx: 170, ry: 170 },
+          { cx: 1670, cy: 720, rx: 170, ry: 170 },
         ],
       },
       {
@@ -113,7 +113,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Approach depends on whether change is from bone, fat or skin laxity",
           "Often considered alongside the neck for a consistent result",
         ],
-        hotspots: [{ cx: 1200, cy: 950, rx: 430, ry: 130 }],
+        hotspots: [{ cx: 1290, cy: 1050, rx: 430, ry: 130 }],
       },
       {
         id: "lips",
@@ -125,7 +125,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Proportion with the rest of the face matters more than lip size alone",
           "Skin quality around the mouth is assessed alongside lip volume",
         ],
-        hotspots: [{ cx: 1200, cy: 870, rx: 175, ry: 70 }],
+        hotspots: [{ cx: 1290, cy: 960, rx: 170, ry: 65 }],
       },
     ],
   },
@@ -151,7 +151,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "A visible bump or dip is often the starting point for a consultation",
           "Bone and cartilage each respond differently to change",
         ],
-        hotspots: [{ cx: 1170, cy: 480, rx: 90, ry: 150 }],
+        hotspots: [{ cx: 1290, cy: 600, rx: 90, ry: 130 }],
       },
       {
         id: "tip",
@@ -163,7 +163,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Cartilage strength and skin thickness limit how refined a tip can look",
           "Small changes here are often more noticeable than elsewhere on the nose",
         ],
-        hotspots: [{ cx: 1200, cy: 660, rx: 90, ry: 90 }],
+        hotspots: [{ cx: 1290, cy: 770, rx: 95, ry: 85 }],
       },
       {
         id: "nostrils",
@@ -175,7 +175,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Breathing function is assessed alongside cosmetic appearance",
           "Changes here are considered in proportion to the rest of the face",
         ],
-        hotspots: [{ cx: 1200, cy: 780, rx: 130, ry: 60 }],
+        hotspots: [{ cx: 1290, cy: 850, rx: 125, ry: 55 }],
       },
       {
         id: "profile",
@@ -187,7 +187,7 @@ export const areaExplorers: Record<string, AreaExplorerConfig> = {
           "Facial balance is assessed before any single feature is changed",
           "A first consultation typically maps the whole profile, not just the nose",
         ],
-        hotspots: [{ cx: 1200, cy: 620, rx: 260, ry: 320 }],
+        hotspots: [{ cx: 1290, cy: 680, rx: 190, ry: 270 }],
       },
     ],
   },
