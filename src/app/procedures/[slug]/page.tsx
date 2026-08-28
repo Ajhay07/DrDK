@@ -5,7 +5,9 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
 import { InteractiveDiagram } from "@/components/interactive/InteractiveDiagram";
+import { FaceExplorer } from "@/components/interactive/FaceExplorer";
 import { concerns } from "@/config/concerns";
+import { faceRegions } from "@/config/face-explorer";
 import { consultationHref } from "@/config/navigation";
 
 interface ProcedurePageProps {
@@ -62,6 +64,25 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
           </div>
         </Container>
       </Section>
+
+      {concern.slug === "face" ? (
+        <Section spacing="xl" background="bg-secondary">
+          <Container width="wide">
+            <div className="mb-14 max-w-2xl md:mb-20">
+              <span className="text-eyebrow">Explore</span>
+              <h2 className="text-h2 mt-4 text-(--color-ink)">
+                An interactive guide to facial anatomy.
+              </h2>
+              <p className="text-body-lg mt-5 text-(--color-ink-muted)">
+                Every consultation begins with understanding how individual regions of the
+                face relate to one another. Explore the diagram below to see what is
+                typically considered in each area.
+              </p>
+            </div>
+            <FaceExplorer regions={faceRegions} />
+          </Container>
+        </Section>
+      ) : null}
     </main>
   );
 }
