@@ -12,7 +12,7 @@ export function MeetDrDinesh(): React.ReactElement {
   return (
     <section className="bg-(--color-bg)">
       <Container width="wide" className="py-20 md:py-32">
-        <span className="text-eyebrow">{doctorIntro.eyebrow}</span>
+        <span className="text-eyebrow">05 &mdash; {doctorIntro.eyebrow}</span>
 
         <h2 aria-label="Dinesh Kumar" className="mt-6 text-(--color-ink)">
           <span aria-hidden="true" className="text-hero block">

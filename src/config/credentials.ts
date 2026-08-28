@@ -5,14 +5,15 @@ export interface Credential {
 
 /**
  * Trust markers shown in the "Credentials & Trust" homepage section.
- * Facts verified against the publicly listed LinkedIn profile approved for
- * this project. Do not add years/institutions/memberships beyond what is
+ * Facts verified against Dr. Dinesh Kumar's publicly listed Instagram bio
+ * (@dr_dinesh_aestheticsurgeon) and the LinkedIn profile approved for this
+ * project. Do not add institutions/memberships/case counts beyond what is
  * listed here without further verification — see src/config/about.ts.
  */
 export const credentials: Credential[] = [
   {
-    label: "Plastic Surgery",
-    description: "Professional focus, spanning aesthetic and reconstructive surgery.",
+    label: "MBBS, MS, MCh",
+    description: "Plastic Surgery — consultant plastic, cosmetic and reconstructive surgeon.",
   },
   {
     label: "10 Years",

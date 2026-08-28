@@ -12,7 +12,7 @@ export function ExploreConcerns(): React.ReactElement {
     <section className="bg-(--color-bg)">
       <Container width="wide" className="py-20 md:py-32">
         <div className="flex items-baseline justify-between border-b border-(--color-border) pb-6">
-          <span className="text-eyebrow">Explore</span>
+          <span className="text-eyebrow">01 &mdash; Explore</span>
           <span className="text-eyebrow hidden sm:inline">Where would you like to begin?</span>
         </div>
 

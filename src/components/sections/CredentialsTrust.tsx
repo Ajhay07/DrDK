@@ -11,7 +11,7 @@ export function CredentialsTrust(): React.ReactElement {
     <section className="bg-(--color-bg)">
       <Container width="wide" className="py-20 md:py-32">
         <div className="flex flex-col gap-2 border-b border-(--color-border) pb-6 sm:flex-row sm:items-baseline sm:justify-between">
-          <span className="text-eyebrow">Professional Record</span>
+          <span className="text-eyebrow">03 &mdash; Professional Record</span>
           <span className="text-eyebrow">Chennai · Vijaya Hospitals</span>
         </div>
 
