@@ -30,9 +30,9 @@ export function Hero(): React.ReactElement {
         >
           <span className="text-hero motion-reveal col-span-12 block md:col-span-8">Precision</span>
 
-          <span className="col-start-1 col-end-13 mt-4 flex items-center gap-4 motion-fade-in md:col-start-9 md:col-end-13 md:row-span-3 md:mt-0 md:flex-col md:items-start md:justify-end">
+          <span className="col-start-1 col-end-13 mt-4 flex items-center gap-4 motion-fade-in lg:col-start-9 lg:col-end-13 lg:row-span-3 lg:mt-0 lg:flex-col lg:items-start lg:justify-end">
             <HeroPortrait />
-            <span className="font-(--font-display) text-lg italic text-(--color-ink) md:mt-4">
+            <span className="font-(--font-display) text-lg italic text-(--color-ink) lg:mt-4">
               Dr. Dinesh Kumar
             </span>
           </span>

@@ -153,8 +153,12 @@ body {
   .text-hero {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(3.5rem, 1.5rem + 11vw, 11rem);
-    line-height: 0.92;
+    /* Tuned so the longest hero word ("Individuality") stays inside an
+       8-column track at md/lg widths instead of overflowing into the
+       adjacent portrait column — do not raise the mid-range growth rate
+       without re-checking that fit. */
+    font-size: clamp(3rem, 1.25rem + 6.5vw, 8.5rem);
+    line-height: 0.94;
     letter-spacing: -0.02em;
   }
 

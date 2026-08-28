@@ -46,7 +46,7 @@ export function HeroPortrait(): React.ReactElement {
     <span
       ref={wrapRef}
       data-cursor="View"
-      className="relative block h-32 w-28 shrink-0 overflow-hidden bg-(--color-bg-secondary) sm:h-36 sm:w-32 lg:h-40 lg:w-36"
+      className="relative block h-28 w-28 shrink-0 overflow-hidden bg-(--color-bg-secondary) sm:h-32 sm:w-32 lg:h-36 lg:w-36"
       style={{ willChange: "transform" }}
     >
       <Image
@@ -55,7 +55,7 @@ export function HeroPortrait(): React.ReactElement {
         fill
         priority
         sizes="9rem"
-        className="object-cover object-top"
+        className="object-cover object-center"
       />
     </span>
   );
