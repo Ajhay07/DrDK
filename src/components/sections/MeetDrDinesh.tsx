@@ -25,7 +25,7 @@ export function MeetDrDinesh(): React.ReactElement {
           <div className="md:col-span-4">
             <div className="relative aspect-[3/5] w-full max-w-64 overflow-hidden bg-(--color-bg-secondary)">
               <Image
-                src="/images/doctor/dr1.jpg"
+                src="/images/doctor/dr-dinesh-profile.png"
                 alt="Dr. Dinesh Kumar in consultation attire"
                 fill
                 sizes="(min-width: 768px) 16rem, 60vw"
