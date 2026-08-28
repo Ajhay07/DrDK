@@ -26,30 +26,28 @@ export default function ProceduresPage(): React.ReactElement {
             description="Every procedure begins with understanding your goals and concerns. Select an area to learn more."
           />
 
-          <ul className="mt-16 md:mt-24">
+          <ul className="mt-16 grid grid-cols-1 gap-px bg-(--color-border) sm:grid-cols-2 lg:grid-cols-3 md:mt-24">
             {concerns.map((concern, index) => (
-              <li key={concern.slug} className="border-b border-(--color-border)">
+              <li key={concern.slug} className="group bg-(--color-bg)">
                 <Link
                   href={`/procedures/${concern.slug}`}
                   data-cursor="Explore"
-                  className="group flex flex-col gap-2 py-4 md:flex-row md:items-center md:gap-6 md:py-6"
+                  className="flex h-full flex-col gap-6 p-8"
                 >
-                  <span aria-hidden="true" className="text-index w-16 shrink-0 self-start md:w-24 md:self-auto">
-                    0{index + 1}
-                  </span>
-                  <span className="text-giant flex-1 text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
-                    {concern.label}
-                  </span>
+                  <div className="flex items-start justify-between">
+                    <span className="text-index text-2xl text-(--color-ink-faint)">0{index + 1}</span>
+                    <ConcernIcon
+                      slug={concern.slug}
+                      className="h-9 w-9 shrink-0 text-(--color-ink-faint) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)"
+                    />
+                  </div>
 
-                  <span className="flex items-center gap-4 pl-16 md:hidden">
-                    <ConcernIcon slug={concern.slug} className="h-10 w-10 shrink-0 text-(--color-ink-faint)" />
-                    <span className="text-body text-(--color-ink-muted)">{concern.descriptor}</span>
-                  </span>
-
-                  <span className="hidden shrink-0 items-center gap-4 -translate-x-4 opacity-0 transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-0 group-hover:opacity-100 md:flex">
-                    <ConcernIcon slug={concern.slug} className="h-12 w-12 shrink-0 text-(--color-accent)" />
-                    <span className="text-body max-w-xs text-(--color-ink-muted)">{concern.descriptor}</span>
-                  </span>
+                  <div>
+                    <span className="font-(--font-display) text-3xl text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
+                      {concern.label}
+                    </span>
+                    <p className="text-body mt-2 text-(--color-ink-muted)">{concern.descriptor}</p>
+                  </div>
                 </Link>
               </li>
             ))}

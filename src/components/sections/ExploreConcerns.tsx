@@ -4,9 +4,10 @@ import { ConcernIcon } from "@/components/ui/ConcernIcons";
 import { concerns } from "@/config/concerns";
 
 /**
- * A huge numbered typographic index rather than rows/cards. On hover/focus,
- * desktop reveals a small line-mark graphic alongside the descriptor;
- * mobile shows both by default since there is no hover to depend on.
+ * Compact grid index of procedure areas. Previously one giant full-width
+ * heading per area (clamp up to 7.5rem) stacked vertically — six screens
+ * of scroll to show six words. A 2/3-column grid keeps the editorial
+ * typographic feel at a size that reads as considered rather than sprawling.
  */
 export function ExploreConcerns(): React.ReactElement {
   return (
@@ -17,33 +18,28 @@ export function ExploreConcerns(): React.ReactElement {
           <span className="text-eyebrow hidden sm:inline">Where would you like to begin?</span>
         </div>
 
-        <ul>
+        <ul className="mt-px grid grid-cols-1 gap-px bg-(--color-border) sm:grid-cols-2 lg:grid-cols-3">
           {concerns.map((concern, index) => (
-            <li key={concern.slug} className="group border-b border-(--color-border)">
+            <li key={concern.slug} className="group bg-(--color-bg)">
               <Link
                 href={`/procedures/${concern.slug}`}
                 data-cursor="Explore"
-                className="flex flex-col gap-2 py-4 md:flex-row md:items-center md:gap-6 md:py-6"
+                className="flex h-full flex-col gap-6 p-8"
               >
-                <span
-                  aria-hidden="true"
-                  className="text-index w-16 shrink-0 self-start md:w-24 md:self-auto"
-                >
-                  0{index + 1}
-                </span>
-                <span className="text-giant flex-1 text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
-                  {concern.label}
-                </span>
+                <div className="flex items-start justify-between">
+                  <span className="text-index text-2xl text-(--color-ink-faint)">0{index + 1}</span>
+                  <ConcernIcon
+                    slug={concern.slug}
+                    className="h-9 w-9 shrink-0 text-(--color-ink-faint) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)"
+                  />
+                </div>
 
-                <span className="flex items-center gap-4 pl-16 md:hidden">
-                  <ConcernIcon slug={concern.slug} className="h-10 w-10 shrink-0 text-(--color-ink-faint)" />
-                  <span className="text-body text-(--color-ink-muted)">{concern.descriptor}</span>
-                </span>
-
-                <span className="hidden shrink-0 items-center gap-4 -translate-x-4 opacity-0 transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-0 group-hover:opacity-100 md:flex">
-                  <ConcernIcon slug={concern.slug} className="h-12 w-12 shrink-0 text-(--color-accent)" />
-                  <span className="text-body max-w-xs text-(--color-ink-muted)">{concern.descriptor}</span>
-                </span>
+                <div>
+                  <span className="font-(--font-display) text-3xl text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
+                    {concern.label}
+                  </span>
+                  <p className="text-body mt-2 text-(--color-ink-muted)">{concern.descriptor}</p>
+                </div>
               </Link>
             </li>
           ))}
