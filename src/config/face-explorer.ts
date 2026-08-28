@@ -1,8 +1,9 @@
 export interface FaceRegion {
   id: string;
   name: string;
-  shortDescription: string;
-  extendedDescription: string;
+  description: string;
+  commonProcedures: string[];
+  keyConsiderations: string[];
 }
 
 /**
@@ -15,57 +16,67 @@ export const faceRegions: FaceRegion[] = [
   {
     id: "forehead",
     name: "Forehead",
-    shortDescription: "Sets the upper third of facial balance.",
-    extendedDescription:
-      "Its height, slope and the depth of expression lines shape how the face reads at rest and in motion. Approaches range from non-surgical softening to changes in brow position, depending on the underlying cause.",
-  },
-  {
-    id: "brows",
-    name: "Brows",
-    shortDescription: "Frame the eyes and set the upper face's expression.",
-    extendedDescription:
-      "Brow angle, arch and height affect whether the upper face appears alert, rested or heavy, and are usually assessed together with the eyelids rather than on their own.",
+    description:
+      "The forehead sets the upper third of facial balance. Its height, slope and the depth of expression lines shape how the face reads at rest and in motion.",
+    commonProcedures: ["Anti-wrinkle injections", "Brow lift", "Fat grafting"],
+    keyConsiderations: [
+      "Skin thickness and muscle activity vary by individual",
+      "Often assessed together with brow position, not on its own",
+    ],
   },
   {
     id: "eyes",
-    name: "Eyes / Eyelids",
-    shortDescription: "Often the first area where ageing and fatigue show.",
-    extendedDescription:
-      "Upper and lower eyelid skin, fat and the surrounding hollows are considered individually, since each responds to a different approach and not every concern requires surgery.",
+    name: "Eyes",
+    description:
+      "The eye area is often the first place ageing and fatigue show. Upper and lower eyelid skin, fat and the surrounding hollows each respond to a different approach.",
+    commonProcedures: ["Upper/lower blepharoplasty", "Brow repositioning", "Under-eye fat repositioning"],
+    keyConsiderations: [
+      "Vision impact from upper eyelid skin is assessed where relevant",
+      "A conservative, natural-looking result is generally preferred",
+    ],
   },
   {
     id: "nose",
     name: "Nose",
-    shortDescription: "Anchors the centre of the face.",
-    extendedDescription:
-      "Size, profile and tip shape are assessed in proportion to the forehead and chin rather than in isolation, alongside how the nose affects breathing.",
+    description:
+      "The nose anchors the centre of the face. Its size, profile and tip shape are assessed in proportion to the forehead and chin, alongside how it affects breathing.",
+    commonProcedures: ["Rhinoplasty", "Revision rhinoplasty", "Non-surgical contouring"],
+    keyConsiderations: [
+      "Cartilage and skin thickness affect what changes are realistic",
+      "Functional (breathing) concerns are evaluated alongside appearance",
+    ],
   },
   {
     id: "cheeks",
     name: "Cheeks",
-    shortDescription: "Shape the mid-face and how light falls across it.",
-    extendedDescription:
-      "Volume loss or asymmetry in the cheeks changes the face's contour over time. Fat grafting and similar approaches aim to restore proportion rather than add exaggerated volume.",
+    description:
+      "Cheek volume shapes the mid-face and how light and shadow fall across it. Loss or asymmetry of volume changes contour over time.",
+    commonProcedures: ["Fat grafting", "Dermal filler", "Cheek implants"],
+    keyConsiderations: [
+      "The goal is restoring proportion, not adding exaggerated volume",
+      "Assessed in relation to the rest of the face, not in isolation",
+    ],
   },
   {
     id: "jawline",
     name: "Jawline",
-    shortDescription: "Defines the structure of the lower face.",
-    extendedDescription:
-      "Width, angle and definition are assessed against the rest of the face. Options range from contouring to skin tightening, depending on whether the change is from bone, fat or skin laxity.",
+    description:
+      "The jawline defines the structure of the lower face. Its width, angle and definition are assessed against overall facial proportion.",
+    commonProcedures: ["Jawline contouring", "Skin tightening", "Chin and jaw implants"],
+    keyConsiderations: [
+      "Approach depends on whether change is from bone, fat or skin laxity",
+      "Often considered alongside the neck for a consistent result",
+    ],
   },
   {
-    id: "chin",
-    name: "Chin",
-    shortDescription: "Balances the facial profile.",
-    extendedDescription:
-      "A chin that is under- or over-projected relative to the nose and jaw can be adjusted to restore proportion — the goal is balance with the rest of the face, not a fixed shape.",
-  },
-  {
-    id: "neck",
-    name: "Neck",
-    shortDescription: "Often assessed alongside the face, not separately.",
-    extendedDescription:
-      "Skin laxity and muscle banding in the neck are frequently addressed together with facial procedures, since the two areas visually relate to one another.",
+    id: "lips",
+    name: "Lips / Perioral",
+    description:
+      "The lips and surrounding perioral area affect both facial expression and lower-face proportion, including the balance between upper and lower lip.",
+    commonProcedures: ["Lip filler", "Perioral resurfacing", "Lip lift"],
+    keyConsiderations: [
+      "Proportion with the rest of the face matters more than lip size alone",
+      "Skin quality around the mouth is assessed alongside lip volume",
+    ],
   },
 ];
