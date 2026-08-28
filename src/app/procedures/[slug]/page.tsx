@@ -4,10 +4,9 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
-import { InteractiveDiagram } from "@/components/interactive/InteractiveDiagram";
-import { FaceExplorer } from "@/components/interactive/FaceExplorer";
+import { AreaExplorer } from "@/components/interactive/AreaExplorer";
 import { concerns } from "@/config/concerns";
-import { faceRegions } from "@/config/face-explorer";
+import { areaExplorers } from "@/config/area-explorer";
 import { consultationHref } from "@/config/navigation";
 
 interface ProcedurePageProps {
@@ -36,64 +35,43 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
 
   if (!concern) notFound();
 
+  const explorer = areaExplorers[concern.slug];
+
   return (
     <main id="main-content" className="flex-1">
       <Section spacing="xl">
         <Container width="wide">
           <PageHeader eyebrow="Procedures" title={concern.label} description={concern.descriptor} />
 
-          {concern.slug === "face" ? (
-            <div className="mt-14 max-w-2xl md:mt-20">
-              <span className="text-eyebrow">Overview</span>
-              <p className="text-body-lg mt-4 text-(--color-ink-muted)">{concern.overview}</p>
+          <div className="mt-14 max-w-2xl md:mt-20">
+            <span className="text-eyebrow">Overview</span>
+            <p className="text-body-lg mt-4 text-(--color-ink-muted)">{concern.overview}</p>
 
-              <p className="text-body mt-10 text-(--color-ink-faint)">
-                This is general information, not medical advice specific to any
-                individual.{" "}
-                <TextLink href={consultationHref}>Book a consultation</TextLink> to
-                discuss suitability and options directly with Dr. Dinesh Kumar.
-              </p>
-            </div>
-          ) : (
-            <div className="mt-14 grid grid-cols-1 gap-14 md:mt-20 md:grid-cols-12 md:items-start md:gap-8">
-              <div className="md:col-span-6">
-                <span className="text-eyebrow">Overview</span>
-                <p className="text-body-lg mt-4 text-(--color-ink-muted)">{concern.overview}</p>
-
-                <p className="text-body mt-10 text-(--color-ink-faint)">
-                  This is general information, not medical advice specific to any
-                  individual.{" "}
-                  <TextLink href={consultationHref}>Book a consultation</TextLink> to
-                  discuss suitability and options directly with Dr. Dinesh Kumar.
-                </p>
-              </div>
-
-              <div className="md:col-span-5 md:col-start-8">
-                <span className="text-eyebrow">What a consultation considers</span>
-                <div className="mt-4">
-                  <InteractiveDiagram considerations={concern.considerations} />
-                </div>
-              </div>
-            </div>
-          )}
+            <p className="text-body mt-10 text-(--color-ink-faint)">
+              This is general information, not medical advice specific to any
+              individual.{" "}
+              <TextLink href={consultationHref}>Book a consultation</TextLink> to
+              discuss suitability and options directly with Dr. Dinesh Kumar.
+            </p>
+          </div>
         </Container>
       </Section>
 
-      {concern.slug === "face" ? (
+      {explorer ? (
         <Section spacing="xl" background="bg-secondary">
           <Container width="wide">
             <div className="mb-14 max-w-2xl md:mb-20">
               <span className="text-eyebrow">Explore</span>
               <h2 className="text-h2 mt-4 text-(--color-ink)">
-                An interactive guide to facial anatomy.
+                An interactive guide to {concern.label.toLowerCase()} anatomy.
               </h2>
               <p className="text-body-lg mt-5 text-(--color-ink-muted)">
-                Every consultation begins with understanding how individual regions of the
-                face relate to one another. Explore the diagram below to see what is
-                typically considered in each area.
+                Every consultation begins with understanding how individual regions relate
+                to one another. Explore the photograph below to see what is typically
+                considered in each area.
               </p>
             </div>
-            <FaceExplorer regions={faceRegions} />
+            <AreaExplorer config={explorer} />
           </Container>
         </Section>
       ) : null}

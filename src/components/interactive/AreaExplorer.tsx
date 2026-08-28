@@ -3,52 +3,30 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils/cn";
-import type { FaceRegion } from "@/config/face-explorer";
+import type { AreaExplorerConfig } from "@/config/area-explorer";
 
-interface FaceExplorerProps {
-  regions: FaceRegion[];
+interface AreaExplorerProps {
+  config: AreaExplorerConfig;
 }
 
 /**
- * Hotspot geometry expressed in the source photograph's native pixel space
- * (2400x1600 — public/images/procedures/face-explorer.jpg). The overlay SVG
- * uses the same viewBox with `preserveAspectRatio="xMidYMid slice"`, which
- * reproduces the <Image>'s `object-fit: cover` cropping exactly, so these
- * coordinates stay aligned with the photo at any container size.
+ * Photographic hotspot explorer: a real photo with an SVG interaction
+ * overlay (ellipse hotspots, not a hand-drawn illustration), an "Areas we
+ * explore" nav list, and a floating info panel — all driven by one
+ * activeId state. Reused across every procedure page's explorer; the
+ * source photo and its regions come from src/config/area-explorer.ts.
  *
- * Photo: Fleur Kaan via Unsplash (Unsplash License — free to use).
+ * The overlay SVG's viewBox matches the photo's native pixel dimensions
+ * with preserveAspectRatio="xMidYMid slice", which reproduces next/image's
+ * object-fit: cover cropping exactly, so hotspot ellipses stay aligned
+ * with the photo at any container size.
  */
-const IMAGE_W = 2400;
-const IMAGE_H = 1600;
-
-const HOTSPOTS: Record<string, string> = {
-  forehead: "M912,220 C1050,175 1350,175 1488,220 L1488,500 L912,500 Z",
-  eyes: "M900,460 C1050,420 1350,420 1500,460 L1500,660 C1350,700 1050,700 900,660 Z",
-  nose: "M1120,470 C1170,470 1230,470 1280,470 L1330,800 C1240,840 1160,840 1070,800 Z",
-  cheeks: "M648,560 C760,540 900,560 990,620 L950,980 C820,980 700,920 630,820 Z M1752,560 C1640,540 1500,560 1410,620 L1450,980 C1580,980 1700,920 1770,820 Z",
-  jawline: "M760,850 C900,1020 1100,1150 1200,1180 C1300,1150 1500,1020 1640,850 L1560,780 C1460,900 1330,980 1200,1000 C1070,980 940,900 840,780 Z",
-  lips: "M1020,820 C1120,780 1280,780 1380,820 C1360,900 1280,950 1200,950 C1120,950 1040,900 1020,820 Z",
-};
-
-/** Anchor point (native px) for each region's rest-state marker dot. */
-const ANCHORS: Record<string, { x: number; y: number }> = {
-  forehead: { x: 1200, y: 320 },
-  eyes: { x: 1200, y: 540 },
-  nose: { x: 1200, y: 640 },
-  cheeks: { x: 800, y: 720 },
-  jawline: { x: 1200, y: 1080 },
-  lips: { x: 1200, y: 870 },
-};
-
-/** Draw order: broad regions first, fine/central features last so they win overlapping hit-tests. */
-const HOTSPOT_ORDER = ["forehead", "cheeks", "jawline", "nose", "eyes", "lips"];
-
-export function FaceExplorer({ regions }: FaceExplorerProps): React.ReactElement {
+export function AreaExplorer({ config }: AreaExplorerProps): React.ReactElement {
   const [hoverId, setHoverId] = useState<string | null>(null);
   const [pinnedId, setPinnedId] = useState<string | null>(null);
   const activeId = hoverId ?? pinnedId;
-  const active = regions.find((region) => region.id === activeId) ?? null;
-  const byId = new Map(regions.map((region) => [region.id, region]));
+  const active = config.regions.find((region) => region.id === activeId) ?? null;
+  const byId = new Map(config.regions.map((region) => [region.id, region]));
 
   const enter = (id: string): void => setHoverId(id);
   const leave = (): void => setHoverId(null);
@@ -62,6 +40,9 @@ export function FaceExplorer({ regions }: FaceExplorerProps): React.ReactElement
       toggle(id);
     }
   };
+
+  const { image, regions } = config;
+  const activeRegion = activeId ? byId.get(activeId) : undefined;
 
   return (
     <div className="flex flex-col gap-10 lg:grid lg:grid-cols-12 lg:items-start lg:gap-8">
@@ -119,60 +100,76 @@ export function FaceExplorer({ regions }: FaceExplorerProps): React.ReactElement
       <div className="relative order-1 lg:order-none lg:col-span-6">
         <div className="relative aspect-[4/5] select-none overflow-hidden border border-(--color-border)">
           <Image
-            src="/images/procedures/face-explorer.jpg"
-            alt="Close-up portrait of a face, used to illustrate areas commonly discussed during a facial consultation"
+            src={image.src}
+            alt={image.alt}
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
-            style={{ objectPosition: "50% 20%" }}
+            style={{ objectPosition: image.objectPosition }}
             priority={false}
           />
 
           <svg
-            viewBox={`0 0 ${IMAGE_W} ${IMAGE_H}`}
+            viewBox={`0 0 ${image.nativeWidth} ${image.nativeHeight}`}
             preserveAspectRatio="xMidYMid slice"
             className="absolute inset-0 h-full w-full touch-manipulation"
             role="img"
-            aria-label="Interactive diagram of facial regions. Hover or tap a region to learn more."
+            aria-label="Interactive diagram of the pictured area. Hover or tap a region to learn more."
           >
             <defs>
-              <mask id="face-explorer-dim">
-                <rect x="0" y="0" width={IMAGE_W} height={IMAGE_H} fill="white" />
-                {activeId ? <path d={HOTSPOTS[activeId]} fill="black" /> : null}
+              <mask id={`explorer-dim-${config.slug}`}>
+                <rect x="0" y="0" width={image.nativeWidth} height={image.nativeHeight} fill="white" />
+                {activeRegion
+                  ? activeRegion.hotspots.map((hotspot) => (
+                      <ellipse
+                        key={`${hotspot.cx}-${hotspot.cy}`}
+                        cx={hotspot.cx}
+                        cy={hotspot.cy}
+                        rx={hotspot.rx}
+                        ry={hotspot.ry}
+                        fill="black"
+                      />
+                    ))
+                  : null}
               </mask>
             </defs>
 
             <rect
               x="0"
               y="0"
-              width={IMAGE_W}
-              height={IMAGE_H}
+              width={image.nativeWidth}
+              height={image.nativeHeight}
               fill="var(--color-ink)"
               opacity={activeId ? 0.28 : 0}
-              mask="url(#face-explorer-dim)"
+              mask={`url(#explorer-dim-${config.slug})`}
               className="pointer-events-none transition-opacity duration-(--duration-base) ease-(--ease-editorial)"
             />
 
-            {activeId ? (
-              <path
-                d={HOTSPOTS[activeId]}
-                fill="var(--color-accent)"
-                fillOpacity="0.08"
-                stroke="var(--color-accent)"
-                strokeWidth="2.5"
-                strokeDasharray="7 7"
-                className="pointer-events-none transition-all duration-(--duration-base) ease-(--ease-editorial)"
-              />
-            ) : null}
+            {activeRegion
+              ? activeRegion.hotspots.map((hotspot) => (
+                  <ellipse
+                    key={`${hotspot.cx}-${hotspot.cy}-active`}
+                    cx={hotspot.cx}
+                    cy={hotspot.cy}
+                    rx={hotspot.rx}
+                    ry={hotspot.ry}
+                    fill="var(--color-accent)"
+                    fillOpacity="0.08"
+                    stroke="var(--color-accent)"
+                    strokeWidth="2.5"
+                    strokeDasharray="7 7"
+                    className="pointer-events-none transition-all duration-(--duration-base) ease-(--ease-editorial)"
+                  />
+                ))
+              : null}
 
             {regions.map((region) => {
               const isActive = activeId === region.id;
-              const anchor = ANCHORS[region.id];
-              return (
+              return region.hotspots.map((hotspot) => (
                 <circle
-                  key={`${region.id}-anchor`}
-                  cx={anchor.x}
-                  cy={anchor.y}
+                  key={`${region.id}-${hotspot.cx}-${hotspot.cy}-anchor`}
+                  cx={hotspot.cx}
+                  cy={hotspot.cy}
                   r={isActive ? 9 : 5}
                   fill={isActive ? "var(--color-accent)" : "var(--color-bg)"}
                   stroke={isActive ? "var(--color-accent)" : "var(--color-ink)"}
@@ -180,17 +177,18 @@ export function FaceExplorer({ regions }: FaceExplorerProps): React.ReactElement
                   opacity={isActive ? 1 : 0.65}
                   className="pointer-events-none transition-all duration-(--duration-base) ease-(--ease-editorial)"
                 />
-              );
+              ));
             })}
 
-            {HOTSPOT_ORDER.map((id) => {
-              const region = byId.get(id);
-              if (!region) return null;
-              const isActive = activeId === id;
-              return (
-                <path
-                  key={`${id}-hit`}
-                  d={HOTSPOTS[id]}
+            {regions.map((region) => {
+              const isActive = activeId === region.id;
+              return region.hotspots.map((hotspot, hotspotIndex) => (
+                <ellipse
+                  key={`${region.id}-${hotspotIndex}-hit`}
+                  cx={hotspot.cx}
+                  cy={hotspot.cy}
+                  rx={hotspot.rx}
+                  ry={hotspot.ry}
                   fill="transparent"
                   role="button"
                   tabIndex={0}
@@ -199,14 +197,14 @@ export function FaceExplorer({ regions }: FaceExplorerProps): React.ReactElement
                   data-cursor={isActive ? "VIEW AREA" : "EXPLORE"}
                   style={{ pointerEvents: "all", WebkitTapHighlightColor: "transparent" }}
                   className="cursor-pointer touch-manipulation outline-none"
-                  onMouseEnter={() => enter(id)}
+                  onMouseEnter={() => enter(region.id)}
                   onMouseLeave={leave}
-                  onFocus={() => focus(id)}
+                  onFocus={() => focus(region.id)}
                   onBlur={blur}
-                  onClick={() => toggle(id)}
-                  onKeyDown={(event) => onKeyDown(event, id)}
+                  onClick={() => toggle(region.id)}
+                  onKeyDown={(event) => onKeyDown(event, region.id)}
                 />
-              );
+              ));
             })}
           </svg>
         </div>
