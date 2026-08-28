@@ -102,7 +102,7 @@ export function MeetDrDinesh(): React.ReactElement {
               <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-(--color-bg-secondary)">
                 <span
                   aria-hidden="true"
-                  className="absolute -left-4 -top-10 select-none font-(--font-display) text-[15rem] leading-none text-(--color-ink)/[0.06]"
+                  className="absolute -left-4 -top-10 select-none font-(family-name:--font-display) text-[15rem] leading-none text-(--color-ink)/[0.06]"
                 >
                   D
                 </span>
@@ -121,7 +121,7 @@ export function MeetDrDinesh(): React.ReactElement {
 
           <div className="lg:col-span-5">
             <h2
-              className="font-(--font-display) font-normal text-(--color-ink)"
+              className="font-(family-name:--font-display) font-normal text-(--color-ink)"
               style={{ fontSize: "clamp(2.25rem, 1.5rem + 2.8vw, 4rem)", lineHeight: 0.98, letterSpacing: "-0.01em" }}
             >
               Dinesh
@@ -179,7 +179,7 @@ export function MeetDrDinesh(): React.ReactElement {
                   </span>
                   <div>
                     <p className="text-eyebrow text-(--color-ink-muted)">{label}</p>
-                    <p className="font-(--font-display) text-lg text-(--color-ink)">{value}</p>
+                    <p className="font-(family-name:--font-display) text-lg text-(--color-ink)">{value}</p>
                     <p className="text-xs text-(--color-ink-faint)">{sub}</p>
                   </div>
                 </div>
@@ -187,13 +187,13 @@ export function MeetDrDinesh(): React.ReactElement {
             </div>
 
             <div className="mt-5 border-t border-(--color-border) pt-4">
-              <span aria-hidden="true" className="font-(--font-display) text-3xl italic text-(--color-ink-faint)">
+              <span aria-hidden="true" className="font-(family-name:--font-display) text-3xl italic text-(--color-ink-faint)">
                 &ldquo;
               </span>
-              <p className="font-(--font-display) text-base italic leading-snug text-(--color-ink)">
+              <p className="font-(family-name:--font-display) text-base italic leading-snug text-(--color-ink)">
                 Precision is not just in the procedure &mdash; it&rsquo;s in the understanding.
               </p>
-              <p className="font-(--font-display) mt-2 text-sm italic text-(--color-ink-muted)">
+              <p className="font-(family-name:--font-display) mt-2 text-sm italic text-(--color-ink-muted)">
                 {doctorIntro.signature}
               </p>
             </div>

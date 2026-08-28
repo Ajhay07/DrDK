@@ -155,7 +155,7 @@ export function Hero(): React.ReactElement {
           </div>
 
           <div className="absolute bottom-4 right-4 max-w-[13rem] rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) px-5 py-4 shadow-[0_20px_40px_rgba(23,27,19,0.15)] sm:bottom-6 sm:right-6">
-            <p className="font-(--font-display) text-base italic text-(--color-ink)">
+            <p className="font-(family-name:--font-display) text-base italic text-(--color-ink)">
               Dr. Dinesh Kumar
             </p>
             <p className="text-eyebrow mt-1 text-(--color-ink-muted)">Plastic Surgeon</p>

@@ -35,7 +35,7 @@ export function ExploreConcerns(): React.ReactElement {
                 </div>
 
                 <div>
-                  <span className="font-(--font-display) text-3xl text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
+                  <span className="font-(family-name:--font-display) text-3xl text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
                     {concern.label}
                   </span>
                   <p className="text-body mt-2 text-(--color-ink-muted)">{concern.descriptor}</p>

@@ -66,7 +66,7 @@ export function JourneyExplorer({ stages }: JourneyExplorerProps): React.ReactEl
               onClick={() => setActiveIndex(index)}
               onKeyDown={(event) => handleKeyDown(event, index)}
               className={cn(
-                "font-(--font-display) transition-all duration-(--duration-base) ease-(--ease-editorial)",
+                "font-(family-name:--font-display) transition-all duration-(--duration-base) ease-(--ease-editorial)",
                 isActive
                   ? "text-6xl text-(--color-ink) lg:text-7xl"
                   : "text-2xl text-(--color-ink-faint) hover:text-(--color-ink-muted)",
