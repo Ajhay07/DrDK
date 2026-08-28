@@ -13,11 +13,11 @@ export default function Home(): React.ReactElement {
     <main id="main-content" className="flex-1">
       <Hero />
       <ConsultationBand />
+      <MeetDrDinesh />
       <ExploreConcerns />
       <Philosophy />
       <CredentialsTrust />
       <PatientJourney />
-      <MeetDrDinesh />
       <PatientEducation />
       <FinalConsultationCTA />
     </main>

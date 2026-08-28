@@ -10,7 +10,7 @@ export function Philosophy(): React.ReactElement {
   return (
     <section className="bg-(--color-surface)">
       <Container width="wide" className="py-24 md:py-40">
-        <Eyebrow>02 &mdash; Philosophy</Eyebrow>
+        <Eyebrow>04 &mdash; Philosophy</Eyebrow>
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:mt-20 md:grid-cols-12 md:items-end">
           <h2 className="text-hero text-(--color-ink) md:col-span-7">Proportion.</h2>
