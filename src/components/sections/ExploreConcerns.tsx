@@ -12,7 +12,7 @@ import { concerns } from "@/config/concerns";
 export function ExploreConcerns(): React.ReactElement {
   return (
     <section className="bg-(--color-bg)">
-      <Container width="wide" className="py-20 md:py-32">
+      <Container width="wide" className="py-16 md:py-24">
         <div className="flex items-baseline justify-between border-b border-(--color-border) pb-6">
           <span className="text-eyebrow">03 &mdash; Explore</span>
           <span className="text-eyebrow hidden sm:inline">Where would you like to begin?</span>

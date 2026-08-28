@@ -93,7 +93,7 @@ const stats: { icon: (p: PillarIconProps) => React.ReactElement; label: string; 
 export function MeetDrDinesh(): React.ReactElement {
   return (
     <section className="bg-(--color-surface)">
-      <Container width="wide" className="py-20 md:py-32">
+      <Container width="wide" className="py-16 md:py-24">
         <span className="text-eyebrow">02 &mdash; {doctorIntro.eyebrow}</span>
 
         <div className="mt-14 grid grid-cols-1 gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-10">

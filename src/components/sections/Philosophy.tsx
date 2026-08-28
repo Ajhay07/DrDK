@@ -9,7 +9,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 export function Philosophy(): React.ReactElement {
   return (
     <section className="bg-(--color-surface)">
-      <Container width="wide" className="py-24 md:py-40">
+      <Container width="wide" className="py-16 md:py-24">
         <Eyebrow>04 &mdash; Philosophy</Eyebrow>
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:mt-20 md:grid-cols-12 md:items-end">

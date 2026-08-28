@@ -303,6 +303,23 @@ body {
   cursor: none;
 }
 
+.motion-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+.motion-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .cursor-dot {
   display: none;
 }
