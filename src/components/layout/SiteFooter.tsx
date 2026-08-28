@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Magnetic } from "@/components/interactive/Magnetic";
 import { concerns } from "@/config/concerns";
-import { contactInfo } from "@/config/contact";
+import { contactInfo, socialLinks } from "@/config/contact";
 import { educationEntries } from "@/config/education";
 import { consultationHref, proceduresHref } from "@/config/navigation";
 
@@ -72,8 +72,15 @@ export function SiteFooter(): React.ReactElement {
           </div>
 
           <nav aria-label="Footer" className="md:col-start-6 md:col-end-13">
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-              <FooterGroup title="About" links={[{ label: "About Dr. Dinesh", href: "/about" }]} />
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+              <FooterGroup
+                title="About"
+                links={[
+                  { label: "About Dr. Dinesh", href: "/about" },
+                  { label: "Before & After", href: "/gallery" },
+                  { label: "FAQ", href: "/faq" },
+                ]}
+              />
               <FooterGroup
                 title="Procedures"
                 links={[
@@ -94,6 +101,31 @@ export function SiteFooter(): React.ReactElement {
                   })),
                 ]}
               />
+              <div>
+                <p className="text-eyebrow">Follow</p>
+                <ul className="mt-4 flex flex-col gap-3">
+                  <li>
+                    <a
+                      href={socialLinks.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-small text-(--color-ink-muted) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)"
+                    >
+                      Instagram
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={socialLinks.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-small text-(--color-ink-muted) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent)"
+                    >
+                      LinkedIn
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </nav>
         </div>

@@ -8,7 +8,9 @@ export interface NavItem {
 export const primaryNavigation: NavItem[] = [
   { label: "About", href: "/about" },
   { label: "Procedures", href: "/procedures" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Patient Guide", href: "/education" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 export const consultationHref = "/consultation";

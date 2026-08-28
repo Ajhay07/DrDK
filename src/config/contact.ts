@@ -14,3 +14,12 @@ export const contactInfo = {
   addressLines: ["Vijaya Hospitals", "Vadapalani, Chennai 600026", "Tamil Nadu, India"],
   hours: "Mon – Sat, 10:00 AM – 6:00 PM",
 };
+
+/**
+ * Real, publicly listed social profiles — safe to link directly (unlike
+ * the placeholder contact details above).
+ */
+export const socialLinks = {
+  instagram: "https://www.instagram.com/dr_dinesh_aestheticsurgeon/",
+  linkedin: "https://www.linkedin.com/in/dinesh-kumar-9a088222a/",
+};

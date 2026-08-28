@@ -147,7 +147,7 @@ export function SiteHeader(): React.ReactElement {
             </button>
           </div>
 
-          <nav aria-label="Primary" className="flex flex-1 flex-col justify-center px-(--gutter)">
+          <nav aria-label="Primary" className="flex flex-1 flex-col justify-center overflow-y-auto px-(--gutter) py-8">
             <ul className="flex flex-col">
               {primaryNavigation.map((item, index) => (
                 <li
@@ -158,7 +158,7 @@ export function SiteHeader(): React.ReactElement {
                   <Link
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-giant block py-3 text-(--color-ink)"
+                    className="text-h1 block py-3 text-(--color-ink)"
                   >
                     {item.label}
                   </Link>

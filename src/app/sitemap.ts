@@ -6,12 +6,18 @@ import { siteConfig } from "@/config/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  const staticRoutes = ["", "/about", "/procedures", "/education", "/consultation"].map(
-    (path) => ({
-      url: `${siteConfig.url}${path}`,
-      lastModified,
-    }),
-  );
+  const staticRoutes = [
+    "",
+    "/about",
+    "/procedures",
+    "/education",
+    "/consultation",
+    "/gallery",
+    "/faq",
+  ].map((path) => ({
+    url: `${siteConfig.url}${path}`,
+    lastModified,
+  }));
 
   const procedureRoutes = concerns.map((concern) => ({
     url: `${siteConfig.url}/procedures/${concern.slug}`,
