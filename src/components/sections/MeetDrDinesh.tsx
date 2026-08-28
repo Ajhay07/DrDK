@@ -96,7 +96,7 @@ export function MeetDrDinesh(): React.ReactElement {
       <Container width="wide" className="py-16 md:py-24 lg:py-4">
         <span className="text-eyebrow">02 &mdash; {doctorIntro.eyebrow}</span>
 
-        <div className="mt-8 grid grid-cols-1 gap-10 lg:mt-3 lg:grid-cols-12 lg:gap-8">
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:mt-8 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <div className="relative aspect-[4/5] w-full max-w-sm lg:aspect-auto lg:h-full lg:max-w-none">
               <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-(--color-bg-secondary)">
@@ -107,7 +107,7 @@ export function MeetDrDinesh(): React.ReactElement {
                   D
                 </span>
               </div>
-              <div className="absolute inset-x-0 -top-8 bottom-0">
+              <div className="absolute inset-x-0 top-0 bottom-0 lg:-top-4">
                 <Image
                   src="/images/doctor/dr-dinesh-profile-cutout.png"
                   alt="Dr. Dinesh Kumar in consultation attire"
