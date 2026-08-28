@@ -33,14 +33,14 @@ export function Testimonials(): React.ReactElement {
 
   return (
     <section className="bg-(--color-surface) overflow-hidden">
-      <Container width="wide" className="py-16 md:py-24">
+      <Container width="wide" className="pt-16 pb-8 md:pt-24 md:pb-8">
         <span className="text-eyebrow">05 &mdash; Patient Voices</span>
         <h2 className="text-display mt-6 max-w-2xl text-(--color-ink)">
           What patients say.
         </h2>
       </Container>
 
-      <div className="mt-12 py-4 md:mt-16">
+      <div className="py-4 pb-16 md:pb-24">
         <div className="motion-marquee flex w-max items-center gap-6 px-(--gutter)">
           {track.map((testimonial, index) => (
             <div
