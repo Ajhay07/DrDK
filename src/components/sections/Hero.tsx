@@ -144,7 +144,7 @@ export function Hero(): React.ReactElement {
             />
             <div className="absolute inset-x-[8%] top-[12%] bottom-0">
               <Image
-                src="/images/doctor/dr4-cutout.png"
+                src="/images/doctor/dr-dinesh-cutout.png"
                 alt="Dr. Dinesh Kumar, plastic and aesthetic surgeon"
                 fill
                 priority
