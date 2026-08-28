@@ -67,13 +67,13 @@ export function SiteHeader(): React.ReactElement {
   return (
     <header className="sticky top-0 z-50 border-b border-(--color-border) bg-(--color-bg)">
       <div className="mx-auto grid h-(--nav-height) w-full max-w-(--content-max-width) grid-cols-2 items-center gap-(--grid-gap) px-(--page-gutter) md:grid-cols-12">
-        <Link href="/" className="md:col-span-5">
+        <Link href="/" className="md:col-span-3">
           <span className="text-nav block text-(--color-ink)">{siteName.toUpperCase()}</span>
           <span className="text-eyebrow mt-1 block">Plastic &amp; Aesthetic Surgery</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden md:col-span-4 md:block">
-          <ul className="flex items-center gap-8">
+        <nav aria-label="Primary" className="hidden md:col-span-6 md:block">
+          <ul className="flex items-center gap-6 whitespace-nowrap">
             {primaryNavigation.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
