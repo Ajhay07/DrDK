@@ -42,8 +42,8 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
         <Container width="wide">
           <PageHeader eyebrow="Procedures" title={concern.label} description={concern.descriptor} />
 
-          <div className="mt-14 grid grid-cols-1 gap-14 md:mt-20 md:grid-cols-12 md:items-start md:gap-8">
-            <div className="md:col-span-6">
+          {concern.slug === "face" ? (
+            <div className="mt-14 max-w-2xl md:mt-20">
               <span className="text-eyebrow">Overview</span>
               <p className="text-body-lg mt-4 text-(--color-ink-muted)">{concern.overview}</p>
 
@@ -54,14 +54,28 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
                 discuss suitability and options directly with Dr. Dinesh Kumar.
               </p>
             </div>
+          ) : (
+            <div className="mt-14 grid grid-cols-1 gap-14 md:mt-20 md:grid-cols-12 md:items-start md:gap-8">
+              <div className="md:col-span-6">
+                <span className="text-eyebrow">Overview</span>
+                <p className="text-body-lg mt-4 text-(--color-ink-muted)">{concern.overview}</p>
 
-            <div className="md:col-span-5 md:col-start-8">
-              <span className="text-eyebrow">What a consultation considers</span>
-              <div className="mt-4">
-                <InteractiveDiagram considerations={concern.considerations} />
+                <p className="text-body mt-10 text-(--color-ink-faint)">
+                  This is general information, not medical advice specific to any
+                  individual.{" "}
+                  <TextLink href={consultationHref}>Book a consultation</TextLink> to
+                  discuss suitability and options directly with Dr. Dinesh Kumar.
+                </p>
+              </div>
+
+              <div className="md:col-span-5 md:col-start-8">
+                <span className="text-eyebrow">What a consultation considers</span>
+                <div className="mt-4">
+                  <InteractiveDiagram considerations={concern.considerations} />
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </Container>
       </Section>
 
