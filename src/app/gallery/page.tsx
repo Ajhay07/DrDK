@@ -14,7 +14,34 @@ export const metadata: Metadata = {
   alternates: { canonical: "/gallery" },
 };
 
-const placeholderCases = ["Case 01", "Case 02", "Case 03", "Case 04"];
+/**
+ * Demo/placeholder pairings only — these are stock photos of different
+ * people, standing in for layout purposes until real, consented patient
+ * cases are added. Deliberately not two photos of the same person, so
+ * this can never be mistaken for a real before/after result.
+ */
+const placeholderCases = [
+  {
+    label: "Sample 01",
+    beforeSrc: "/images/procedures/face-explorer.jpg",
+    afterSrc: "/images/procedures/men-explorer.jpg",
+  },
+  {
+    label: "Sample 02",
+    beforeSrc: "/images/procedures/eyes-explorer.jpg",
+    afterSrc: "/images/procedures/face-explorer.jpg",
+  },
+  {
+    label: "Sample 03",
+    beforeSrc: "/images/procedures/body-explorer.jpg",
+    afterSrc: "/images/procedures/breast-explorer.jpg",
+  },
+  {
+    label: "Sample 04",
+    beforeSrc: "/images/procedures/men-explorer.jpg",
+    afterSrc: "/images/procedures/body-explorer.jpg",
+  },
+];
 
 export default function GalleryPage(): React.ReactElement {
   return (
@@ -24,12 +51,20 @@ export default function GalleryPage(): React.ReactElement {
           <PageHeader
             eyebrow="Before &amp; After"
             title="Results, shared with consent."
-            description="Every case shown here is included only with the patient's informed consent. Drag the slider to compare — this gallery is being prepared and will be populated with real cases."
+            description="This gallery will be populated with real patient cases, shown only with informed consent. The samples below are stock photography, standing in to preview the comparison layout — drag the slider to compare."
           />
 
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {placeholderCases.map((label) => (
-              <BeforeAfterSlider key={label} label={label} aspect="portrait" />
+            {placeholderCases.map((item) => (
+              <BeforeAfterSlider
+                key={item.label}
+                label={item.label}
+                aspect="portrait"
+                beforeSrc={item.beforeSrc}
+                afterSrc={item.afterSrc}
+                beforeAlt={`Placeholder photo standing in for a "before" case, sample layout only`}
+                afterAlt={`Placeholder photo standing in for an "after" case, sample layout only`}
+              />
             ))}
           </div>
 
