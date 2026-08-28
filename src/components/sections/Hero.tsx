@@ -136,10 +136,10 @@ export function Hero(): React.ReactElement {
             style={{ borderRadius: "50% 50% 0 0 / 20% 20% 0 0" }}
           >
             <div
-              className="absolute inset-0 opacity-40"
+              className="absolute inset-0 opacity-70"
               style={{
                 background:
-                  "repeating-linear-gradient(115deg, transparent 0 60px, rgba(255,255,255,0.35) 60px 62px, transparent 62px 140px)",
+                  "repeating-linear-gradient(115deg, transparent 0 44px, rgba(255,255,255,0.55) 44px 47px, transparent 47px 104px)",
               }}
             />
             <div className="absolute inset-x-[8%] top-[12%] bottom-0">
