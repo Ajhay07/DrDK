@@ -48,23 +48,12 @@
   --duration-slow: 600ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #171a15;
-    --color-bg-secondary: #1e2119;
-    --color-surface: #232620;
-    --color-ink: #f2efe6;
-    --color-ink-muted: #a8ac9c;
-    --color-ink-faint: #6e7266;
-    --color-accent: #c6a47c;
-    --color-accent-strong: #d8bc98;
-    --color-accent-ink: #171a15;
-    --color-clay: #8a6749;
-    --color-border: #2e3126;
-    --color-border-strong: #463f30;
-    --color-danger: #d98f7f;
-  }
-}
+/*
+ * Deliberately no `prefers-color-scheme: dark` override. This is a
+ * warm, light, editorial brand identity by design — it should look the
+ * same for every visitor regardless of their OS/browser dark-mode
+ * setting, not flip to an unrelated dark palette.
+ */
 
 @theme inline {
   --color-bg: var(--color-bg);
