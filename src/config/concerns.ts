@@ -33,10 +33,10 @@ export const concerns: Concern[] = [
       "Realistic expectations for how subtle or noticeable a change should be",
     ],
     hotspots: [
-      { x: 50, y: 22 },
-      { x: 68, y: 45 },
-      { x: 50, y: 58 },
-      { x: 50, y: 75 },
+      { x: 50, y: 21 },
+      { x: 63, y: 38 },
+      { x: 47, y: 58 },
+      { x: 50, y: 73 },
     ],
   },
   {
@@ -52,10 +52,10 @@ export const concerns: Concern[] = [
       "Healing timelines, which are typically longer than other facial procedures",
     ],
     hotspots: [
-      { x: 44, y: 20 },
-      { x: 34, y: 45 },
-      { x: 34, y: 70 },
-      { x: 50, y: 88 },
+      { x: 48, y: 17 },
+      { x: 30, y: 42 },
+      { x: 30, y: 58 },
+      { x: 50, y: 76 },
     ],
   },
   {
@@ -71,10 +71,10 @@ export const concerns: Concern[] = [
       "A conservative, natural-looking outcome rather than an overly altered one",
     ],
     hotspots: [
-      { x: 50, y: 30 },
-      { x: 50, y: 42 },
-      { x: 50, y: 62 },
-      { x: 85, y: 50 },
+      { x: 50, y: 44 },
+      { x: 35, y: 30 },
+      { x: 50, y: 58 },
+      { x: 89, y: 50 },
     ],
   },
   {
@@ -90,10 +90,10 @@ export const concerns: Concern[] = [
       "Long-term factors such as future changes from ageing, weight change or pregnancy",
     ],
     hotspots: [
-      { x: 33, y: 37 },
-      { x: 50, y: 50 },
-      { x: 33, y: 72 },
-      { x: 75, y: 55 },
+      { x: 35, y: 35 },
+      { x: 50, y: 53 },
+      { x: 35, y: 75 },
+      { x: 85, y: 60 },
     ],
   },
   {
@@ -109,10 +109,10 @@ export const concerns: Concern[] = [
       "Recovery time, which varies significantly by the extent of the procedure",
     ],
     hotspots: [
-      { x: 50, y: 45 },
-      { x: 35, y: 60 },
-      { x: 65, y: 60 },
-      { x: 50, y: 80 },
+      { x: 50, y: 46 },
+      { x: 35, y: 63 },
+      { x: 65, y: 63 },
+      { x: 50, y: 88 },
     ],
   },
   {
@@ -128,10 +128,10 @@ export const concerns: Concern[] = [
       "Discretion, which is often a priority for male patients considering surgery",
     ],
     hotspots: [
-      { x: 50, y: 40 },
-      { x: 70, y: 48 },
-      { x: 50, y: 60 },
-      { x: 50, y: 78 },
+      { x: 50, y: 42 },
+      { x: 66, y: 48 },
+      { x: 50, y: 65 },
+      { x: 50, y: 82 },
     ],
   },
 ];

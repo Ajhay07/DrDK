@@ -3,96 +3,114 @@ interface DiagramProps {
 }
 
 /**
- * Larger companion graphics to ConcernIcons.tsx, sized for the interactive
- * hotspot diagram on each procedure page. Same restrained single-stroke
- * line-art language — abstract, not clinical illustration.
+ * Continuous-line editorial illustrations (single flowing outline, in the
+ * style of fashion/beauty technical sketches) — replacing the earlier
+ * geometric-shape icons, which read as clip art rather than a considered
+ * graphic. Used inside InteractiveDiagram's blueprint frame.
  */
 function FaceDiagram({ className }: DiagramProps): React.ReactElement {
   return (
-    <svg viewBox="0 0 200 200" fill="none" className={className} aria-hidden="true">
-      <circle cx="100" cy="105" r="70" stroke="currentColor" strokeWidth="1" />
-      <circle cx="78" cy="90" r="4" fill="currentColor" />
-      <circle cx="122" cy="90" r="4" fill="currentColor" />
-      <path d="M96 100c0 10-6 18-6 24 0 4 4 6 10 6" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-      <path d="M78 145c8 6 36 6 44 0" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+    <svg viewBox="0 0 200 240" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M100,16 C147,16 172,58 172,104 C172,150 158,198 100,224 C42,198 28,150 28,104 C28,58 53,16 100,16 Z"
+        stroke="currentColor"
+        strokeWidth="0.75"
+      />
+      <path d="M64,92 C71,86 83,86 90,92" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" />
+      <path d="M110,92 C117,86 129,86 136,92" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" />
+      <path
+        d="M100,108 C96,120 90,132 90,140 C90,146 95,149 100,149"
+        stroke="currentColor"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+      />
+      <path d="M78,172 C88,180 112,180 122,172" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" />
     </svg>
   );
 }
 
 function NoseDiagram({ className }: DiagramProps): React.ReactElement {
   return (
-    <svg viewBox="0 0 200 200" fill="none" className={className} aria-hidden="true">
+    <svg viewBox="0 0 200 240" fill="none" className={className} aria-hidden="true">
       <path
-        d="M85 40c0 30-22 46-22 72a37 37 0 0 0 74 0"
+        d="M96,40 C90,80 62,96 60,132 C58,158 76,178 100,178 C124,178 142,158 140,132"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="0.75"
         strokeLinecap="round"
       />
+      <path d="M78,150 C84,158 92,161 100,161" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" />
     </svg>
   );
 }
 
 function EyesDiagram({ className }: DiagramProps): React.ReactElement {
   return (
-    <svg viewBox="0 0 200 200" fill="none" className={className} aria-hidden="true">
+    <svg viewBox="0 0 200 240" fill="none" className={className} aria-hidden="true">
       <path
-        d="M20 100c18-28 46-42 80-42s62 14 80 42c-18 28-46 42-80 42S38 128 20 100Z"
+        d="M18,120 C46,84 78,66 100,66 C122,66 154,84 182,120 C154,156 122,174 100,174 C78,174 46,156 18,120 Z"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="0.75"
       />
-      <circle cx="100" cy="100" r="18" stroke="currentColor" strokeWidth="1" />
-      <path d="M40 66c14-8 26-10 30-10" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+      <path
+        d="M76,120 C82,108 92,102 100,102 C108,102 118,108 124,120 C118,132 108,138 100,138 C92,138 82,132 76,120 Z"
+        stroke="currentColor"
+        strokeWidth="0.75"
+      />
+      <circle cx="100" cy="120" r="4" fill="currentColor" />
+      <path d="M40,86 C58,72 78,66 96,64" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" />
     </svg>
   );
 }
 
 function BreastDiagram({ className }: DiagramProps): React.ReactElement {
   return (
-    <svg viewBox="0 0 200 200" fill="none" className={className} aria-hidden="true">
+    <svg viewBox="0 0 200 240" fill="none" className={className} aria-hidden="true">
       <path
-        d="M30 120c0-42 26-68 70-68s70 26 70 68"
+        d="M24,150 C22,96 54,58 100,58 C146,58 178,96 176,150"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="0.75"
         strokeLinecap="round"
       />
       <path
-        d="M30 120c8 26 26 38 70 38s62-12 70-38"
+        d="M24,150 C30,182 54,200 100,200 C146,200 170,182 176,150"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="0.75"
         strokeLinecap="round"
       />
-      <path d="M100 52v106" stroke="currentColor" strokeWidth="1" strokeDasharray="2 5" />
+      <path d="M100,58 L100,200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 6" strokeLinecap="round" />
+      <circle cx="70" cy="128" r="2" fill="currentColor" />
+      <circle cx="130" cy="128" r="2" fill="currentColor" />
     </svg>
   );
 }
 
 function BodyDiagram({ className }: DiagramProps): React.ReactElement {
   return (
-    <svg viewBox="0 0 200 200" fill="none" className={className} aria-hidden="true">
-      <circle cx="100" cy="34" r="18" stroke="currentColor" strokeWidth="1" />
+    <svg viewBox="0 0 200 240" fill="none" className={className} aria-hidden="true">
+      <ellipse cx="100" cy="34" rx="20" ry="24" stroke="currentColor" strokeWidth="0.75" />
       <path
-        d="M62 165c0-38 12-68 38-68s38 30 38 68"
+        d="M64,220 C58,168 62,132 78,110 C86,100 96,96 100,96 C104,96 114,100 122,110 C138,132 142,168 136,220"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="0.75"
         strokeLinecap="round"
       />
-      <path d="M70 118h60" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+      <path d="M66,150 C82,158 118,158 134,150" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
     </svg>
   );
 }
 
 function MenDiagram({ className }: DiagramProps): React.ReactElement {
   return (
-    <svg viewBox="0 0 200 200" fill="none" className={className} aria-hidden="true">
-      <circle cx="100" cy="32" r="18" stroke="currentColor" strokeWidth="1" />
+    <svg viewBox="0 0 200 240" fill="none" className={className} aria-hidden="true">
+      <ellipse cx="100" cy="30" rx="19" ry="23" stroke="currentColor" strokeWidth="0.75" />
       <path
-        d="M52 168c0-34 16-58 48-58s48 24 48 58"
+        d="M52,220 C48,176 54,140 68,116 C78,98 92,90 100,90 C108,90 122,98 132,116 C146,140 152,176 148,220"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="0.75"
         strokeLinecap="round"
       />
-      <path d="M62 118h76" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-      <path d="M78 92h44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+      <path d="M68,116 C80,124 120,124 132,116" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+      <path d="M84,150 L84,192 M116,150 L116,192" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
     </svg>
   );
 }

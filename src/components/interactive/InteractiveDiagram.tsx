@@ -12,11 +12,11 @@ interface InteractiveDiagramProps {
 }
 
 /**
- * A line-art diagram with hoverable/tappable points: hovering (desktop) or
- * tapping (touch) a point reveals the matching consideration below the
- * diagram. Click also "pins" a point so it stays open on touch devices
- * without a hover state. Keyboard-focusable and announced via
- * aria-expanded, since these are the only source of this information.
+ * A continuous-line illustration inside a quiet "blueprint" frame (grid +
+ * corner brackets, matching the precision-framing motif used elsewhere on
+ * the site) with numbered annotation points. Hovering (desktop) or tapping
+ * (touch) a point reveals the matching fact below the diagram; clicking
+ * pins it open so touch devices don't depend on a hover state.
  */
 export function InteractiveDiagram({
   slug,
@@ -29,8 +29,20 @@ export function InteractiveDiagram({
 
   return (
     <div>
-      <div className="relative mx-auto aspect-square w-full max-w-sm">
-        <ProcedureDiagram slug={slug} className="h-full w-full text-(--color-ink-faint)" />
+      <div
+        className="relative mx-auto aspect-[5/6] w-full max-w-sm border border-(--color-border) bg-(--color-bg-secondary)"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, var(--color-border) 0 1px, transparent 1px 12.5%), repeating-linear-gradient(90deg, var(--color-border) 0 1px, transparent 1px 12.5%)",
+          backgroundSize: "100% 100%",
+        }}
+      >
+        <span className="absolute left-3 top-3 h-4 w-4 border-l border-t border-(--color-border-strong)" aria-hidden="true" />
+        <span className="absolute right-3 top-3 h-4 w-4 border-r border-t border-(--color-border-strong)" aria-hidden="true" />
+        <span className="absolute bottom-3 left-3 h-4 w-4 border-b border-l border-(--color-border-strong)" aria-hidden="true" />
+        <span className="absolute bottom-3 right-3 h-4 w-4 border-r border-b border-(--color-border-strong)" aria-hidden="true" />
+
+        <ProcedureDiagram slug={slug} className="absolute inset-0 h-full w-full text-(--color-ink)" />
 
         {hotspots.map((point, index) => {
           const isActive = activeIndex === index;
@@ -38,7 +50,7 @@ export function InteractiveDiagram({
             <button
               key={`${point.x}-${point.y}`}
               type="button"
-              aria-label={`Point ${index + 1} of ${hotspots.length}`}
+              aria-label={`Point 0${index + 1} of ${hotspots.length}`}
               aria-expanded={isActive}
               data-cursor="View"
               onMouseEnter={() => setHoverIndex(index)}
@@ -47,17 +59,26 @@ export function InteractiveDiagram({
               onBlur={() => setHoverIndex(null)}
               onClick={() => setPinnedIndex((current) => (current === index ? null : index))}
               style={{ left: `${point.x}%`, top: `${point.y}%` }}
-              className={cn(
-                "absolute flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center",
-              )}
+              className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5"
             >
               <span
                 aria-hidden="true"
                 className={cn(
-                  "block h-2.5 w-2.5 rounded-full border border-(--color-accent) transition-all duration-(--duration-fast) ease-(--ease-editorial)",
-                  isActive ? "scale-150 bg-(--color-accent)" : "bg-(--color-bg)",
+                  "block h-2 w-2 rounded-full border transition-all duration-(--duration-fast) ease-(--ease-editorial)",
+                  isActive
+                    ? "scale-150 border-(--color-accent) bg-(--color-accent)"
+                    : "border-(--color-accent) bg-(--color-bg)",
                 )}
               />
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "text-small tabular-nums transition-colors duration-(--duration-fast) ease-(--ease-editorial)",
+                  isActive ? "text-(--color-accent)" : "text-(--color-ink-faint)",
+                )}
+              >
+                0{index + 1}
+              </span>
             </button>
           );
         })}
