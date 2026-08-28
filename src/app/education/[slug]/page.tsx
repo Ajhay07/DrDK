@@ -43,10 +43,21 @@ export default async function EducationDetailPage({
         <Container>
           <PageHeader eyebrow="Patient Education" title={entry.title} description={entry.description} />
 
-          <p className="text-body mt-10 max-w-2xl text-(--color-ink-faint)">
-            The full guide on this topic is being prepared and will appear here
-            soon. <TextLink href={consultationHref}>Book a consultation</TextLink>{" "}
-            if you have questions in the meantime.
+          <div className="mt-10 max-w-2xl">
+            {entry.body.map((paragraph, index) => (
+              <p
+                key={paragraph}
+                className={`text-body-lg text-(--color-ink-muted) ${index > 0 ? "mt-6" : ""}`}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <p className="text-body mt-14 max-w-2xl text-(--color-ink-faint)">
+            This is general information, not medical advice specific to any
+            individual. <TextLink href={consultationHref}>Book a consultation</TextLink>{" "}
+            if you have questions about your own situation.
           </p>
         </Container>
       </Section>

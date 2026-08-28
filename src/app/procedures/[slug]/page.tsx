@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: ProcedurePageProps): Promise<
 
   return {
     title: concern.label,
-    description: concern.descriptor,
+    description: concern.overview,
     alternates: { canonical: `/procedures/${concern.slug}` },
   };
 }
@@ -39,11 +39,24 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
         <Container>
           <PageHeader eyebrow="Procedures" title={concern.label} description={concern.descriptor} />
 
-          <p className="text-body mt-10 max-w-2xl text-(--color-ink-faint)">
-            Detailed information on procedures within this area is being prepared
-            and will appear here soon.{" "}
+          <p className="text-body-lg mt-10 max-w-2xl text-(--color-ink-muted)">{concern.overview}</p>
+
+          <div className="mt-14 max-w-2xl">
+            <span className="text-eyebrow">What a consultation considers</span>
+            <ul className="mt-6 flex flex-col gap-4 border-t border-(--color-border) pt-6">
+              {concern.considerations.map((point) => (
+                <li key={point} className="text-body border-b border-(--color-border) pb-4 text-(--color-ink)">
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="text-body mt-14 max-w-2xl text-(--color-ink-faint)">
+            This is general information, not medical advice specific to any
+            individual.{" "}
             <TextLink href={consultationHref}>Book a consultation</TextLink> to
-            discuss suitability and options directly.
+            discuss suitability and options directly with Dr. Dinesh Kumar.
           </p>
         </Container>
       </Section>
