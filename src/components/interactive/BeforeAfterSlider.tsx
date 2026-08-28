@@ -12,6 +12,13 @@ interface BeforeAfterSliderProps {
   afterAlt?: string;
   aspect?: "portrait" | "square" | "wide";
   className?: string;
+  /**
+   * Give the "before" layer a visibly different treatment (desaturated,
+   * slightly dimmer) so the comparison reads clearly even when both sides
+   * share the same source photo — used where no real before/after pair
+   * exists yet. Omit once real, distinct case photos are supplied.
+   */
+  stylizeBeforeAsPlaceholder?: boolean;
 }
 
 const aspectClass: Record<NonNullable<BeforeAfterSliderProps["aspect"]>, string> = {
@@ -36,6 +43,7 @@ export function BeforeAfterSlider({
   afterAlt = "After",
   aspect = "portrait",
   className,
+  stylizeBeforeAsPlaceholder = false,
 }: BeforeAfterSliderProps): React.ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const [percent, setPercent] = useState(50);
@@ -108,7 +116,13 @@ export function BeforeAfterSlider({
       {/* Before — clipped to the slider position */}
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - percent}% 0 0)` }}>
         {beforeSrc ? (
-          <Image src={beforeSrc} alt={beforeAlt} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+          <Image
+            src={beforeSrc}
+            alt={beforeAlt}
+            fill
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            className={cn("object-cover", stylizeBeforeAsPlaceholder && "grayscale brightness-90 contrast-90")}
+          />
         ) : (
           <PlaceholderPanel />
         )}

@@ -15,32 +15,17 @@ export const metadata: Metadata = {
 };
 
 /**
- * Demo/placeholder pairings only — these are stock photos of different
- * people, standing in for layout purposes until real, consented patient
- * cases are added. Deliberately not two photos of the same person, so
- * this can never be mistaken for a real before/after result.
+ * Demo/placeholder cards only — each uses a single stock photo on both
+ * sides (with the "before" layer visibly desaturated) purely to preview
+ * the comparison-slider layout until real, consented patient before/after
+ * pairs are added. Deliberately not two different people or body areas,
+ * so this can never be mistaken for a real result.
  */
 const placeholderCases = [
-  {
-    label: "Sample 01",
-    beforeSrc: "/images/procedures/face-explorer.jpg",
-    afterSrc: "/images/procedures/men-explorer.jpg",
-  },
-  {
-    label: "Sample 02",
-    beforeSrc: "/images/procedures/eyes-explorer.jpg",
-    afterSrc: "/images/procedures/face-explorer.jpg",
-  },
-  {
-    label: "Sample 03",
-    beforeSrc: "/images/procedures/body-explorer.jpg",
-    afterSrc: "/images/procedures/breast-explorer.jpg",
-  },
-  {
-    label: "Sample 04",
-    beforeSrc: "/images/procedures/men-explorer.jpg",
-    afterSrc: "/images/procedures/body-explorer.jpg",
-  },
+  { label: "Sample 01", src: "/images/procedures/face-explorer.jpg" },
+  { label: "Sample 02", src: "/images/procedures/eyes-explorer.jpg" },
+  { label: "Sample 03", src: "/images/procedures/body-explorer.jpg" },
+  { label: "Sample 04", src: "/images/procedures/men-explorer.jpg" },
 ];
 
 export default function GalleryPage(): React.ReactElement {
@@ -60,10 +45,11 @@ export default function GalleryPage(): React.ReactElement {
                 key={item.label}
                 label={item.label}
                 aspect="portrait"
-                beforeSrc={item.beforeSrc}
-                afterSrc={item.afterSrc}
-                beforeAlt={`Placeholder photo standing in for a "before" case, sample layout only`}
-                afterAlt={`Placeholder photo standing in for an "after" case, sample layout only`}
+                beforeSrc={item.src}
+                afterSrc={item.src}
+                beforeAlt="Placeholder photo, sample layout only — not a real before/after case"
+                afterAlt="Placeholder photo, sample layout only — not a real before/after case"
+                stylizeBeforeAsPlaceholder
               />
             ))}
           </div>
