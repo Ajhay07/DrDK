@@ -4,6 +4,8 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { CustomCursor } from "@/components/interactive/CustomCursor";
 import { siteConfig } from "@/config/site";
+import { contactInfo } from "@/config/contact";
+import { locations } from "@/config/locations";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -46,6 +48,32 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Local-business/physician structured data — only facts already shown
+ * elsewhere on the site (qualifications, contact details, consultation
+ * locations). No ratings, review counts or other unverified fields.
+ */
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: "Dr. Dinesh Kumar",
+  medicalSpecialty: "PlasticSurgery",
+  description: siteConfig.description,
+  url: siteConfig.url,
+  telephone: contactInfo.phoneHref.replace("tel:", ""),
+  email: contactInfo.email,
+  areaServed: "Chennai, India",
+  availableService: {
+    "@type": "MedicalProcedure",
+    name: "Consultant Plastic & Cosmetic Surgery",
+  },
+  location: locations.map((location) => ({
+    "@type": "MedicalClinic",
+    name: location.name,
+    address: location.address,
+  })),
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -53,6 +81,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[60] -translate-y-20 bg-(--color-accent) px-4 py-2 text-button text-(--color-accent-ink) transition-transform duration-(--duration-fast) ease-(--ease-editorial) focus:translate-y-0"

@@ -47,6 +47,16 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
             <span className="text-eyebrow">Overview</span>
             <p className="text-body-lg mt-4 text-(--color-ink-muted)">{concern.overview}</p>
 
+            {concern.proceduresList ? (
+              <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-3 border-t border-(--color-border) pt-8 sm:grid-cols-2">
+                {concern.proceduresList.map((item) => (
+                  <li key={item} className="text-body text-(--color-ink)">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
             <p className="text-body mt-10 text-(--color-ink-faint)">
               This is general information, not medical advice specific to any
               individual.{" "}
@@ -63,7 +73,7 @@ export default async function ProcedurePage({ params }: ProcedurePageProps): Pro
             <div className="mb-14 max-w-2xl md:mb-20">
               <span className="text-eyebrow">Explore</span>
               <h2 className="text-h2 mt-4 text-(--color-ink)">
-                An interactive guide to {concern.label.toLowerCase()} anatomy.
+                An interactive guide to this area.
               </h2>
               <p className="text-body-lg mt-5 text-(--color-ink-muted)">
                 Every consultation begins with understanding how individual regions relate

@@ -42,7 +42,7 @@ export function SiteFooter(): React.ReactElement {
     <footer className="border-t border-(--color-border) bg-(--color-bg)">
       <Container width="wide" className="py-16 md:py-24">
         <p className="text-giant text-(--color-ink)">Dinesh Kumar</p>
-        <p className="text-eyebrow mt-3">Plastic &amp; Aesthetic Surgery</p>
+        <p className="text-eyebrow mt-3">Plastic &amp; Cosmetic Surgery</p>
 
         <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-4">
@@ -79,6 +79,7 @@ export function SiteFooter(): React.ReactElement {
                   { label: "About Dr. Dinesh", href: "/about" },
                   { label: "Before & After", href: "/gallery" },
                   { label: "FAQ", href: "/faq" },
+                  { label: "Locations", href: "/locations" },
                 ]}
               />
               <FooterGroup

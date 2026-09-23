@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
-import { doctorIntro } from "@/config/about";
+import { aboutPillars, aboutStory, doctorIntro, philosophy } from "@/config/about";
 import { consultationHref } from "@/config/navigation";
 
 export const dynamic = "force-static";
@@ -22,9 +22,9 @@ export default function AboutPage(): React.ReactElement {
         <Container width="wide">
           <PageHeader eyebrow={doctorIntro.eyebrow} title={doctorIntro.headline} />
 
-          <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
+          <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-12 md:items-start md:gap-8">
             <div className="md:col-span-7">
-              {doctorIntro.paragraphs.map((paragraph, index) => (
+              {aboutStory.map((paragraph, index) => (
                 <p
                   key={paragraph}
                   className={`text-body-lg text-(--color-ink-muted) ${index > 0 ? "mt-6" : ""}`}
@@ -43,18 +43,74 @@ export default function AboutPage(): React.ReactElement {
               </p>
             </div>
 
-            <div className="md:col-start-9 md:col-end-13">
-              <div className="relative aspect-square w-full overflow-hidden bg-(--color-bg-secondary)">
-                <Image
-                  src="/images/doctor/dr2.jpg"
-                  alt="Dr. Dinesh Kumar at his consultation desk"
-                  fill
-                  sizes="(min-width: 768px) 20rem, 60vw"
-                  className="object-cover"
+            <div className="md:sticky md:top-[calc(var(--nav-height)+2rem)] md:col-start-9 md:col-end-13 md:self-start">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-(--radius-lg) bg-(--color-ink)">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(60% 55% at 50% 35%, rgba(169,124,86,0.35) 0%, rgba(23,27,19,0) 70%)",
+                  }}
                 />
+                <div className="absolute inset-x-[6%] top-[6%] bottom-0">
+                  <Image
+                    src="/images/doctor/dr-dinesh-profile-cutout.png"
+                    alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
+                    fill
+                    sizes="(min-width: 768px) 20rem, 60vw"
+                    className="object-contain object-bottom"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4 flex items-baseline justify-between border-t border-(--color-border) pt-4">
+                <span className="font-(family-name:--font-display) text-lg italic text-(--color-ink)">
+                  Dr. Dinesh Kumar
+                </span>
+                <span className="text-eyebrow">Consultant Surgeon</span>
               </div>
             </div>
           </div>
+        </Container>
+      </Section>
+
+      <Section spacing="xl" background="bg-secondary">
+        <Container width="wide">
+          <span className="text-eyebrow">The Approach</span>
+          <h2 className="text-h2 mt-4 max-w-2xl text-(--color-ink)">
+            Science, precision, artistry and listening.
+          </h2>
+
+          <dl className="mt-14 grid grid-cols-1 gap-10 border-t border-(--color-border) pt-10 sm:grid-cols-2 md:mt-20 md:grid-cols-4">
+            {aboutPillars.map((pillar, index) => (
+              <div key={pillar.title}>
+                <dt className="flex items-baseline gap-3">
+                  <span aria-hidden="true" className="text-small tabular-nums text-(--color-ink-faint)">
+                    0{index + 1}
+                  </span>
+                  <span className="text-h3 text-(--color-ink)">{pillar.title}</span>
+                </dt>
+                <dd className="text-body mt-3 text-(--color-ink-muted)">{pillar.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </Section>
+
+      <Section spacing="xl">
+        <Container width="wide">
+          <span className="text-eyebrow">Philosophy</span>
+          <blockquote className="mt-6">
+            <p className="text-h1 max-w-3xl text-(--color-ink)">&ldquo;{philosophy.quote}&rdquo;</p>
+          </blockquote>
+
+          <ul className="mt-14 grid grid-cols-1 gap-6 border-t border-(--color-border) pt-10 sm:grid-cols-2">
+            {philosophy.supporting.map((point) => (
+              <li key={point} className="text-body text-(--color-ink-muted)">
+                {point}
+              </li>
+            ))}
+          </ul>
         </Container>
       </Section>
     </main>

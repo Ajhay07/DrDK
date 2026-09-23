@@ -65,7 +65,7 @@ export function CredentialsTrust(): React.ReactElement {
       <Container width="wide" className="py-16 md:py-24 lg:py-8">
         <div className="flex flex-col gap-2 border-b border-(--color-border) pb-6 sm:flex-row sm:items-baseline sm:justify-between">
           <span className="text-eyebrow">04 &mdash; Professional Record</span>
-          <span className="text-eyebrow">Chennai · Vijaya Hospitals</span>
+          <span className="text-eyebrow">Chennai · Multiple Locations</span>
         </div>
 
         <h2

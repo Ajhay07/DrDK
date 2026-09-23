@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { doctorIntro } from "@/config/about";
+import { doctorIntro, philosophy } from "@/config/about";
 
 interface PillarIconProps {
   className?: string;
@@ -74,15 +74,15 @@ function PinIcon({ className }: PillarIconProps): React.ReactElement {
 }
 
 const pillars: { icon: (p: PillarIconProps) => React.ReactElement; title: string; body: string }[] = [
-  { icon: PersonIcon, title: "Patient First Approach", body: doctorIntro.paragraphs[1] },
-  { icon: StarIcon, title: "Experience that Matters", body: doctorIntro.paragraphs[2] },
-  { icon: HeartIcon, title: "Informed. Honest. Personal.", body: doctorIntro.paragraphs[3] },
+  { icon: PersonIcon, title: "Patient First Approach", body: philosophy.supporting[3] },
+  { icon: StarIcon, title: "Natural, Balanced Results", body: philosophy.supporting[0] },
+  { icon: HeartIcon, title: "Informed. Honest. Personal.", body: philosophy.supporting[2] },
 ];
 
 const stats: { icon: (p: PillarIconProps) => React.ReactElement; label: string; value: string; sub: string }[] = [
-  { icon: AwardIcon, label: "Experience", value: "10 Years", sub: "In the surgical field" },
-  { icon: GraduationIcon, label: "Fellowship", value: "IAAPS, 2023", sub: "Fellowship in Aesthetic Surgery" },
-  { icon: PinIcon, label: "Location", value: "Chennai, India", sub: "Vijaya Hospitals" },
+  { icon: AwardIcon, label: "Qualifications", value: "MBBS, MS, MCh", sub: "Plastic Surgery" },
+  { icon: GraduationIcon, label: "Fellowship", value: "Akademikliniken", sub: "Advanced Cosmetic Surgery Training, Stockholm" },
+  { icon: PinIcon, label: "Location", value: "Chennai, India", sub: "Multiple hospitals & clinics" },
 ];
 
 /**
@@ -130,7 +130,7 @@ export function MeetDrDinesh(): React.ReactElement {
             </h2>
             <div className="mt-3 h-px w-14 bg-(--color-accent)" />
             <span className="text-eyebrow mt-3 block text-(--color-ink-muted)">
-              Plastic, Cosmetic &amp; Reconstructive Surgeon
+              Consultant Plastic &amp; Cosmetic Surgeon
             </span>
 
             <p className="text-sm mt-3 text-(--color-ink-muted)">{doctorIntro.paragraphs[0]}</p>
@@ -191,7 +191,7 @@ export function MeetDrDinesh(): React.ReactElement {
                 &ldquo;
               </span>
               <p className="font-(family-name:--font-display) text-base italic leading-snug text-(--color-ink)">
-                Precision is not just in the procedure &mdash; it&rsquo;s in the understanding.
+                {philosophy.quote}
               </p>
               <p className="font-(family-name:--font-display) mt-2 text-sm italic text-(--color-ink-muted)">
                 {doctorIntro.signature}

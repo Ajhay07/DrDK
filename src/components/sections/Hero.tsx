@@ -95,10 +95,14 @@ export function Hero(): React.ReactElement {
     <section className="relative overflow-hidden bg-(--color-bg) lg:flex lg:min-h-[calc(100vh-var(--nav-height))] lg:flex-col lg:justify-center">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="flex flex-col justify-center px-(--gutter) py-14 lg:py-8">
-          <h1 className="text-display text-(--color-ink) motion-fade-in">
-            Precision in surgery.
+          <span className="text-eyebrow text-(--color-ink-muted) motion-fade-in">
+            Consultant Plastic &amp; Cosmetic Surgeon
+          </span>
+
+          <h1 className="text-display mt-4 text-(--color-ink) motion-fade-in">
+            Refined results.
             <br />
-            <span className="italic">Individuality</span> in aesthetics.
+            <span className="italic">Natural</span> confidence.
           </h1>
 
           <div
@@ -110,11 +114,14 @@ export function Hero(): React.ReactElement {
             className="text-body-lg mt-5 max-w-lg text-(--color-ink-muted) motion-fade-in"
             style={{ animationDelay: "120ms" }}
           >
-            A refined approach to aesthetic and reconstructive surgery, centred
-            around proportion, individuality and informed decisions.
+            Personalised plastic and cosmetic surgery focused on natural-looking
+            results, precision and patient safety.
           </p>
 
-          <div className="mt-8 motion-fade-in" style={{ animationDelay: "200ms" }}>
+          <div
+            className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center motion-fade-in"
+            style={{ animationDelay: "200ms" }}
+          >
             <Magnetic data-cursor="Open">
               <a
                 href={consultationHref}
@@ -125,6 +132,16 @@ export function Hero(): React.ReactElement {
               </a>
             </Magnetic>
           </div>
+
+          <p
+            className="text-eyebrow mt-10 text-(--color-ink-faint) motion-fade-in"
+            style={{ animationDelay: "240ms" }}
+          >
+            MBBS &middot; MS (General Surgery) &middot; MCh (Plastic Surgery)
+            <br />
+            Advanced Fellowship Training in Cosmetic Surgery &middot; Akademikliniken,
+            Stockholm
+          </p>
         </div>
 
         <div
@@ -146,7 +163,7 @@ export function Hero(): React.ReactElement {
             <div className="absolute inset-x-[8%] top-[12%] bottom-0">
               <Image
                 src="/images/doctor/dr-dinesh-cutout.png"
-                alt="Dr. Dinesh Kumar, plastic and aesthetic surgeon"
+                alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
                 fill
                 priority
                 sizes="(min-width: 1024px) 46vw, 84vw"
@@ -159,7 +176,7 @@ export function Hero(): React.ReactElement {
             <p className="font-(family-name:--font-display) text-base italic text-(--color-ink)">
               Dr. Dinesh Kumar
             </p>
-            <p className="text-eyebrow mt-1 text-(--color-ink-muted)">Plastic Surgeon</p>
+            <p className="text-eyebrow mt-1 text-(--color-ink-muted)">Consultant Surgeon</p>
             <div className="mt-2 border-t border-(--color-border) pt-2">
               <p className="text-xs text-(--color-ink-muted)">MBBS, MS, MCh (Plastic Surgery)</p>
             </div>
