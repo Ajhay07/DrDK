@@ -4,9 +4,6 @@ import { ExploreConcerns } from "@/components/sections/ExploreConcerns";
 import { Hero } from "@/components/sections/Hero";
 import { FinalConsultationCTA } from "@/components/sections/FinalConsultationCTA";
 import { MeetDrDinesh } from "@/components/sections/MeetDrDinesh";
-import { PatientEducation } from "@/components/sections/PatientEducation";
-import { PatientJourney } from "@/components/sections/PatientJourney";
-import { Philosophy } from "@/components/sections/Philosophy";
 import { Testimonials } from "@/components/sections/Testimonials";
 
 export default function Home(): React.ReactElement {
@@ -16,11 +13,8 @@ export default function Home(): React.ReactElement {
       <ConsultationBand />
       <MeetDrDinesh />
       <ExploreConcerns />
-      <Philosophy />
       <CredentialsTrust />
       <Testimonials />
-      <PatientJourney />
-      <PatientEducation />
       <FinalConsultationCTA />
     </main>
   );

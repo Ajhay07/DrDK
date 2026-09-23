@@ -33,7 +33,7 @@ export default function AboutPage(): React.ReactElement {
                 </p>
               ))}
 
-              <p className="font-(--font-display) mt-10 text-lg italic text-(--color-ink)">
+              <p className="font-(family-name:--font-display) mt-10 text-lg italic text-(--color-ink)">
                 {doctorIntro.signature}
               </p>
 
