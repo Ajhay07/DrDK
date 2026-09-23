@@ -44,14 +44,31 @@ export default function AboutPage(): React.ReactElement {
             </div>
 
             <div className="md:col-start-9 md:col-end-13">
-              <div className="relative aspect-square w-full overflow-hidden bg-(--color-bg-secondary)">
-                <Image
-                  src="/images/doctor/dr2.jpg"
-                  alt="Dr. Dinesh Kumar at his consultation desk"
-                  fill
-                  sizes="(min-width: 768px) 20rem, 60vw"
-                  className="object-cover"
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25 rounded-[3rem_3rem_0_0]">
+                <div
+                  className="absolute inset-0 opacity-80"
+                  style={{
+                    background:
+                      "repeating-conic-gradient(from -18deg at 30% -15%, transparent 0deg 6deg, rgba(255,255,255,0.55) 6deg 8deg, transparent 8deg 18deg)",
+                    filter: "blur(2px)",
+                  }}
                 />
+                <div className="absolute inset-x-[10%] top-[10%] bottom-0">
+                  <Image
+                    src="/images/doctor/dr4-cutout.png"
+                    alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
+                    fill
+                    sizes="(min-width: 768px) 20rem, 60vw"
+                    className="object-contain object-bottom"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4 flex items-baseline justify-between border-t border-(--color-border) pt-4">
+                <span className="font-(family-name:--font-display) text-lg italic text-(--color-ink)">
+                  Dr. Dinesh Kumar
+                </span>
+                <span className="text-eyebrow">Consultant Surgeon</span>
               </div>
             </div>
           </div>
