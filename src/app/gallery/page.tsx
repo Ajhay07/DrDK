@@ -4,7 +4,9 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
 import { BeforeAfterSlider } from "@/components/interactive/BeforeAfterSlider";
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { consultationHref } from "@/config/navigation";
+import { clinicPhotos } from "@/config/clinic-gallery";
 
 export const dynamic = "force-static";
 
@@ -60,6 +62,32 @@ export default function GalleryPage(): React.ReactElement {
             <TextLink href={consultationHref}>Book a consultation</TextLink> to
             discuss comparable cases directly.
           </p>
+        </Container>
+      </Section>
+
+      <Section spacing="xl" background="bg-secondary">
+        <Container>
+          <span className="text-eyebrow">In the Clinic</span>
+          <h2 className="text-display mt-6 max-w-2xl text-(--color-ink)">
+            Behind the scenes.
+          </h2>
+          <p className="text-body mt-4 max-w-2xl text-(--color-ink-faint)">
+            A look at Dr. Dinesh Kumar at work — in consultation, in theatre,
+            and alongside the surgical teams he collaborates with.
+          </p>
+
+          <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+            {clinicPhotos.map((photo) => (
+              <MediaPlaceholder
+                key={photo.src}
+                aspect="portrait"
+                imageSrc={photo.src}
+                alt={photo.alt}
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+                className="rounded-2xl"
+              />
+            ))}
+          </div>
         </Container>
       </Section>
     </main>
