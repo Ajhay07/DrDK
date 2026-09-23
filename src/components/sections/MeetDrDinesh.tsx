@@ -52,12 +52,12 @@ export function MeetDrDinesh(): React.ReactElement {
           <div className="md:col-start-10 md:col-end-13">
             <dl className="flex flex-col gap-6 border-t border-(--color-border) pt-6">
               <div>
-                <dt className="text-eyebrow">Experience</dt>
-                <dd className="text-body mt-1 text-(--color-ink)">10 Years</dd>
+                <dt className="text-eyebrow">Qualifications</dt>
+                <dd className="text-body mt-1 text-(--color-ink)">MBBS, MS, MCh</dd>
               </div>
               <div>
                 <dt className="text-eyebrow">Fellowship</dt>
-                <dd className="text-body mt-1 text-(--color-ink)">IAAPS, 2023</dd>
+                <dd className="text-body mt-1 text-(--color-ink)">Akademikliniken, Stockholm</dd>
               </div>
               <div>
                 <dt className="text-eyebrow">Location</dt>

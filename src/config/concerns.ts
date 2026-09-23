@@ -3,6 +3,8 @@ export interface Concern {
   label: string;
   descriptor: string;
   overview: string;
+  /** Optional named procedures list, shown under the overview when present. */
+  proceduresList?: string[];
 }
 
 /**
@@ -50,8 +52,20 @@ export const concerns: Concern[] = [
   {
     slug: "men",
     label: "Men",
-    descriptor: "Procedures designed around male anatomy",
+    descriptor: "Cosmetic surgery designed for men",
     overview:
-      "Aesthetic procedures for men are planned around male-specific anatomy and proportion — from gynecomastia (enlarged male breast tissue) correction to facial and jawline contouring — rather than adapting techniques designed for female patients.",
+      "Men's facial and body proportions have their own characteristics. Treatment planning respects those differences while maintaining a natural, balanced appearance — from gynecomastia (enlarged male breast tissue) correction to facial and jawline contouring, rather than adapting techniques designed for female patients.",
+    proceduresList: [
+      "Gynecomastia surgery",
+      "Liposuction",
+      "Body contouring",
+      "Rhinoplasty",
+      "Eyelid surgery",
+      "Facelift",
+      "Neck procedures",
+      "Double chin treatment",
+      "Jawline definition",
+      "Abdominal definition",
+    ],
   },
 ];

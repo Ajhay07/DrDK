@@ -30,14 +30,14 @@ export default function OpengraphImage(): ImageResponse {
             color: "#6c7166",
           }}
         >
-          <span>Plastic Surgeon</span>
+          <span>Consultant Plastic &amp; Cosmetic Surgeon</span>
           <span>Chennai, India</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 96, lineHeight: 1 }}>Dr. Dinesh Kumar</div>
           <div style={{ fontSize: 40, fontStyle: "italic", color: "#6c7166", marginTop: 16 }}>
-            Precision in form. Individuality in aesthetics.
+            Refined results. Natural confidence.
           </div>
         </div>
       </div>

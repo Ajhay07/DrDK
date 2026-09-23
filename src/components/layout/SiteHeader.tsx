@@ -69,7 +69,7 @@ export function SiteHeader(): React.ReactElement {
       <div className="mx-auto grid h-(--nav-height) w-full max-w-(--content-max-width) grid-cols-2 items-center gap-(--grid-gap) px-(--page-gutter) md:grid-cols-12">
         <Link href="/" className="md:col-span-5">
           <span className="text-nav block text-(--color-ink)">{siteName.toUpperCase()}</span>
-          <span className="text-eyebrow mt-1 block">Plastic &amp; Aesthetic Surgery</span>
+          <span className="text-eyebrow mt-1 block">Plastic &amp; Cosmetic Surgery</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden md:col-span-4 md:block">

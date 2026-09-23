@@ -3,7 +3,9 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { ConsultationForm } from "@/components/interactive/ConsultationForm";
+import { TextLink } from "@/components/ui/TextLink";
 import { contactInfo } from "@/config/contact";
+import { locations } from "@/config/locations";
 
 export const dynamic = "force-static";
 
@@ -58,18 +60,17 @@ export default function ConsultationPage(): React.ReactElement {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-eyebrow text-(--color-ink-faint)">Location</dt>
+                  <dt className="text-eyebrow text-(--color-ink-faint)">Locations</dt>
                   <dd className="text-body mt-1 text-(--color-ink)">
-                    {contactInfo.addressLines.map((line) => (
-                      <span key={line} className="block">
-                        {line}
+                    {locations.map((location) => (
+                      <span key={location.name} className="block">
+                        {location.name}
                       </span>
                     ))}
+                    <span className="mt-2 block">
+                      <TextLink href="/locations">View all addresses</TextLink>
+                    </span>
                   </dd>
-                </div>
-                <div>
-                  <dt className="text-eyebrow text-(--color-ink-faint)">Hours</dt>
-                  <dd className="text-body mt-1 text-(--color-ink)">{contactInfo.hours}</dd>
                 </div>
               </dl>
             </div>

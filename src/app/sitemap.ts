@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/consultation",
     "/gallery",
     "/faq",
+    "/locations",
   ].map((path) => ({
     url: `${siteConfig.url}${path}`,
     lastModified,

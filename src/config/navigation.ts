@@ -11,7 +11,9 @@ export const primaryNavigation: NavItem[] = [
   { label: "Gallery", href: "/gallery" },
   { label: "Patient Guide", href: "/education" },
   { label: "FAQ", href: "/faq" },
+  { label: "Locations", href: "/locations" },
 ];
 
 export const consultationHref = "/consultation";
 export const proceduresHref = "/procedures";
+export const locationsHref = "/locations";

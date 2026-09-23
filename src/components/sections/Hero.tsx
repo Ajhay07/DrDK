@@ -15,24 +15,24 @@ export function Hero(): React.ReactElement {
     <section className="bg-(--color-bg)">
       <Container width="wide">
         <div className="flex items-baseline justify-between border-t border-b border-(--color-border) py-5">
-          <span className="text-eyebrow">Plastic Surgeon</span>
+          <span className="text-eyebrow">Consultant Plastic &amp; Cosmetic Surgeon</span>
           <span className="text-eyebrow">Chennai, India</span>
         </div>
 
         <div className="grid grid-cols-1 gap-12 py-16 lg:grid-cols-12 lg:gap-8 lg:py-24">
           <div className="flex flex-col justify-center lg:col-span-7">
             <h1 className="text-display text-(--color-ink) motion-fade-in">
-              Precision in surgery.
+              Refined results.
               <br />
-              <span className="italic">Individuality</span> in aesthetics.
+              <span className="italic">Natural</span> confidence.
             </h1>
 
             <p
               className="text-body-lg mt-8 max-w-lg text-(--color-ink-muted) motion-fade-in"
               style={{ animationDelay: "100ms" }}
             >
-              A refined approach to aesthetic and reconstructive surgery, centred
-              around proportion, individuality and informed decisions.
+              Personalised plastic and cosmetic surgery focused on natural-looking
+              results, precision and patient safety.
             </p>
 
             <div
@@ -46,7 +46,7 @@ export function Hero(): React.ReactElement {
               </Magnetic>
               <Magnetic data-cursor="Explore">
                 <Button href={proceduresHref} variant="secondary" className="w-full sm:w-auto">
-                  Explore Procedures
+                  Explore Treatments
                 </Button>
               </Magnetic>
             </div>
@@ -55,7 +55,11 @@ export function Hero(): React.ReactElement {
               className="text-eyebrow mt-14 motion-fade-in"
               style={{ animationDelay: "240ms" }}
             >
-              MBBS &middot; MS &middot; MCh (Plastic Surgery) &middot; Vijaya Hospitals, Chennai
+              Dr. Dinesh Kumar &middot; MBBS &middot; MS (General Surgery) &middot; MCh
+              (Plastic Surgery)
+              <br />
+              Advanced Fellowship Training in Cosmetic Surgery &middot; Akademikliniken,
+              Stockholm
             </p>
           </div>
 
@@ -78,7 +82,7 @@ export function Hero(): React.ReactElement {
                 <span className="font-(--font-display) text-lg italic text-(--color-ink)">
                   Dr. Dinesh Kumar
                 </span>
-                <span className="text-eyebrow">Plastic Surgeon</span>
+                <span className="text-eyebrow">Consultant Surgeon</span>
               </figcaption>
             </figure>
           </div>

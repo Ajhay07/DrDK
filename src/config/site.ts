@@ -5,9 +5,9 @@
  */
 export const siteConfig = {
   name: "Dr. Dinesh Kumar",
-  title: "Dr. Dinesh Kumar | Aesthetic & Plastic Surgeon, Chennai",
+  title: "Dr. Dinesh Kumar | Consultant Plastic & Cosmetic Surgeon | Chennai",
   description:
-    "Dr. Dinesh Kumar is an aesthetic and plastic surgeon based in Chennai, India, providing patient education and consultation for aesthetic and reconstructive procedures.",
+    "Dr. Dinesh Kumar is a Consultant Plastic & Cosmetic Surgeon in Chennai, with MBBS, MS (General Surgery), MCh (Plastic Surgery) and advanced cosmetic surgery fellowship training including Akademikliniken, Stockholm.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.drdineshkumar.example.com",
   locale: "en_IN",
 };

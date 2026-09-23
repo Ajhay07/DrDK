@@ -5,26 +5,25 @@ export interface Credential {
 
 /**
  * Trust markers shown in the "Credentials & Trust" homepage section.
- * Facts verified against Dr. Dinesh Kumar's publicly listed Instagram bio
- * (@dr_dinesh_aestheticsurgeon) and the LinkedIn profile approved for this
- * project. Do not add institutions/memberships/case counts beyond what is
- * listed here without further verification — see src/config/about.ts.
+ * Source of truth: doctor-supplied qualifications brief. Do not add
+ * institutions, memberships, case counts or years of experience beyond
+ * what is listed here without further verification.
  */
 export const credentials: Credential[] = [
   {
     label: "MBBS, MS, MCh",
-    description: "Plastic Surgery — consultant plastic, cosmetic and reconstructive surgeon.",
+    description: "Consultant Plastic & Cosmetic Surgeon — MS (General Surgery), MCh (Plastic Surgery).",
   },
   {
-    label: "10 Years",
-    description: "Experience in the surgical field.",
+    label: "Fellowship",
+    description: "Advanced Fellowship Training in Cosmetic Surgery.",
   },
   {
-    label: "IAAPS",
-    description: "Fellowship in Aesthetic Surgery, completed 2023.",
+    label: "Akademikliniken",
+    description: "Training completed at Akademikliniken, Stockholm.",
   },
   {
     label: "Chennai",
-    description: "Based in Chennai, associated with Vijaya Hospitals.",
+    description: "Consulting across multiple hospitals and clinics in Chennai.",
   },
 ];
