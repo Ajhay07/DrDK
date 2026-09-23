@@ -44,17 +44,10 @@ export default function AboutPage(): React.ReactElement {
             </div>
 
             <div className="md:sticky md:top-[calc(var(--nav-height)+2rem)] md:col-start-9 md:col-end-13 md:self-start">
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-(--radius-lg) bg-(--color-ink)">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "radial-gradient(60% 55% at 50% 35%, rgba(169,124,86,0.35) 0%, rgba(23,27,19,0) 70%)",
-                  }}
-                />
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-(--radius-lg) bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25">
                 <div className="absolute inset-x-[6%] top-[6%] bottom-0">
                   <Image
-                    src="/images/doctor/dr-dinesh-cutout.png"
+                    src="/images/doctor/dr-dinesh-profile-cutout.png"
                     alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
                     fill
                     sizes="(min-width: 768px) 20rem, 60vw"
