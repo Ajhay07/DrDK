@@ -20,7 +20,7 @@ export default function AboutPage(): React.ReactElement {
     <main id="main-content" className="flex-1">
       <Section spacing="xl">
         <Container width="wide">
-          <PageHeader eyebrow={doctorIntro.eyebrow} title={doctorIntro.headline} />
+          <PageHeader eyebrow={doctorIntro.eyebrow} title={doctorIntro.headline} size="display" />
 
           <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-12 md:items-start md:gap-8">
             <div className="md:col-span-7">
