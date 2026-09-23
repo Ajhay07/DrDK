@@ -22,7 +22,7 @@ export default function AboutPage(): React.ReactElement {
         <Container width="wide">
           <PageHeader eyebrow={doctorIntro.eyebrow} title={doctorIntro.headline} />
 
-          <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
+          <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-12 md:items-start md:gap-8">
             <div className="md:col-span-7">
               {aboutStory.map((paragraph, index) => (
                 <p
@@ -43,8 +43,8 @@ export default function AboutPage(): React.ReactElement {
               </p>
             </div>
 
-            <div className="md:col-start-9 md:col-end-13">
-              <div className="relative aspect-[4/5] w-full overflow-hidden bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25 rounded-[3rem_3rem_0_0]">
+            <div className="md:sticky md:top-[calc(var(--nav-height)+2rem)] md:col-start-9 md:col-end-13 md:self-start">
+              <div className="relative aspect-[3/4] w-full overflow-hidden bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25 rounded-[3rem_3rem_0_0]">
                 <div
                   className="absolute inset-0 opacity-80"
                   style={{
