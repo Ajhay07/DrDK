@@ -54,7 +54,7 @@ export default function AboutPage(): React.ReactElement {
                 />
                 <div className="absolute inset-x-[6%] top-[6%] bottom-0">
                   <Image
-                    src="/images/doctor/dr-dinesh-profile-cutout.png"
+                    src="/images/doctor/dr-dinesh-cutout.png"
                     alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
                     fill
                     sizes="(min-width: 768px) 20rem, 60vw"
