@@ -14,8 +14,8 @@ export default function OpengraphImage(): ImageResponse {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px",
-          background: "#f4f1eb",
-          color: "#171b13",
+          background: "#f8f5ed",
+          color: "#22201c",
           fontFamily: "Georgia, serif",
         }}
       >
@@ -27,7 +27,7 @@ export default function OpengraphImage(): ImageResponse {
             fontFamily: "Arial, sans-serif",
             letterSpacing: 4,
             textTransform: "uppercase",
-            color: "#6c7166",
+            color: "#6f6a61",
           }}
         >
           <span>Consultant Plastic &amp; Cosmetic Surgeon</span>
@@ -36,7 +36,7 @@ export default function OpengraphImage(): ImageResponse {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 96, lineHeight: 1 }}>Dr. Dinesh Kumar</div>
-          <div style={{ fontSize: 40, fontStyle: "italic", color: "#6c7166", marginTop: 16 }}>
+          <div style={{ fontSize: 40, fontStyle: "italic", color: "#6f6a61", marginTop: 16 }}>
             Refined results. Natural confidence.
           </div>
         </div>

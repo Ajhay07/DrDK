@@ -24,7 +24,7 @@ export function ExploreConcerns(): React.ReactElement {
               <Link
                 href={`/procedures/${concern.slug}`}
                 data-cursor="Explore"
-                className="flex h-full flex-col gap-6 p-8"
+                className="flex h-full flex-col gap-6 border border-transparent p-8 transition-colors duration-(--duration-base) ease-(--ease-editorial) hover:border-(--color-accent) hover:bg-(--color-champagne-light)"
               >
                 <div className="flex items-start justify-between">
                   <span className="text-index text-2xl text-(--color-ink-faint)">0{index + 1}</span>

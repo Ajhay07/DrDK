@@ -45,7 +45,7 @@ export function Testimonials(): React.ReactElement {
           {track.map((testimonial, index) => (
             <div
               key={`${testimonial.name}-${index}`}
-              className={`flex w-[20rem] shrink-0 flex-col rounded-2xl bg-(--color-bg) p-6 shadow-[0_24px_48px_rgba(23,27,19,0.14)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1 sm:w-[22rem] ${
+              className={`flex w-[20rem] shrink-0 flex-col rounded-2xl bg-(--color-bg) p-6 shadow-[0_24px_48px_rgba(80,65,45,0.14)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1 sm:w-[22rem] ${
                 index % 2 === 0 ? "" : "sm:translate-y-5"
               }`}
             >

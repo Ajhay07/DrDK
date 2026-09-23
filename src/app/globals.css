@@ -7,19 +7,20 @@
    ========================================================================== */
 
 :root {
-  /* Color — warm ivory/bone editorial palette. No medical blue. */
-  --color-bg: #f4f1eb; /* Ivory/Bone — base environment */
-  --color-bg-secondary: #dbe2d2; /* Soft sage — the Journey's structured-neutral environment */
-  --color-surface: #f2ece0; /* Soft stone — raised/inset surfaces, form fields */
-  --color-ink: #171b13; /* Deep forest-charcoal — primary text AND the Philosophy dark environment */
-  --color-ink-muted: #6c7166; /* Secondary text — muted sage/grey */
-  --color-ink-faint: #a3a896; /* Placeholder / disabled text — faint sage */
-  --color-accent: #6b4f35; /* Restrained warm bronze — links, focus, small emphasis */
-  --color-accent-strong: #543d29; /* Accent hover/active */
-  --color-accent-ink: #f4f1eb; /* Text/icons placed on top of accent or ink environments */
-  --color-clay: #a97c56; /* Warm clay — the Final CTA's immersive environment */
-  --color-border: #e3dccd; /* Default hairline border */
-  --color-border-strong: #c7b79c; /* Emphasized border / input border on focus */
+  /* Color — champagne / warm ivory editorial palette. No medical blue. */
+  --color-bg: #f8f5ed; /* Primary warm ivory — base environment */
+  --color-bg-secondary: #efe6d5; /* Soft champagne — alternating section environment */
+  --color-surface: #f5efe3; /* Card background — raised/inset surfaces, form fields */
+  --color-ink: #22201c; /* Primary text — dark charcoal, not brown */
+  --color-ink-muted: #6f6a61; /* Secondary text */
+  --color-ink-faint: #a39c8a; /* Placeholder / disabled text — faint warm grey */
+  --color-accent: #9a8060; /* Deep champagne / muted gold — links, focus, small emphasis */
+  --color-accent-strong: #7f684e; /* Accent hover/active */
+  --color-accent-ink: #ffffff; /* Text/icons placed on top of accent environments */
+  --color-clay: #d8c8a8; /* Accent champagne — the Final CTA's immersive environment, decorative patterns */
+  --color-champagne-light: #f3ebdd; /* Light champagne — subtle hover-toward tone */
+  --color-border: #ddd4c4; /* Default hairline border */
+  --color-border-strong: #c9bba0; /* Emphasized border / input border on focus */
   --color-danger: #8a3b2f; /* Reserved for form validation only */
 
   /* Typography */
@@ -66,6 +67,7 @@
   --color-accent-strong: var(--color-accent-strong);
   --color-accent-ink: var(--color-accent-ink);
   --color-clay: var(--color-clay);
+  --color-champagne-light: var(--color-champagne-light);
   --color-border: var(--color-border);
   --color-border-strong: var(--color-border-strong);
   --color-danger: var(--color-danger);

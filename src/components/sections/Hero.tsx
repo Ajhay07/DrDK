@@ -125,7 +125,7 @@ export function Hero(): React.ReactElement {
             <Magnetic data-cursor="Open">
               <a
                 href={consultationHref}
-                className="inline-flex items-center gap-3 rounded-full bg-(--color-ink) px-7 py-4 text-button text-(--color-bg) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:bg-(--color-accent-strong)"
+                className="inline-flex items-center gap-3 rounded-full bg-(--color-accent) px-7 py-4 text-button text-(--color-accent-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:bg-(--color-accent-strong)"
               >
                 Book a Consultation
                 <span aria-hidden="true">&rarr;</span>
@@ -156,7 +156,7 @@ export function Hero(): React.ReactElement {
               className="absolute inset-0 opacity-80"
               style={{
                 background:
-                  "repeating-conic-gradient(from -18deg at 20% -15%, transparent 0deg 6deg, rgba(255,255,255,0.55) 6deg 8deg, transparent 8deg 18deg)",
+                  "repeating-conic-gradient(from -18deg at 20% -15%, transparent 0deg 6deg, rgba(216,200,168,0.45) 6deg 8deg, transparent 8deg 18deg)",
                 filter: "blur(2px)",
               }}
             />
@@ -172,7 +172,7 @@ export function Hero(): React.ReactElement {
             </div>
           </div>
 
-          <div className="absolute bottom-4 right-4 max-w-[13rem] rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) px-5 py-4 shadow-[0_20px_40px_rgba(23,27,19,0.15)] sm:bottom-6 sm:right-6">
+          <div className="absolute bottom-4 right-4 max-w-[13rem] rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) px-5 py-4 shadow-[0_20px_40px_rgba(80,65,45,0.15)] sm:bottom-6 sm:right-6">
             <p className="font-(family-name:--font-display) text-base italic text-(--color-ink)">
               Dr. Dinesh Kumar
             </p>

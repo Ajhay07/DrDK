@@ -81,9 +81,9 @@ export function CredentialsTrust(): React.ReactElement {
             return (
               <div
                 key={credential.label}
-                className="flex flex-col gap-4 rounded-2xl bg-(--color-surface) p-6 shadow-[0_16px_32px_rgba(23,27,19,0.08)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1"
+                className="flex flex-col gap-4 rounded-2xl bg-(--color-surface) p-6 shadow-[0_16px_32px_rgba(80,65,45,0.08)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-ink)">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-accent)">
                   <Icon className="h-5 w-5" />
                 </span>
                 <div>

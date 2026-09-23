@@ -113,7 +113,7 @@ export function MeetDrDinesh(): React.ReactElement {
                   alt="Dr. Dinesh Kumar in consultation attire"
                   fill
                   sizes="(min-width: 1024px) 24rem, 85vw"
-                  className="object-contain object-bottom drop-shadow-[0_20px_28px_rgba(23,27,19,0.16)]"
+                  className="object-contain object-bottom drop-shadow-[0_20px_28px_rgba(80,65,45,0.16)]"
                 />
               </div>
             </div>
@@ -141,7 +141,7 @@ export function MeetDrDinesh(): React.ReactElement {
                   key={title}
                   className="flex gap-3 border-t border-(--color-border) py-2.5 first:border-t-0 first:pt-0"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-ink)">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-accent)">
                     <Icon className="h-4 w-4" />
                   </span>
                   <div>
@@ -174,7 +174,7 @@ export function MeetDrDinesh(): React.ReactElement {
                   key={label}
                   className="flex items-start gap-3 rounded-2xl border border-(--color-border) bg-(--color-bg) p-4"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-ink)">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-accent)">
                     <Icon className="h-4 w-4" />
                   </span>
                   <div>
@@ -187,7 +187,7 @@ export function MeetDrDinesh(): React.ReactElement {
             </div>
 
             <div className="mt-5 border-t border-(--color-border) pt-4">
-              <span aria-hidden="true" className="font-(family-name:--font-display) text-3xl italic text-(--color-ink-faint)">
+              <span aria-hidden="true" className="font-(family-name:--font-display) text-3xl italic text-(--color-clay)">
                 &ldquo;
               </span>
               <p className="font-(family-name:--font-display) text-base italic leading-snug text-(--color-ink)">
