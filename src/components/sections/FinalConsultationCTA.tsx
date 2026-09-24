@@ -10,10 +10,19 @@ import { consultationHref, proceduresHref } from "@/config/navigation";
 export function FinalConsultationCTA(): React.ReactElement {
   return (
     <section className="relative overflow-hidden bg-(--color-bg-secondary)">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-(--color-clay)/25 blur-3xl"
-      />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-(--color-clay)/25 blur-3xl" />
+        <div className="absolute right-10 top-0 h-full w-1/3 bg-gradient-to-l from-(--color-clay)/15 to-transparent" />
+        <svg
+          className="absolute right-0 top-0 h-full w-2/5 opacity-40"
+          viewBox="0 0 400 500"
+          preserveAspectRatio="none"
+          fill="none"
+        >
+          <path d="M420 0C300 90 260 180 320 260C380 340 340 430 220 500" stroke="var(--color-clay)" strokeWidth="1.5" />
+          <path d="M460 0C360 110 330 210 400 290C440 340 420 420 320 500" stroke="var(--color-border-strong)" strokeWidth="1" />
+        </svg>
+      </div>
       <Container width="wide" className="relative py-16 md:py-24">
         <div className="flex items-baseline justify-between">
           <span className="text-eyebrow">06 &mdash; Begin with a Conversation</span>

@@ -5,14 +5,14 @@ import { ConcernIcon } from "@/components/ui/ConcernIcons";
 import { concerns } from "@/config/concerns";
 
 /**
- * Existing procedure-area photography, reused here as each card's image.
- * No standalone "nose" photograph exists in the asset library, so that
- * card falls back to the face photo (the nose sits within that same
- * frame) rather than sourcing a new, unlicensed stock image.
+ * Existing procedure-area photography — one distinct photo per card, never
+ * reused across two concerns. No standalone "nose" photograph exists in
+ * the asset library; rather than reuse the face photo (visually implying
+ * it's the same case) or invent a new stock image, that card falls back
+ * to its icon on a plain champagne panel until a real nose photo exists.
  */
-const concernImages: Record<string, string> = {
+const concernImages: Partial<Record<string, string>> = {
   face: "/images/procedures/face-explorer.jpg",
-  nose: "/images/procedures/face-explorer.jpg",
   eyes: "/images/procedures/eyes-explorer.jpg",
   breast: "/images/procedures/breast-explorer.jpg",
   body: "/images/procedures/body-explorer.jpg",
@@ -20,10 +20,10 @@ const concernImages: Record<string, string> = {
 };
 
 /**
- * Compact grid index of procedure areas. Previously one giant full-width
- * heading per area (clamp up to 7.5rem) stacked vertically — six screens
- * of scroll to show six words. A 2/3-column grid keeps the editorial
- * typographic feel at a size that reads as considered rather than sprawling.
+ * Compact grid index of procedure areas. Each card is a horizontal
+ * editorial composition — copy and the number/arrow on the left, the
+ * area's photograph filling the right ~40%, masked with a gradient so it
+ * reads as integrated into the card rather than a pasted-in thumbnail.
  */
 export function ExploreConcerns(): React.ReactElement {
   return (
@@ -35,50 +35,65 @@ export function ExploreConcerns(): React.ReactElement {
         </div>
 
         <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {concerns.map((concern, index) => (
-            <li key={concern.slug} className="group">
-              <Link
-                href={`/procedures/${concern.slug}`}
-                data-cursor="Explore"
-                className="flex h-full flex-col overflow-hidden rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) transition-colors duration-(--duration-base) ease-(--ease-editorial) hover:border-(--color-accent)"
-              >
-                <div className="relative h-44 w-full overflow-hidden">
-                  <Image
-                    src={concernImages[concern.slug]}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover grayscale-[10%] transition-transform duration-(--duration-slow) ease-(--ease-editorial) group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-(--color-bg) via-transparent to-(--color-bg)/10" />
-                </div>
+          {concerns.map((concern, index) => {
+            const image = concernImages[concern.slug];
 
-                <div className="flex flex-1 flex-col gap-6 p-8 pt-6">
-                  <div className="flex items-start justify-between">
-                    <span className="text-index text-2xl text-(--color-ink-faint)">0{index + 1}</span>
-                    <ConcernIcon
-                      slug={concern.slug}
-                      className="h-9 w-9 shrink-0 text-(--color-ink-faint) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)"
-                    />
-                  </div>
+            return (
+              <li key={concern.slug} className="group">
+                <Link
+                  href={`/procedures/${concern.slug}`}
+                  data-cursor="Explore"
+                  className="grid h-full min-h-[19rem] grid-cols-5 overflow-hidden rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) transition-colors duration-(--duration-base) ease-(--ease-editorial) hover:border-(--color-accent)"
+                >
+                  <div className="col-span-3 flex flex-col gap-6 p-6 sm:p-7">
+                    <div className="flex items-start justify-between">
+                      <span className="text-index text-2xl text-(--color-ink-faint)">0{index + 1}</span>
+                      <ConcernIcon
+                        slug={concern.slug}
+                        className="h-8 w-8 shrink-0 text-(--color-ink-faint) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)"
+                      />
+                    </div>
 
-                  <div>
-                    <span className="font-(family-name:--font-display) text-3xl text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)">
-                      {concern.label}
+                    <div>
+                      <span className="font-(family-name:--font-display) text-2xl text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent) sm:text-3xl">
+                        {concern.label}
+                      </span>
+                      <p className="text-sm mt-2 text-(--color-ink-muted)">{concern.descriptor}</p>
+                    </div>
+
+                    <span
+                      aria-hidden="true"
+                      className="mt-auto flex h-9 w-9 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-accent) transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-1 group-hover:border-(--color-accent)"
+                    >
+                      &rarr;
                     </span>
-                    <p className="text-body mt-2 text-(--color-ink-muted)">{concern.descriptor}</p>
                   </div>
 
-                  <span
-                    aria-hidden="true"
-                    className="mt-auto flex h-9 w-9 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-accent) transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-1 group-hover:border-(--color-accent)"
-                  >
-                    &rarr;
-                  </span>
-                </div>
-              </Link>
-            </li>
-          ))}
+                  <div className="relative col-span-2 overflow-hidden bg-(--color-bg-secondary)">
+                    {image ? (
+                      <>
+                        <Image
+                          src={image}
+                          alt=""
+                          fill
+                          sizes="(min-width: 1024px) 14vw, (min-width: 640px) 20vw, 40vw"
+                          className="object-cover grayscale-[10%] transition-transform duration-(--duration-slow) ease-(--ease-editorial) group-hover:scale-[1.03]"
+                        />
+                        <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-(--color-bg) to-transparent" />
+                      </>
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center">
+                        <ConcernIcon
+                          slug={concern.slug}
+                          className="h-12 w-12 text-(--color-accent-strong)/40"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </Container>
     </section>
