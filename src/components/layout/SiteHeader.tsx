@@ -98,7 +98,7 @@ export function SiteHeader(): React.ReactElement {
           <Magnetic className="hidden md:inline-block" data-cursor="Open">
             <Link
               href={consultationHref}
-              className="text-eyebrow inline-flex items-center gap-2 border-b border-(--color-ink) pb-0.5 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent) hover:border-(--color-accent)"
+              className="text-eyebrow inline-flex items-center gap-2 rounded-(--radius-md) border border-(--color-border-strong) px-5 py-2.5 text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:border-(--color-accent) hover:bg-(--color-champagne-light) hover:text-(--color-accent-strong)"
             >
               Consultation
               <span aria-hidden="true">&#8599;</span>

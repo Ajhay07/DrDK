@@ -18,13 +18,13 @@ export function ExploreConcerns(): React.ReactElement {
           <span className="text-eyebrow hidden sm:inline">Where would you like to begin?</span>
         </div>
 
-        <ul className="mt-px grid grid-cols-1 gap-px bg-(--color-border) sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {concerns.map((concern, index) => (
-            <li key={concern.slug} className="group bg-(--color-bg)">
+            <li key={concern.slug} className="group">
               <Link
                 href={`/procedures/${concern.slug}`}
                 data-cursor="Explore"
-                className="flex h-full flex-col gap-6 border border-transparent p-8 transition-colors duration-(--duration-base) ease-(--ease-editorial) hover:border-(--color-accent) hover:bg-(--color-champagne-light)"
+                className="flex h-full flex-col gap-6 rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) p-8 transition-colors duration-(--duration-base) ease-(--ease-editorial) hover:border-(--color-accent) hover:bg-(--color-champagne-light)"
               >
                 <div className="flex items-start justify-between">
                   <span className="text-index text-2xl text-(--color-ink-faint)">0{index + 1}</span>
@@ -40,6 +40,13 @@ export function ExploreConcerns(): React.ReactElement {
                   </span>
                   <p className="text-body mt-2 text-(--color-ink-muted)">{concern.descriptor}</p>
                 </div>
+
+                <span
+                  aria-hidden="true"
+                  className="mt-auto text-(--color-accent) opacity-0 transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-1 group-hover:opacity-100"
+                >
+                  &rarr;
+                </span>
               </Link>
             </li>
           ))}

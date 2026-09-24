@@ -148,31 +148,33 @@ export function Hero(): React.ReactElement {
           className="relative min-h-[22rem] motion-fade-in sm:min-h-[26rem] lg:min-h-0"
           style={{ animationDelay: "160ms" }}
         >
-          <div
-            className="absolute inset-0 overflow-hidden bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25"
-            style={{ borderRadius: "50% 50% 0 0 / 20% 20% 0 0" }}
-          >
+          {/* Soft translucent champagne forms — architectural, not a boxed
+              panel. The portrait sits directly on the page background. */}
+          <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+            <div className="absolute right-[6%] top-[6%] h-[65%] w-[65%] rounded-full bg-(--color-clay)/20 blur-3xl" />
+            <div className="absolute left-[8%] bottom-[8%] h-[40%] w-[40%] rounded-full bg-(--color-bg-secondary)/70 blur-3xl" />
             <div
-              className="absolute inset-0 opacity-80"
+              className="absolute inset-0 opacity-70"
               style={{
                 background:
-                  "repeating-conic-gradient(from -18deg at 20% -15%, transparent 0deg 6deg, rgba(216,200,168,0.45) 6deg 8deg, transparent 8deg 18deg)",
+                  "repeating-conic-gradient(from -18deg at 20% -15%, transparent 0deg 6deg, rgba(216,200,168,0.4) 6deg 8deg, transparent 8deg 18deg)",
                 filter: "blur(2px)",
               }}
             />
-            <div className="absolute inset-x-[8%] top-[12%] bottom-0">
-              <Image
-                src="/images/doctor/dr-dinesh-cutout.png"
-                alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
-                fill
-                priority
-                sizes="(min-width: 1024px) 46vw, 84vw"
-                className="object-contain object-bottom"
-              />
-            </div>
           </div>
 
-          <div className="absolute bottom-4 right-4 max-w-[13rem] rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) px-5 py-4 shadow-[0_20px_40px_rgba(80,65,45,0.15)] sm:bottom-6 sm:right-6">
+          <div className="absolute inset-x-[8%] top-[12%] bottom-0">
+            <Image
+              src="/images/doctor/dr-dinesh-cutout.png"
+              alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
+              fill
+              priority
+              sizes="(min-width: 1024px) 46vw, 84vw"
+              className="object-contain object-bottom drop-shadow-[0_30px_50px_rgba(80,65,45,0.18)]"
+            />
+          </div>
+
+          <div className="absolute bottom-4 right-4 max-w-[13rem] rounded-(--radius-lg) border border-(--color-border-strong) bg-(--color-bg)/95 px-5 py-4 backdrop-blur-sm sm:bottom-6 sm:right-6">
             <p className="font-(family-name:--font-display) text-base italic text-(--color-ink)">
               Dr. Dinesh Kumar
             </p>

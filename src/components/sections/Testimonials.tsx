@@ -45,7 +45,7 @@ export function Testimonials(): React.ReactElement {
           {track.map((testimonial, index) => (
             <div
               key={`${testimonial.name}-${index}`}
-              className={`flex w-[20rem] shrink-0 flex-col rounded-2xl bg-(--color-bg) p-6 shadow-[0_24px_48px_rgba(80,65,45,0.14)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1 sm:w-[22rem] ${
+              className={`flex w-[20rem] shrink-0 flex-col rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) p-6 shadow-[0_16px_32px_rgba(80,65,45,0.07)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1 sm:w-[22rem] ${
                 index % 2 === 0 ? "" : "sm:translate-y-5"
               }`}
             >
@@ -59,10 +59,18 @@ export function Testimonials(): React.ReactElement {
                 </div>
               </div>
 
-              <div className="mt-3 flex gap-0.5 text-(--color-accent)">
-                {Array.from({ length: 5 }).map((_, starIndex) => (
-                  <StarIcon key={starIndex} className="h-4 w-4" />
-                ))}
+              <div className="mt-3 flex items-start justify-between gap-2">
+                <div className="flex gap-0.5 text-(--color-accent)">
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <StarIcon key={starIndex} className="h-4 w-4" />
+                  ))}
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="font-(family-name:--font-display) text-3xl italic leading-none text-(--color-clay)"
+                >
+                  &rdquo;
+                </span>
               </div>
 
               <p className="text-sm mt-3 leading-relaxed text-(--color-ink-muted)">{testimonial.quote}</p>

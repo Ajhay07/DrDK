@@ -9,8 +9,12 @@ import { consultationHref, proceduresHref } from "@/config/navigation";
  */
 export function FinalConsultationCTA(): React.ReactElement {
   return (
-    <section className="bg-(--color-bg-secondary)">
-      <Container width="wide" className="py-16 md:py-24">
+    <section className="relative overflow-hidden bg-(--color-bg-secondary)">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-(--color-clay)/25 blur-3xl"
+      />
+      <Container width="wide" className="relative py-16 md:py-24">
         <div className="flex items-baseline justify-between">
           <span className="text-eyebrow">06 &mdash; Begin with a Conversation</span>
           <span className="text-eyebrow">Chennai, India</span>
@@ -27,6 +31,10 @@ export function FinalConsultationCTA(): React.ReactElement {
             </a>
           </Magnetic>
           .
+        </p>
+
+        <p className="text-body-lg mt-6 max-w-lg text-(--color-ink-muted)">
+          Take the first step towards a more confident you.
         </p>
 
         <div className="mt-12">
