@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { testimonials } from "@/config/testimonials";
 
@@ -22,32 +25,43 @@ function StarIcon({ className }: { className?: string }): React.ReactElement {
 
 /**
  * DEMO placeholder testimonials — illustrative only, not real patients.
- * Styled like a Google-review card (avatar initials, 5-star row, reviewer
- * name/context, review text) inside a continuously sliding (right-to-left)
- * floating-window track. The list is duplicated once so the CSS marquee
- * (globals.css) loops seamlessly; pauses on hover/focus and freezes
- * entirely under prefers-reduced-motion (global rule).
+ * Shown as a calm, static editorial grid (first four) with a "View more"
+ * toggle to reveal the rest in place, rather than an auto-scrolling
+ * marquee — a quieter, more deliberate presentation for the champagne
+ * redesign. Motion is limited to a subtle hover lift.
  */
 export function Testimonials(): React.ReactElement {
-  const track = [...testimonials, ...testimonials];
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? testimonials : testimonials.slice(0, 4);
 
   return (
-    <section className="bg-(--color-surface) overflow-hidden">
-      <Container width="wide" className="pt-16 pb-8 md:pt-24 md:pb-8">
-        <span className="text-eyebrow">05 &mdash; Patient Voices</span>
-        <h2 className="text-display mt-6 max-w-2xl text-(--color-ink)">
-          What patients say.
-        </h2>
-      </Container>
+    <section className="bg-(--color-surface)">
+      <Container width="wide" className="py-16 md:py-24">
+        <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <div>
+            <span className="text-eyebrow">05 &mdash; Patient Voices</span>
+            <h2 className="text-display mt-6 max-w-2xl text-(--color-ink)">
+              What patients say.
+            </h2>
+          </div>
 
-      <div className="py-4 pb-16 md:pb-24">
-        <div className="motion-marquee flex w-max items-center gap-6 px-(--gutter)">
-          {track.map((testimonial, index) => (
+          {testimonials.length > 4 ? (
+            <button
+              type="button"
+              onClick={() => setExpanded((current) => !current)}
+              className="text-eyebrow inline-flex items-center gap-2 text-(--color-accent) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:text-(--color-accent-strong)"
+            >
+              {expanded ? "Show fewer stories" : "View more stories"}
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          ) : null}
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {visible.map((testimonial) => (
             <div
-              key={`${testimonial.name}-${index}`}
-              className={`flex w-[20rem] shrink-0 flex-col rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) p-6 shadow-[0_16px_32px_rgba(80,65,45,0.07)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1 sm:w-[22rem] ${
-                index % 2 === 0 ? "" : "sm:translate-y-5"
-              }`}
+              key={testimonial.name}
+              className="flex flex-col rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) p-6 shadow-[0_16px_32px_rgba(80,65,45,0.07)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1"
             >
               <div className="flex items-center gap-3">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-sm font-medium text-(--color-ink)">
@@ -77,7 +91,7 @@ export function Testimonials(): React.ReactElement {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
