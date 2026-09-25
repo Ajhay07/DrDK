@@ -6,9 +6,12 @@ import { consultationHref, proceduresHref } from "@/config/navigation";
 /**
  * Free-license Unsplash photo (Kirill Balobanov,
  * unsplash.com/photos/2rIs8OH5ng0 — standard Unsplash license, free for
- * commercial use), desaturated and sepia-tinted via CSS filter and faded
- * into the section background with a mask, rather than shown as a literal
- * photograph — see ctaArtwork usage below.
+ * commercial use). Rendered as a soft editorial silhouette rather than a
+ * photograph: grayscale + sepia filter, `mix-blend-screen` so the source
+ * photo's black background drops out entirely (screen blend treats black
+ * as transparent), low opacity, and a two-layer mask (radial + linear)
+ * so the figure has no straight edges and dissolves into the champagne
+ * background on every side.
  */
 const ctaArtwork = "/images/cta-female-profile.jpg";
 
@@ -25,19 +28,23 @@ export function FinalConsultationCTA(): React.ReactElement {
         <div className="absolute right-10 top-0 h-full w-1/3 bg-gradient-to-l from-(--color-clay)/15 to-transparent" />
 
         <div
-          className="absolute inset-y-0 right-0 hidden w-[42%] md:block"
+          className="absolute inset-y-0 right-0 hidden w-[45%] md:block"
           style={{
-            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 35%, black 65%)",
-            maskImage: "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 35%, black 65%)",
+            WebkitMaskImage:
+              "radial-gradient(120% 90% at 88% 45%, black 40%, transparent 85%), linear-gradient(90deg, transparent 0%, black 45%)",
+            WebkitMaskComposite: "source-in",
+            maskImage:
+              "radial-gradient(120% 90% at 88% 45%, black 40%, transparent 85%), linear-gradient(90deg, transparent 0%, black 45%)",
+            maskComposite: "intersect",
           }}
         >
           <Image
             src={ctaArtwork}
             alt=""
             fill
-            sizes="42vw"
-            className="object-cover object-top opacity-60 mix-blend-multiply"
-            style={{ filter: "sepia(0.55) saturate(1.3) hue-rotate(-8deg) brightness(1.05)" }}
+            sizes="45vw"
+            className="object-cover object-[85%_25%] opacity-35 mix-blend-screen"
+            style={{ filter: "grayscale(1) sepia(0.6) saturate(1.4) brightness(1.3) contrast(0.85)" }}
           />
         </div>
 
