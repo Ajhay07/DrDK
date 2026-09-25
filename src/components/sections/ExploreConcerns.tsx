@@ -5,14 +5,15 @@ import { ConcernIcon } from "@/components/ui/ConcernIcons";
 import { concerns } from "@/config/concerns";
 
 /**
- * Existing procedure-area photography — one distinct photo per card, never
- * reused across two concerns. No standalone "nose" photograph exists in
- * the asset library; rather than reuse the face photo (visually implying
- * it's the same case) or invent a new stock image, that card falls back
- * to its icon on a plain champagne panel until a real nose photo exists.
+ * Procedure-area photography — one distinct photo per card, never reused
+ * across two concerns. nose-explorer.jpg is a free-license Unsplash photo
+ * (Zulfugar Karimov, unsplash.com/photos/cGUuNMJvkmE — standard Unsplash
+ * license, free for commercial use), mirrored so the profile faces the
+ * same direction as the rest of the row.
  */
 const concernImages: Partial<Record<string, string>> = {
   face: "/images/procedures/face-explorer.jpg",
+  nose: "/images/procedures/nose-explorer.jpg",
   eyes: "/images/procedures/eyes-explorer.jpg",
   breast: "/images/procedures/breast-explorer.jpg",
   body: "/images/procedures/body-explorer.jpg",
