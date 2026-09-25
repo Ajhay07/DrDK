@@ -6,11 +6,13 @@ import { consultationHref, proceduresHref } from "@/config/navigation";
 /**
  * Client-supplied editorial artwork — flowing champagne fabric shapes
  * with a soft female profile emerging on the right, already in the
- * site's warm sepia palette. Used as-is, with only a left-edge mask so
- * it meets the section's own background color without a seam; no color
- * filters, overlays, or opacity reduction per the asset owner's request.
+ * site's warm sepia palette. Fetched directly from the client's
+ * Cloudinary source (res.cloudinary.com/kbig7iit/image/upload/girl) and
+ * stored locally. Used as-is, with only a left-edge mask so it meets
+ * the section's own background color without a seam; no color filters,
+ * overlays, or opacity reduction per the asset owner's request.
  */
-const ctaArtwork = "/images/cta-artwork.webp";
+const ctaArtwork = "/images/cta-artwork.jpg";
 
 /**
  * The closing screen — a light, warm-sage environment (not a dark banner)
