@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { testimonials } from "@/config/testimonials";
 
@@ -40,11 +40,14 @@ function ArrowIcon({ direction, className }: { direction: "left" | "right"; clas
 /**
  * DEMO placeholder testimonials — illustrative only, not real patients.
  * A horizontally scrolling, snap-aligned carousel (native scroll +
- * scroll-snap, nudged by the arrow buttons) rather than a static grid,
- * so all reviews stay reachable without growing the page height.
+ * scroll-snap, nudged by the arrow buttons or auto-advancing every 4s)
+ * rather than a static grid, so all reviews stay reachable without
+ * growing the page height. Autoplay pauses on hover/touch/focus and is
+ * skipped for prefers-reduced-motion.
  */
 export function Testimonials(): React.ReactElement {
   const trackRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
 
   const scrollByCard = (direction: "left" | "right"): void => {
     const track = trackRef.current;
@@ -53,6 +56,27 @@ export function Testimonials(): React.ReactElement {
     const amount = (card?.offsetWidth ?? 320) + 24;
     track.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
   };
+
+  // Auto-advance one card every few seconds, looping back to the start —
+  // paused on hover/touch/focus so a reader can actually read a card, and
+  // skipped entirely for prefers-reduced-motion.
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const id = window.setInterval(() => {
+      const track = trackRef.current;
+      if (!track) return;
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+      if (atEnd) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollByCard("right");
+      }
+    }, 4000);
+
+    return () => window.clearInterval(id);
+  }, [paused]);
 
   return (
     <section className="bg-(--color-surface) overflow-hidden">
@@ -88,6 +112,11 @@ export function Testimonials(): React.ReactElement {
 
       <div
         ref={trackRef}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
+        onTouchStart={() => setPaused(true)}
         className="scrollbar-none flex snap-x snap-mandatory gap-6 overflow-x-auto py-4 pb-16 md:pb-24"
         style={{ paddingInline: "var(--gutter)", scrollPadding: "var(--gutter)" }}
       >
