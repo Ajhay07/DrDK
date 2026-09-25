@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { testimonials } from "@/config/testimonials";
 
@@ -23,136 +20,64 @@ function StarIcon({ className }: { className?: string }): React.ReactElement {
   );
 }
 
-function ArrowIcon({ direction, className }: { direction: "left" | "right"; className?: string }): React.ReactElement {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-      style={{ transform: direction === "left" ? "rotate(180deg)" : undefined }}
-    >
-      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 /**
  * DEMO placeholder testimonials — illustrative only, not real patients.
- * A horizontally scrolling, snap-aligned carousel (native scroll +
- * scroll-snap, nudged by the arrow buttons or auto-advancing every 4s)
- * rather than a static grid, so all reviews stay reachable without
- * growing the page height. Autoplay pauses on hover/touch/focus and is
- * skipped for prefers-reduced-motion.
+ * A continuously, slowly sliding (right-to-left) floating-window track —
+ * fully automatic, no arrows or manual advance needed. The list is
+ * duplicated once so the CSS marquee (globals.css, 70s per loop) cycles
+ * seamlessly; pauses on hover/focus and freezes entirely under
+ * prefers-reduced-motion (global rule in globals.css).
  */
 export function Testimonials(): React.ReactElement {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-
-  const scrollByCard = (direction: "left" | "right"): void => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector<HTMLElement>("[data-card]");
-    const amount = (card?.offsetWidth ?? 320) + 24;
-    track.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
-  };
-
-  // Auto-advance one card every few seconds, looping back to the start —
-  // paused on hover/touch/focus so a reader can actually read a card, and
-  // skipped entirely for prefers-reduced-motion.
-  useEffect(() => {
-    if (paused) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const id = window.setInterval(() => {
-      const track = trackRef.current;
-      if (!track) return;
-      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
-      if (atEnd) {
-        track.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollByCard("right");
-      }
-    }, 4000);
-
-    return () => window.clearInterval(id);
-  }, [paused]);
+  const track = [...testimonials, ...testimonials];
 
   return (
     <section className="bg-(--color-surface) overflow-hidden">
       <Container width="wide" className="pt-16 pb-8 md:pt-24 md:pb-8">
-        <div className="flex flex-wrap items-baseline justify-between gap-4">
-          <div>
-            <span className="text-eyebrow">05 &mdash; Patient Voices</span>
-            <h2 className="text-display mt-6 max-w-2xl text-(--color-ink)">
-              What patients say.
-            </h2>
-          </div>
-
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => scrollByCard("left")}
-              aria-label="Previous stories"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:border-(--color-accent) hover:text-(--color-accent)"
-            >
-              <ArrowIcon direction="left" className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollByCard("right")}
-              aria-label="Next stories"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:border-(--color-accent) hover:text-(--color-accent)"
-            >
-              <ArrowIcon direction="right" className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
+        <span className="text-eyebrow">05 &mdash; Patient Voices</span>
+        <h2 className="text-display mt-6 max-w-2xl text-(--color-ink)">
+          What patients say.
+        </h2>
       </Container>
 
-      <div
-        ref={trackRef}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-        onFocus={() => setPaused(true)}
-        onBlur={() => setPaused(false)}
-        onTouchStart={() => setPaused(true)}
-        className="scrollbar-none flex snap-x snap-mandatory gap-6 overflow-x-auto py-4 pb-16 md:pb-24"
-        style={{ paddingInline: "var(--gutter)", scrollPadding: "var(--gutter)" }}
-      >
-        {testimonials.map((testimonial) => (
-          <div
-            key={testimonial.name}
-            data-card
-            className="flex w-[20rem] shrink-0 snap-start flex-col rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) p-6 shadow-[0_16px_32px_rgba(80,65,45,0.07)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1 sm:w-[22rem]"
-          >
-            <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-sm font-medium text-(--color-ink)">
-                {initials(testimonial.name)}
-              </span>
-              <div>
-                <p className="text-sm font-medium text-(--color-ink)">{testimonial.name}</p>
-                <p className="text-xs text-(--color-ink-faint)">{testimonial.context}</p>
+      <div className="py-4 pb-16 md:pb-24">
+        <div
+          className="motion-marquee flex w-max items-center gap-6 px-(--gutter)"
+          style={{ animationDuration: "70s" }}
+        >
+          {track.map((testimonial, index) => (
+            <div
+              key={`${testimonial.name}-${index}`}
+              className="flex w-[20rem] shrink-0 flex-col rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) p-6 shadow-[0_16px_32px_rgba(80,65,45,0.07)] transition-transform duration-(--duration-base) ease-(--ease-editorial) hover:-translate-y-1 sm:w-[22rem]"
+            >
+              <div className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-sm font-medium text-(--color-ink)">
+                  {initials(testimonial.name)}
+                </span>
+                <div>
+                  <p className="text-sm font-medium text-(--color-ink)">{testimonial.name}</p>
+                  <p className="text-xs text-(--color-ink-faint)">{testimonial.context}</p>
+                </div>
               </div>
-            </div>
 
-            <div className="mt-3 flex items-start justify-between gap-2">
-              <div className="flex gap-0.5 text-(--color-accent)">
-                {Array.from({ length: 5 }).map((_, starIndex) => (
-                  <StarIcon key={starIndex} className="h-4 w-4" />
-                ))}
+              <div className="mt-3 flex items-start justify-between gap-2">
+                <div className="flex gap-0.5 text-(--color-accent)">
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <StarIcon key={starIndex} className="h-4 w-4" />
+                  ))}
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="font-(family-name:--font-display) text-3xl italic leading-none text-(--color-clay)"
+                >
+                  &rdquo;
+                </span>
               </div>
-              <span
-                aria-hidden="true"
-                className="font-(family-name:--font-display) text-3xl italic leading-none text-(--color-clay)"
-              >
-                &rdquo;
-              </span>
-            </div>
 
-            <p className="text-sm mt-3 leading-relaxed text-(--color-ink-muted)">{testimonial.quote}</p>
-          </div>
-        ))}
+              <p className="text-sm mt-3 leading-relaxed text-(--color-ink-muted)">{testimonial.quote}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
