@@ -43,27 +43,27 @@ export function ExploreConcerns(): React.ReactElement {
                 <Link
                   href={`/procedures/${concern.slug}`}
                   data-cursor="Explore"
-                  className="grid h-full min-h-[19rem] grid-cols-5 overflow-hidden rounded-(--radius-lg) border border-(--color-border) bg-(--color-bg) transition-colors duration-(--duration-base) ease-(--ease-editorial) hover:border-(--color-accent)"
+                  className="grid h-full min-h-[13rem] grid-cols-5 overflow-hidden rounded-[10px] border border-(--color-border) bg-[#FBF9F3] shadow-[0_10px_30px_rgba(80,60,40,0.04)] transition-colors duration-(--duration-base) ease-(--ease-editorial) hover:border-(--color-accent)"
                 >
-                  <div className="col-span-3 flex flex-col gap-6 p-6 sm:p-7">
+                  <div className="col-span-3 flex flex-col gap-3 p-5 sm:p-6">
                     <div className="flex items-start justify-between">
-                      <span className="text-index text-2xl text-(--color-ink-faint)">0{index + 1}</span>
+                      <span className="font-(family-name:--font-display) text-lg italic text-(--color-accent)">0{index + 1}</span>
                       <ConcernIcon
                         slug={concern.slug}
-                        className="h-8 w-8 shrink-0 text-(--color-ink-faint) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)"
+                        className="h-5 w-5 shrink-0 text-(--color-ink-faint) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent)"
                       />
                     </div>
 
                     <div>
-                      <span className="font-(family-name:--font-display) text-2xl text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent) sm:text-3xl">
+                      <span className="font-(family-name:--font-display) text-xl text-(--color-ink) transition-colors duration-(--duration-base) ease-(--ease-editorial) group-hover:text-(--color-accent) sm:text-2xl">
                         {concern.label}
                       </span>
-                      <p className="text-sm mt-2 text-(--color-ink-muted)">{concern.descriptor}</p>
+                      <p className="text-xs mt-1.5 text-(--color-ink-muted)">{concern.descriptor}</p>
                     </div>
 
                     <span
                       aria-hidden="true"
-                      className="mt-auto flex h-9 w-9 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-accent) transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-1 group-hover:border-(--color-accent)"
+                      className="mt-auto flex h-8 w-8 items-center justify-center rounded-full border border-(--color-border-strong) text-(--color-accent) transition-all duration-(--duration-base) ease-(--ease-editorial) group-hover:translate-x-1 group-hover:border-(--color-accent)"
                     >
                       &rarr;
                     </span>
@@ -79,13 +79,17 @@ export function ExploreConcerns(): React.ReactElement {
                           sizes="(min-width: 1024px) 14vw, (min-width: 640px) 20vw, 40vw"
                           className="object-cover grayscale-[10%] transition-transform duration-(--duration-slow) ease-(--ease-editorial) group-hover:scale-[1.03]"
                         />
-                        <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-(--color-bg) to-transparent" />
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0"
+                          style={{ background: "linear-gradient(90deg, #FBF9F3 0%, transparent 65%)" }}
+                        />
                       </>
                     ) : (
                       <div className="flex h-full w-full items-center justify-center">
                         <ConcernIcon
                           slug={concern.slug}
-                          className="h-12 w-12 text-(--color-accent-strong)/40"
+                          className="h-10 w-10 text-(--color-accent-strong)/40"
                         />
                       </div>
                     )}
