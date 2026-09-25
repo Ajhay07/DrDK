@@ -258,6 +258,18 @@ body {
   }
 }
 
+/* Hides the scrollbar on a native horizontally-scrollable track (e.g. the
+   testimonials carousel) while keeping it fully scroll/swipe/keyboard
+   operable — the scrollbar is visual chrome only, not functionality. */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* ==========================================================================
    MOTION
    Respect reduced-motion above all else. Utilities below are opt-in.
