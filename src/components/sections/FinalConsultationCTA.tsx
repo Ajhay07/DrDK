@@ -34,6 +34,7 @@ export function FinalConsultationCTA(): React.ReactElement {
           src={ctaArtwork}
           alt=""
           fill
+          priority
           sizes="50vw"
           className="object-cover object-right"
         />
