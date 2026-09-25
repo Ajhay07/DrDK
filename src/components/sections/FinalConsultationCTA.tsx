@@ -7,12 +7,12 @@ import { consultationHref, proceduresHref } from "@/config/navigation";
  * Client-supplied editorial artwork — flowing champagne fabric shapes
  * with a soft female profile emerging on the right, already in the
  * site's warm sepia palette. Fetched directly from the client's
- * Cloudinary source (res.cloudinary.com/kbig7iit/image/upload/girl) and
- * stored locally. Used as-is, with only a left-edge mask so it meets
- * the section's own background color without a seam; no color filters,
- * overlays, or opacity reduction per the asset owner's request.
+ * Cloudinary source (girl1.png) and stored locally as the original PNG.
+ * Rendered full-bleed across the section, unoptimized, so it appears
+ * exactly as supplied — the banner's left side is already empty
+ * champagne space for the headline.
  */
-const ctaArtwork = "/images/cta-artwork.jpg";
+const ctaArtwork = "/images/cta-artwork.png";
 
 /**
  * The closing screen — a light, warm-sage environment (not a dark banner)
@@ -22,20 +22,13 @@ const ctaArtwork = "/images/cta-artwork.jpg";
 export function FinalConsultationCTA(): React.ReactElement {
   return (
     <section className="relative overflow-hidden bg-(--color-bg-secondary)">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 md:block"
-        style={{
-          WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 12%)",
-          maskImage: "linear-gradient(90deg, transparent 0%, black 12%)",
-        }}
-      >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden md:block">
         <Image
           src={ctaArtwork}
           alt=""
           fill
           priority
-          sizes="50vw"
+          unoptimized
           className="object-cover object-right"
         />
       </div>
