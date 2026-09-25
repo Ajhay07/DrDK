@@ -1,19 +1,62 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Magnetic } from "@/components/interactive/Magnetic";
 import { consultationHref, proceduresHref } from "@/config/navigation";
 
 /**
- * Free-license Unsplash photo (Kirill Balobanov,
- * unsplash.com/photos/2rIs8OH5ng0 — standard Unsplash license, free for
- * commercial use). Rendered as a soft editorial silhouette rather than a
- * photograph: grayscale + sepia filter, `mix-blend-screen` so the source
- * photo's black background drops out entirely (screen blend treats black
- * as transparent), low opacity, and a two-layer mask (radial + linear)
- * so the figure has no straight edges and dissolves into the champagne
- * background on every side.
+ * Hand-drawn abstract silhouette — deliberately not a photograph. An
+ * earlier version used a real portrait (with CSS filters/blend modes
+ * trying to soften it into an illustration), which still read as "a
+ * woman's photo on the right" rather than editorial artwork. This is a
+ * single soft SVG path suggesting a head/neck/shoulder profile, filled
+ * with a gradient that fades toward transparent on the face side, plus
+ * translucent ribbon shapes — no facial features, no realism.
  */
-const ctaArtwork = "/images/cta-female-profile.jpg";
+function CtaArtwork(): React.ReactElement {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 400 600"
+      preserveAspectRatio="xMaxYMid slice"
+      className="h-full w-full"
+    >
+      <defs>
+        <linearGradient id="cta-silhouette-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="var(--color-clay)" stopOpacity="0" />
+          <stop offset="55%" stopColor="var(--color-clay)" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="var(--color-accent)" stopOpacity="0.38" />
+        </linearGradient>
+        <linearGradient id="cta-ribbon-fade" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="var(--color-border-strong)" stopOpacity="0" />
+          <stop offset="100%" stopColor="var(--color-border-strong)" stopOpacity="0.3" />
+        </linearGradient>
+      </defs>
+
+      {/* Soft translucent ribbon forms — fabric/light movement, not a face. */}
+      <path
+        d="M40,0 C160,60 140,160 220,220 C300,280 260,380 340,440 C380,470 400,520 400,600 L400,0 Z"
+        fill="url(#cta-ribbon-fade)"
+      />
+
+      {/* Abstract head / neck / shoulder profile, facing left. No eyes,
+          nose or mouth are drawn — just a single continuous silhouette
+          edge, soft enough to read as suggestion rather than portrait. */}
+      <path
+        d="M400,10
+           C 330,25 300,70 310,120
+           C 270,135 250,170 265,205
+           C 230,215 215,245 232,275
+           C 205,290 198,320 218,345
+           C 195,360 195,390 220,405
+           C 205,425 215,450 245,460
+           C 235,490 250,520 285,535
+           C 300,565 330,585 375,595
+           C 385,597 393,598 400,598
+           Z"
+        fill="url(#cta-silhouette-fade)"
+      />
+    </svg>
+  );
+}
 
 /**
  * The closing screen — a light, warm-sage environment (not a dark banner)
@@ -27,36 +70,9 @@ export function FinalConsultationCTA(): React.ReactElement {
         <div className="absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-(--color-clay)/25 blur-3xl" />
         <div className="absolute right-10 top-0 h-full w-1/3 bg-gradient-to-l from-(--color-clay)/15 to-transparent" />
 
-        <div
-          className="absolute inset-y-0 right-0 hidden w-[45%] md:block"
-          style={{
-            WebkitMaskImage:
-              "radial-gradient(120% 90% at 88% 45%, black 40%, transparent 85%), linear-gradient(90deg, transparent 0%, black 45%)",
-            WebkitMaskComposite: "source-in",
-            maskImage:
-              "radial-gradient(120% 90% at 88% 45%, black 40%, transparent 85%), linear-gradient(90deg, transparent 0%, black 45%)",
-            maskComposite: "intersect",
-          }}
-        >
-          <Image
-            src={ctaArtwork}
-            alt=""
-            fill
-            sizes="45vw"
-            className="object-cover object-[85%_25%] opacity-35 mix-blend-screen"
-            style={{ filter: "grayscale(1) sepia(0.6) saturate(1.4) brightness(1.3) contrast(0.85)" }}
-          />
+        <div className="absolute inset-y-0 right-0 hidden w-[45%] md:block">
+          <CtaArtwork />
         </div>
-
-        <svg
-          className="absolute right-0 top-0 h-full w-2/5 opacity-40"
-          viewBox="0 0 400 500"
-          preserveAspectRatio="none"
-          fill="none"
-        >
-          <path d="M420 0C300 90 260 180 320 260C380 340 340 430 220 500" stroke="var(--color-clay)" strokeWidth="1.5" />
-          <path d="M460 0C360 110 330 210 400 290C440 340 420 420 320 500" stroke="var(--color-border-strong)" strokeWidth="1" />
-        </svg>
       </div>
       <Container width="wide" className="relative py-16 md:py-24">
         <div className="flex items-baseline justify-between">
