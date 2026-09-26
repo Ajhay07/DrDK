@@ -134,14 +134,19 @@ export function Hero(): React.ReactElement {
           </div>
 
           <div
-            className="mt-9 max-w-[34rem] motion-fade-in"
+            className="mt-6 max-w-[550px] motion-fade-in"
             style={{ animationDelay: "240ms" }}
           >
-            <p className="text-xs font-medium uppercase tracking-wide text-[#6F5840]">
+            <p
+              className="sm:whitespace-nowrap uppercase text-[#8B806F]"
+              style={{ fontSize: "11px", letterSpacing: "0.06em", lineHeight: 1.5 }}
+            >
               MBBS &middot; MS (General Surgery) &middot; MCh (Plastic Surgery)
             </p>
-            <div className="my-3 h-px w-8 bg-(--color-border-strong)" />
-            <p className="text-xs leading-relaxed text-(--color-ink-muted)">
+            <p
+              className="mt-1 text-[#8B806F]/80"
+              style={{ fontSize: "11px", letterSpacing: "0.04em", lineHeight: 1.5 }}
+            >
               Advanced Fellowship Training in Cosmetic Surgery &middot; Akademikliniken,
               Stockholm
             </p>
