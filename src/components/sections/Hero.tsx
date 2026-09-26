@@ -133,15 +133,19 @@ export function Hero(): React.ReactElement {
             </Magnetic>
           </div>
 
-          <p
-            className="text-eyebrow mt-10 text-(--color-ink-faint) motion-fade-in"
+          <div
+            className="mt-9 max-w-[34rem] motion-fade-in"
             style={{ animationDelay: "240ms" }}
           >
-            MBBS &middot; MS (General Surgery) &middot; MCh (Plastic Surgery)
-            <br />
-            Advanced Fellowship Training in Cosmetic Surgery &middot; Akademikliniken,
-            Stockholm
-          </p>
+            <p className="text-xs font-medium uppercase tracking-wide text-[#6F5840]">
+              MBBS &middot; MS (General Surgery) &middot; MCh (Plastic Surgery)
+            </p>
+            <div className="my-3 h-px w-8 bg-(--color-border-strong)" />
+            <p className="text-xs leading-relaxed text-(--color-ink-muted)">
+              Advanced Fellowship Training in Cosmetic Surgery &middot; Akademikliniken,
+              Stockholm
+            </p>
+          </div>
         </div>
 
         <div
