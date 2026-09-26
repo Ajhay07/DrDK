@@ -176,9 +176,9 @@ export function Hero(): React.ReactElement {
 
           <div className="absolute bottom-4 right-4 max-w-[13rem] rounded-(--radius-lg) border border-(--color-border-strong) bg-(--color-bg)/95 px-5 py-4 backdrop-blur-sm sm:bottom-6 sm:right-6">
             <p className="font-(family-name:--font-display) text-base italic text-(--color-ink)">
-              Dr. Dinesh Kumar
+              Consultant
             </p>
-            <p className="text-eyebrow mt-1 text-(--color-ink-muted)">Consultant Surgeon</p>
+            <p className="text-eyebrow mt-1 text-(--color-ink-muted)">Plastic &amp; Cosmetic Surgeon</p>
             <div className="mt-2 border-t border-(--color-border) pt-2">
               <p className="text-xs text-(--color-ink-muted)">MBBS, MS, MCh (Plastic Surgery)</p>
             </div>

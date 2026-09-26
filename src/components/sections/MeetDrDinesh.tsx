@@ -194,7 +194,7 @@ export function MeetDrDinesh(): React.ReactElement {
                 {philosophy.quote}
               </p>
               <p className="font-(family-name:--font-display) mt-2 text-sm italic text-(--color-ink-muted)">
-                {doctorIntro.signature}
+                &mdash; Dr. Dinesh
               </p>
             </div>
           </div>
