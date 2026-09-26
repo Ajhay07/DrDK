@@ -9,7 +9,10 @@ import { concerns } from "@/config/concerns";
  * across two concerns. nose-explorer.jpg is a free-license Unsplash photo
  * (Zulfugar Karimov, unsplash.com/photos/cGUuNMJvkmE — standard Unsplash
  * license, free for commercial use), mirrored so the profile faces the
- * same direction as the rest of the row.
+ * same direction as the rest of the row. All six are rendered through a
+ * single shared monochrome filter recipe (below) so they read as one
+ * editorial photography collection rather than six differently-toned
+ * source photos.
  */
 const concernImages: Partial<Record<string, string>> = {
   face: "/images/procedures/face-explorer.jpg",
@@ -78,7 +81,8 @@ export function ExploreConcerns(): React.ReactElement {
                           alt=""
                           fill
                           sizes="(min-width: 1024px) 14vw, (min-width: 640px) 20vw, 40vw"
-                          className="object-cover grayscale-[10%] transition-transform duration-(--duration-slow) ease-(--ease-editorial) group-hover:scale-[1.03]"
+                          className="object-cover transition-transform duration-(--duration-slow) ease-(--ease-editorial) group-hover:scale-[1.03]"
+                          style={{ filter: "grayscale(1) contrast(0.92) brightness(1.06)" }}
                         />
                         <div
                           aria-hidden="true"
