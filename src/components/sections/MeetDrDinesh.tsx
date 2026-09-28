@@ -93,10 +93,10 @@ const stats: { icon: (p: PillarIconProps) => React.ReactElement; label: string; 
 export function MeetDrDinesh(): React.ReactElement {
   return (
     <section className="bg-(--color-surface) lg:flex lg:min-h-[calc(100vh-var(--nav-height))] lg:flex-col lg:justify-center">
-      <Container width="wide" className="py-16 md:py-24 lg:py-16">
+      <Container width="wide" className="py-16 md:py-24 lg:py-8">
         <span className="text-eyebrow">02 &mdash; {doctorIntro.eyebrow}</span>
 
-        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-12 lg:gap-y-0 lg:grid-cols-12 lg:grid-rows-[auto_1fr]">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-12 lg:gap-y-0 lg:grid-cols-12 lg:grid-rows-[auto_1fr]">
           {/* Portrait */}
           <div className="lg:col-span-4 lg:row-span-2 lg:pr-2">
             <div className="relative aspect-[4/5] w-full max-w-sm lg:aspect-auto lg:h-full lg:max-w-none">
@@ -121,36 +121,36 @@ export function MeetDrDinesh(): React.ReactElement {
           </div>
 
           {/* Name, biography, principles */}
-          <div className="lg:col-span-5 lg:col-start-5 lg:row-start-1 lg:px-8">
+          <div className="lg:col-span-5 lg:col-start-5 lg:row-start-1 lg:px-4">
             <h2
               className="font-(family-name:--font-display) font-normal text-(--color-ink)"
-              style={{ fontSize: "clamp(2.5rem, 1.6rem + 2.4vw, 4.25rem)", lineHeight: 1, letterSpacing: "-0.01em" }}
+              style={{ fontSize: "clamp(2.5rem, min(1.6rem + 2.4vw, 6.5vh), 4.25rem)", lineHeight: 1, letterSpacing: "-0.01em" }}
             >
               Dinesh
               <br />
               Kumar
             </h2>
-            <div className="mt-6 h-px w-14 bg-(--color-accent)" />
-            <span className="text-eyebrow mt-5 block text-(--color-ink-muted)">
+            <div className="mt-4 h-px w-14 bg-(--color-accent)" />
+            <span className="text-eyebrow mt-4 block text-(--color-ink-muted)">
               Consultant Plastic &amp; Cosmetic Surgeon
             </span>
 
-            <p className="mt-7 max-w-[560px] text-[15px] leading-[1.65] text-(--color-ink-muted)">
+            <p className="mt-4 max-w-[560px] text-sm leading-[1.6] text-(--color-ink-muted)">
               {doctorIntro.paragraphs[0]}
             </p>
 
-            <ul className="mt-9 flex max-w-[560px] flex-col">
+            <ul className="mt-5 flex max-w-[560px] flex-col">
               {pillars.map(({ icon: Icon, title, body }) => (
                 <li
                   key={title}
-                  className="flex gap-4 border-t border-(--color-border) py-5 last:border-b"
+                  className="flex gap-4 border-t border-(--color-border) py-3 last:border-b"
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-accent)">
                     <Icon className="h-3.5 w-3.5" />
                   </span>
                   <div>
                     <p className="text-sm font-medium text-(--color-ink)">{title}</p>
-                    <p className="mt-1 text-[13px] leading-relaxed text-(--color-ink-faint)">{body}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-(--color-ink-faint)">{body}</p>
                   </div>
                 </li>
               ))}
@@ -181,7 +181,7 @@ export function MeetDrDinesh(): React.ReactElement {
               ))}
             </div>
 
-            <div className="mt-11 border-t border-(--color-border) pt-6">
+            <div className="mt-8 border-t border-(--color-border) pt-6">
               <span aria-hidden="true" className="font-(family-name:--font-display) text-3xl italic text-(--color-clay)">
                 &ldquo;
               </span>
@@ -195,7 +195,7 @@ export function MeetDrDinesh(): React.ReactElement {
           </div>
 
           {/* Button — last on mobile, under the principles on desktop */}
-          <div className="lg:col-span-5 lg:col-start-5 lg:row-start-2 lg:mt-8 lg:self-start lg:px-8">
+          <div className="lg:col-span-5 lg:col-start-5 lg:row-start-2 lg:mt-5 lg:self-start lg:px-4">
             <a
               href={doctorIntro.ctaHref}
               className="inline-flex items-center gap-2 rounded-xl bg-(--color-bg-secondary) px-6 py-3 text-button text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:bg-(--color-border-strong)"
