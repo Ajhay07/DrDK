@@ -43,7 +43,7 @@ export default function AboutPage(): React.ReactElement {
               </p>
             </div>
 
-            <div className="md:sticky md:top-[calc(var(--nav-height)+2rem)] md:col-start-9 md:col-end-13 md:self-start">
+            <div className="md:col-start-9 md:col-end-13 md:self-start">
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-(--radius-lg) bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25">
                 <div className="absolute inset-x-[6%] top-[6%] bottom-0">
                   <Image

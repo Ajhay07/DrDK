@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { CustomCursor } from "@/components/interactive/CustomCursor";
+import { SmoothScroll } from "@/components/interactive/SmoothScroll";
 import { siteConfig } from "@/config/site";
 import { contactInfo } from "@/config/contact";
 import { locations } from "@/config/locations";
@@ -93,8 +94,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <CustomCursor />
         <SiteHeader />
-        {children}
-        <SiteFooter />
+        <SmoothScroll>
+          {children}
+          <SiteFooter />
+        </SmoothScroll>
       </body>
     </html>
   );

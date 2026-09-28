@@ -65,7 +65,7 @@ export function SiteHeader(): React.ReactElement {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-(--color-border) bg-(--color-bg)">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-(--color-border) bg-(--color-bg)">
       <div className="mx-auto grid h-(--nav-height) w-full max-w-(--content-max-width) grid-cols-2 items-center gap-(--grid-gap) px-(--page-gutter) md:grid-cols-12">
         <Link href="/" className="md:col-span-3">
           <span className="text-nav block text-(--color-ink)">{siteName.toUpperCase()}</span>
