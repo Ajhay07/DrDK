@@ -1,4 +1,3 @@
-import { ConsultationBand } from "@/components/sections/ConsultationBand";
 import { CredentialsTrust } from "@/components/sections/CredentialsTrust";
 import { ExploreConcerns } from "@/components/sections/ExploreConcerns";
 import { Hero } from "@/components/sections/Hero";
@@ -10,7 +9,6 @@ export default function Home(): React.ReactElement {
   return (
     <main id="main-content" className="flex-1">
       <Hero />
-      <ConsultationBand />
       <MeetDrDinesh />
       <ExploreConcerns />
       <CredentialsTrust />
