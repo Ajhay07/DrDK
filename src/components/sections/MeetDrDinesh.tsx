@@ -93,11 +93,12 @@ const stats: { icon: (p: PillarIconProps) => React.ReactElement; label: string; 
 export function MeetDrDinesh(): React.ReactElement {
   return (
     <section className="bg-(--color-surface) lg:flex lg:min-h-[calc(100vh-var(--nav-height))] lg:flex-col lg:justify-center">
-      <Container width="wide" className="py-16 md:py-24 lg:py-4">
+      <Container width="wide" className="py-16 md:py-24 lg:py-16">
         <span className="text-eyebrow">02 &mdash; {doctorIntro.eyebrow}</span>
 
-        <div className="mt-8 grid grid-cols-1 gap-10 lg:mt-8 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-12 lg:gap-y-0 lg:grid-cols-12 lg:grid-rows-[auto_1fr]">
+          {/* Portrait */}
+          <div className="lg:col-span-4 lg:row-span-2 lg:pr-2">
             <div className="relative aspect-[4/5] w-full max-w-sm lg:aspect-auto lg:h-full lg:max-w-none">
               <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-(--color-bg-secondary)">
                 <span
@@ -119,52 +120,46 @@ export function MeetDrDinesh(): React.ReactElement {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          {/* Name, biography, principles */}
+          <div className="lg:col-span-5 lg:col-start-5 lg:row-start-1 lg:px-8">
             <h2
               className="font-(family-name:--font-display) font-normal text-(--color-ink)"
-              style={{ fontSize: "clamp(2.25rem, 1.5rem + 2.8vw, 4rem)", lineHeight: 0.98, letterSpacing: "-0.01em" }}
+              style={{ fontSize: "clamp(2.5rem, 1.6rem + 2.4vw, 4.25rem)", lineHeight: 1, letterSpacing: "-0.01em" }}
             >
               Dinesh
               <br />
               Kumar
             </h2>
-            <div className="mt-3 h-px w-14 bg-(--color-accent)" />
-            <span className="text-eyebrow mt-3 block text-(--color-ink-muted)">
+            <div className="mt-6 h-px w-14 bg-(--color-accent)" />
+            <span className="text-eyebrow mt-5 block text-(--color-ink-muted)">
               Consultant Plastic &amp; Cosmetic Surgeon
             </span>
 
-            <p className="text-sm mt-3 text-(--color-ink-muted)">{doctorIntro.paragraphs[0]}</p>
+            <p className="mt-7 max-w-[560px] text-[15px] leading-[1.65] text-(--color-ink-muted)">
+              {doctorIntro.paragraphs[0]}
+            </p>
 
-            <ul className="mt-2 flex flex-col">
+            <ul className="mt-9 flex max-w-[560px] flex-col">
               {pillars.map(({ icon: Icon, title, body }) => (
                 <li
                   key={title}
-                  className="flex gap-3 border-t border-(--color-border) py-2.5 first:border-t-0 first:pt-0"
+                  className="flex gap-4 border-t border-(--color-border) py-5 last:border-b"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-accent)">
-                    <Icon className="h-4 w-4" />
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-accent)">
+                    <Icon className="h-3.5 w-3.5" />
                   </span>
                   <div>
                     <p className="text-sm font-medium text-(--color-ink)">{title}</p>
-                    <p className="text-sm mt-0.5 text-(--color-ink-muted)">{body}</p>
+                    <p className="mt-1 text-[13px] leading-relaxed text-(--color-ink-faint)">{body}</p>
                   </div>
                 </li>
               ))}
             </ul>
-
-            <div className="mt-5">
-              <a
-                href={doctorIntro.ctaHref}
-                className="inline-flex items-center gap-2 rounded-xl bg-(--color-bg-secondary) px-6 py-3 text-button text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:bg-(--color-border-strong)"
-              >
-                {doctorIntro.ctaLabel}
-                <span aria-hidden="true">&#8599;</span>
-              </a>
-            </div>
           </div>
 
-          <div className="lg:col-span-3">
-            <div className="relative flex flex-col gap-3 border-l border-(--color-border) pl-6">
+          {/* Credentials + quote */}
+          <div className="lg:col-span-3 lg:col-start-10 lg:row-span-2 lg:row-start-1 lg:pl-2">
+            <div className="relative flex flex-col gap-4 border-l border-(--color-border) pl-6">
               <span
                 aria-hidden="true"
                 className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-(--color-ink)"
@@ -172,31 +167,42 @@ export function MeetDrDinesh(): React.ReactElement {
               {stats.map(({ icon: Icon, label, value, sub }) => (
                 <div
                   key={label}
-                  className="flex items-start gap-3 rounded-2xl border border-(--color-border) bg-(--color-bg) p-4"
+                  className="flex items-start gap-3 rounded-2xl border border-(--color-border) bg-(--color-bg) p-[18px]"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-accent)">
-                    <Icon className="h-4 w-4" />
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-(--color-bg-secondary) text-(--color-accent)">
+                    <Icon className="h-3.5 w-3.5" />
                   </span>
                   <div>
                     <p className="text-eyebrow text-(--color-ink-muted)">{label}</p>
-                    <p className="font-(family-name:--font-display) text-lg text-(--color-ink)">{value}</p>
+                    <p className="mt-1 font-(family-name:--font-display) text-lg text-(--color-ink)">{value}</p>
                     <p className="text-xs text-(--color-ink-faint)">{sub}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-5 border-t border-(--color-border) pt-4">
+            <div className="mt-11 border-t border-(--color-border) pt-6">
               <span aria-hidden="true" className="font-(family-name:--font-display) text-3xl italic text-(--color-clay)">
                 &ldquo;
               </span>
-              <p className="font-(family-name:--font-display) text-base italic leading-snug text-(--color-ink)">
+              <p className="font-(family-name:--font-display) text-[15px] italic leading-relaxed text-(--color-ink)">
                 {philosophy.quote}
               </p>
-              <p className="font-(family-name:--font-display) mt-2 text-sm italic text-(--color-ink-muted)">
+              <p className="font-(family-name:--font-display) mt-3 text-sm italic text-(--color-ink-muted)">
                 &mdash; Dr. Dinesh
               </p>
             </div>
+          </div>
+
+          {/* Button — last on mobile, under the principles on desktop */}
+          <div className="lg:col-span-5 lg:col-start-5 lg:row-start-2 lg:mt-8 lg:self-start lg:px-8">
+            <a
+              href={doctorIntro.ctaHref}
+              className="inline-flex items-center gap-2 rounded-xl bg-(--color-bg-secondary) px-6 py-3 text-button text-(--color-ink) transition-colors duration-(--duration-fast) ease-(--ease-editorial) hover:bg-(--color-border-strong)"
+            >
+              {doctorIntro.ctaLabel}
+              <span aria-hidden="true">&#8599;</span>
+            </a>
           </div>
         </div>
       </Container>
