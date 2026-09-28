@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
 import { aboutPillars, aboutStory, doctorIntro, philosophy } from "@/config/about";
@@ -15,15 +14,83 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
+const headlineAccent = "cosmetic surgery.";
+const headlineLead = doctorIntro.headline.endsWith(headlineAccent)
+  ? doctorIntro.headline.slice(0, -headlineAccent.length)
+  : doctorIntro.headline;
+
+const heroFacts = [
+  { label: "Qualifications", value: "MBBS, MS, MCh" },
+  { label: "Specialty", value: "Plastic & Cosmetic Surgery" },
+  { label: "Fellowship", value: "Advanced Fellowship Training" },
+  { label: "Trained at", value: "Akademikliniken, Stockholm" },
+];
+
 export default function AboutPage(): React.ReactElement {
   return (
     <main id="main-content" className="flex-1">
-      <Section spacing="xl">
-        <Container width="wide">
-          <PageHeader eyebrow={doctorIntro.eyebrow} title={doctorIntro.headline} size="display" />
+      <section className="bg-(--color-bg)">
+        <Container width="wide" className="flex flex-col py-10 md:py-14 lg:min-h-[calc(100svh-var(--nav-height))] lg:py-12">
+          <span className="text-eyebrow">02 &mdash; {doctorIntro.eyebrow}</span>
 
-          <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-12 md:items-start md:gap-8">
-            <div className="md:col-span-7">
+          <div className="mt-8 grid flex-1 grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-10 lg:grid-cols-[55fr_45fr] lg:gap-16">
+            <div>
+              <h1
+                className="max-w-[12.5em] font-(family-name:--font-display) font-normal text-(--color-ink)"
+                style={{ fontSize: "clamp(2.75rem, 4.4vw, 5.25rem)", lineHeight: 0.98, letterSpacing: "-0.025em" }}
+              >
+                {headlineLead}
+                <em className="text-(--color-accent)">{headlineAccent}</em>
+              </h1>
+
+              <div className="mt-7 h-px w-14 bg-(--color-accent)" />
+
+              <p className="mt-6 max-w-[520px] text-base leading-[1.6] text-(--color-ink-muted)">
+                {doctorIntro.paragraphs[1]}
+              </p>
+
+              <div className="mt-8">
+                <TextLink href={consultationHref}>Book a consultation &rarr;</TextLink>
+              </div>
+            </div>
+
+            <div className="relative h-[26rem] w-full md:h-[32rem] lg:h-[clamp(34rem,70vh,40rem)]">
+              <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-(--color-bg-secondary)">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-4 -top-10 select-none font-(family-name:--font-display) text-[16rem] leading-none text-(--color-ink)/[0.06]"
+                >
+                  D
+                </span>
+              </div>
+              <div className="absolute inset-x-0 top-0 bottom-0">
+                <Image
+                  src="/images/doctor/dr-dinesh-profile-cutout.png"
+                  alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, (min-width: 768px) 45vw, 90vw"
+                  className="object-contain object-bottom drop-shadow-[0_20px_28px_rgba(80,65,45,0.16)]"
+                />
+              </div>
+            </div>
+          </div>
+
+          <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-(--color-border) pt-6 lg:grid-cols-4">
+            {heroFacts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="text-eyebrow text-(--color-ink-faint)">{fact.label}</dt>
+                <dd className="mt-1.5 text-sm text-(--color-ink)">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </section>
+
+      <Section spacing="lg">
+        <Container width="wide">
+          <div className="max-w-3xl">
+
               {aboutStory.map((paragraph, index) => (
                 <p
                   key={paragraph}
@@ -41,28 +108,6 @@ export default function AboutPage(): React.ReactElement {
                 To discuss your own goals and concerns directly,{" "}
                 <TextLink href={consultationHref}>book a consultation</TextLink>.
               </p>
-            </div>
-
-            <div className="md:col-start-9 md:col-end-13 md:self-start">
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-(--radius-lg) bg-gradient-to-br from-(--color-surface) via-(--color-bg) to-(--color-clay)/25">
-                <div className="absolute inset-x-[6%] top-[6%] bottom-0">
-                  <Image
-                    src="/images/doctor/dr-dinesh-profile-cutout.png"
-                    alt="Dr. Dinesh Kumar, consultant plastic and cosmetic surgeon"
-                    fill
-                    sizes="(min-width: 768px) 20rem, 60vw"
-                    className="object-contain object-bottom"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-4 flex items-baseline justify-between border-t border-(--color-border) pt-4">
-                <span className="font-(family-name:--font-display) text-lg italic text-(--color-ink)">
-                  Dr. Dinesh Kumar
-                </span>
-                <span className="text-eyebrow">Consultant Surgeon</span>
-              </div>
-            </div>
           </div>
         </Container>
       </Section>
