@@ -132,25 +132,6 @@ export function Hero(): React.ReactElement {
               </a>
             </Magnetic>
           </div>
-
-          <div
-            className="mt-6 max-w-[550px] motion-fade-in"
-            style={{ animationDelay: "240ms" }}
-          >
-            <p
-              className="sm:whitespace-nowrap uppercase text-[#8B806F]"
-              style={{ fontSize: "11px", letterSpacing: "0.06em", lineHeight: 1.5 }}
-            >
-              MBBS &middot; MS (General Surgery) &middot; MCh (Plastic Surgery)
-            </p>
-            <p
-              className="mt-1 text-[#8B806F]/80"
-              style={{ fontSize: "11px", letterSpacing: "0.04em", lineHeight: 1.5 }}
-            >
-              Advanced Fellowship Training in Cosmetic Surgery &middot; Akademikliniken,
-              Stockholm
-            </p>
-          </div>
         </div>
 
         <div
